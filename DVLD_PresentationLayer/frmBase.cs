@@ -18,11 +18,11 @@ namespace DVLD_PresentationLayer
             // get { return pbBase.Image; }
         }
 
-        protected DataGridView BaseGridView
-        {
-            set { dgvAllPeople = value; }
-             get { return dgvAllPeople; }
-        }
+        //protected DataGridView BaseGridView
+        //{
+        //    set { dgvAllPeople = value; }
+        //     get { return dgvAllPeople; }
+        //}
 
         public frmBase()
         {

@@ -7,20 +7,20 @@
       "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:ucfilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|e:\\dvld_profects\\dvld_presentationlayer\\frmbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:frmbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:frmpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|e:\\dvld_profects\\dvld_presentationlayer\\ucfilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:ucfilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:frmpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|e:\\dvld_profects\\dvld_presentationlayer\\ucfilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:ucfilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|e:\\dvld_profects\\dvld_presentationlayer\\frmbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:frmbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:frmpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,12 +54,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "ucFilters.cs",
               "DocumentMoniker": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\ucFilters.cs",
               "RelativeDocumentMoniker": "ucFilters.cs",
-              "ToolTip": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\ucFilters.cs",
-              "RelativeToolTip": "ucFilters.cs",
+              "ToolTip": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\ucFilters.cs*",
+              "RelativeToolTip": "ucFilters.cs*",
               "ViewState": "AgIAAEsAAAAAAAAAAAAuwIwAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-03T22:43:28.344Z",
@@ -71,15 +71,15 @@
               "Title": "ucFilters.cs [Design]",
               "DocumentMoniker": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\ucFilters.cs",
               "RelativeDocumentMoniker": "ucFilters.cs",
-              "ToolTip": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\ucFilters.cs [Design]",
-              "RelativeToolTip": "ucFilters.cs [Design]",
+              "ToolTip": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\ucFilters.cs [Design]*",
+              "RelativeToolTip": "ucFilters.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-03T22:38:34.505Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "frmBase.cs [Design]",
               "DocumentMoniker": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmBase.cs",
               "RelativeDocumentMoniker": "frmBase.cs",
@@ -91,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "frmPeople.cs",
               "DocumentMoniker": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmPeople.cs",
               "RelativeDocumentMoniker": "frmPeople.cs",
@@ -117,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "frmPeople.cs [Design]",
               "DocumentMoniker": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmPeople.cs",
               "RelativeDocumentMoniker": "frmPeople.cs",

@@ -54,6 +54,9 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPeople = new System.Windows.Forms.DataGridView();
+            this.ucFilters1 = new DVLD_PresentationLayer.ucFilters();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewTextBoxColumn14
@@ -264,14 +267,39 @@
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
             this.dataGridViewTextBoxColumn13.Width = 83;
             // 
+            // dgvPeople
+            // 
+            this.dgvPeople.AllowUserToAddRows = false;
+            this.dgvPeople.AllowUserToDeleteRows = false;
+            this.dgvPeople.AllowUserToOrderColumns = true;
+            this.dgvPeople.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvPeople.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPeople.Location = new System.Drawing.Point(38, 300);
+            this.dgvPeople.Name = "dgvPeople";
+            this.dgvPeople.Size = new System.Drawing.Size(1037, 282);
+            this.dgvPeople.TabIndex = 5;
+            // 
+            // ucFilters1
+            // 
+            this.ucFilters1.Location = new System.Drawing.Point(38, 242);
+            this.ucFilters1.Name = "ucFilters1";
+            this.ucFilters1.Size = new System.Drawing.Size(503, 52);
+            this.ucFilters1.TabIndex = 6;
+            // 
             // frmPeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1117, 509);
+            this.ClientSize = new System.Drawing.Size(1117, 606);
+            this.Controls.Add(this.ucFilters1);
+            this.Controls.Add(this.dgvPeople);
             this.Name = "frmPeople";
             this.Text = "frmPeople";
             this.Load += new System.EventHandler(this.frmPeople_Load);
+            this.Controls.SetChildIndex(this.dgvPeople, 0);
+            this.Controls.SetChildIndex(this.ucFilters1, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -304,5 +332,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.DataGridView dgvPeople;
+        private ucFilters ucFilters1;
     }
 }

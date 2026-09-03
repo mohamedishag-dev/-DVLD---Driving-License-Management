@@ -27,9 +27,7 @@ namespace DVLD_PresentationLayer
 
             dtPeople.Columns.Remove("ImagePath");
             dtPeople.Columns.Remove("NationalityCountryID");
-
-            this.BaseGridView.DataSource = dtPeople;
-            //            this.BaseGridView = clsPerson.GetAllPeople();
+            dgvPeople.DataSource = dtPeople;
 
         }
     }
