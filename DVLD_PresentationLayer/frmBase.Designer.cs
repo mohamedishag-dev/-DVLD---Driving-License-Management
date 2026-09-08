@@ -35,35 +35,33 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(302, 169);
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(295, 109);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(510, 31);
-            this.lblTitle.TabIndex = 1;
+            this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "Tital";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pbBase
             // 
             this.pbBase.Image = global::DVLD_PresentationLayer.Properties.Resources.Male_512;
-            this.pbBase.Location = new System.Drawing.Point(472, 63);
+            this.pbBase.Location = new System.Drawing.Point(465, 3);
             this.pbBase.Name = "pbBase";
             this.pbBase.Size = new System.Drawing.Size(153, 85);
             this.pbBase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbBase.TabIndex = 0;
+            this.pbBase.TabIndex = 2;
             this.pbBase.TabStop = false;
             // 
             // frmBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1117, 509);
+            this.ClientSize = new System.Drawing.Size(1117, 488);
             this.Controls.Add(this.pbBase);
             this.Controls.Add(this.lblTitle);
             this.Name = "frmBase";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBase";
-            this.Load += new System.EventHandler(this.frmBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbBase)).EndInit();
             this.ResumeLayout(false);
 

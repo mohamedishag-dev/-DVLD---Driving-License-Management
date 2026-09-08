@@ -1,11 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer
 {
     public partial class frmBase : Form
     {
+
         protected string Tital
         {
             set { lblTitle.Text = value; }
@@ -18,23 +25,9 @@ namespace DVLD_PresentationLayer
             // get { return pbBase.Image; }
         }
 
-        //protected DataGridView BaseGridView
-        //{
-        //    set { dgvAllPeople = value; }
-        //     get { return dgvAllPeople; }
-        //}
-
         public frmBase()
         {
             InitializeComponent();
         }
-        private void frmBase_Load(object sender, EventArgs e)
-        {
-
-
-        }
-
-      
-
     }
 }

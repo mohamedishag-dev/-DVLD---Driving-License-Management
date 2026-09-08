@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7BA52772-0388-41D4-AAA1-CE90821609FF}</ProjectGuid>
+    <ProjectGuid>{A4BFD6A4-BFB3-49CE-8332-9CC0F1F89C28}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DVLD_DataAccessLayer</RootNamespace>
@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsCountryData.cs" />
     <Compile Include="clsDataAccessSettings.cs" />
-    <Compile Include="PeopleData.cs" />
+    <Compile Include="clsPersonData.cs" />
+    <Compile Include="clsUserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

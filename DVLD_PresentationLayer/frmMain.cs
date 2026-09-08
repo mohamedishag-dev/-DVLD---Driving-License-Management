@@ -17,35 +17,29 @@ namespace DVLD_PresentationLayer
             InitializeComponent();
         }
 
-        private void btnApplication_Click(object sender, EventArgs e)
+      
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("This is a sample Driver for demonstration purposes.");
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
+        private void applicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("This is a sample Driver for demonstration purposes.");
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("This is a sample Driver for demonstration purposes.");
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
 
-        }
+            frmPerson frmPeople = new frmPerson();
+            frmPeople.MdiParent = this;
+            frmPeople.Show();
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPeople_Click(object sender, EventArgs e)
-        {
-            frmPeople frmPeople = new frmPeople();
-            frmPeople.ShowDialog();
         }
     }
 }

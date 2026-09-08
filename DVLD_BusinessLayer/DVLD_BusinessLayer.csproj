@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EE0BBACE-AE88-40F1-BD6E-CEB0E0606FD2}</ProjectGuid>
+    <ProjectGuid>{57401815-9A93-4DA9-8B78-E1E13F7C9DD8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DVLD_BusinessLayer</RootNamespace>
@@ -41,12 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="People.cs" />
+    <Compile Include="clsCountry.cs" />
+    <Compile Include="clsPerson.cs" />
+    <Compile Include="clsUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DVLD_DataAccessLayer\DVLD_DataAccessLayer.csproj">
-      <Project>{7ba52772-0388-41d4-aaa1-ce90821609ff}</Project>
+      <Project>{a4bfd6a4-bfb3-49ce-8332-9cc0f1f89c28}</Project>
       <Name>DVLD_DataAccessLayer</Name>
     </ProjectReference>
   </ItemGroup>

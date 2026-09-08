@@ -1,30 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\",
+  "WorkspaceRootPath": "E:\\Profects\\-DVLD---Driving-License-Management\\DVLD_PresentationLayer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|e:\\dvld_profects\\dvld_presentationlayer\\ucfilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:ucfilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|e:\\dvld_profects\\dvld_presentationlayer\\frmbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:frmbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:frmpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:frmpeople.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|e:\\dvld_profects\\dvld_presentationlayer\\ucfilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:ucfilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B74B812F-CD06-427F-AB18-F4A7274A4655}|DVLD_PresentationLayer.csproj|solutionrelative:frmbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8B559F05-88DD-4F3F-93DD-151B6930D9B9}|DVLD_PresentationLayer.csproj|E:\\Profects\\-DVLD---Driving-License-Management\\DVLD_PresentationLayer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B559F05-88DD-4F3F-93DD-151B6930D9B9}|DVLD_PresentationLayer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,78 +34,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ucFilters.cs",
-              "DocumentMoniker": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\ucFilters.cs",
-              "RelativeDocumentMoniker": "ucFilters.cs",
-              "ToolTip": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\ucFilters.cs",
-              "RelativeToolTip": "ucFilters.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAuwIwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-03T22:43:28.344Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ucFilters.cs [Design]",
-              "DocumentMoniker": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\ucFilters.cs",
-              "RelativeDocumentMoniker": "ucFilters.cs",
-              "ToolTip": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\ucFilters.cs [Design]",
-              "RelativeToolTip": "ucFilters.cs [Design]",
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Profects\\-DVLD---Driving-License-Management\\DVLD_PresentationLayer\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\Profects\\-DVLD---Driving-License-Management\\DVLD_PresentationLayer\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAYwBIAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-03T22:38:34.505Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmBase.cs [Design]",
-              "DocumentMoniker": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmBase.cs",
-              "RelativeDocumentMoniker": "frmBase.cs",
-              "ToolTip": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmBase.cs [Design]",
-              "RelativeToolTip": "frmBase.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-03T21:09:16.817Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmPeople.cs",
-              "DocumentMoniker": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmPeople.cs",
-              "RelativeDocumentMoniker": "frmPeople.cs",
-              "ToolTip": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmPeople.cs",
-              "RelativeToolTip": "frmPeople.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAzwBwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-03T21:23:41.672Z",
+              "WhenOpened": "2026-09-05T20:32:47.633Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "frmBase.cs",
-              "DocumentMoniker": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmBase.cs",
-              "RelativeDocumentMoniker": "frmBase.cs",
-              "ToolTip": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmBase.cs",
-              "RelativeToolTip": "frmBase.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwCMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-03T21:32:43.779Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "frmPeople.cs [Design]",
-              "DocumentMoniker": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmPeople.cs",
-              "RelativeDocumentMoniker": "frmPeople.cs",
-              "ToolTip": "E:\\DVLD_Profects\\DVLD_PresentationLayer\\frmPeople.cs [Design]",
-              "RelativeToolTip": "frmPeople.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-03T21:23:39.583Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }
