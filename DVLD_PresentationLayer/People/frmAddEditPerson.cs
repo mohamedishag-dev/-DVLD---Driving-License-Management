@@ -10,6 +10,10 @@ namespace DVLD_PresentationLayer.People
 {
     public partial class frmAddEditPerson : Form
     {
+        public delegate void DataBackEventHandler(object sender, int personID);
+
+        public event DataBackEventHandler DataBack;
+
         public enum enMode { AddNew = 0, Update = 1 };
         private enMode _Mode;
 
@@ -119,13 +123,12 @@ namespace DVLD_PresentationLayer.People
 
             if (string.IsNullOrEmpty(txtFirstName.Text))
             {
-                //   e.Cancel = true;
+                e.Cancel = true;
                 errorProvider1.SetError(txtFirstName, "First Name should have a value!");
             }
             else
             {
                 e.Cancel = false;
-                //  txtFirstName.Focus();
                 errorProvider1.SetError(txtFirstName, null);
             }
 
@@ -135,7 +138,7 @@ namespace DVLD_PresentationLayer.People
         {
             if (string.IsNullOrEmpty(txtLastName.Text))
             {
-                //    e.Cancel = true;
+                e.Cancel = true;
                 errorProvider1.SetError(txtLastName, "Last Name should have a value!");
             }
             else
@@ -147,9 +150,14 @@ namespace DVLD_PresentationLayer.People
 
         private void txtNationailNO_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNationailNO.Text))
+            if (clsPerson.IsPersonExist(txtNationailNO.Text))
             {
-                //    e.Cancel = true;
+                e.Cancel = true;
+                errorProvider1.SetError(txtNationailNO, "National Number is used for another person");
+            }
+            else if (string.IsNullOrEmpty(txtNationailNO.Text))
+            {
+                e.Cancel = true;
                 errorProvider1.SetError(txtNationailNO, "National Number should have a value!");
             }
             else
@@ -161,10 +169,16 @@ namespace DVLD_PresentationLayer.People
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
         {
+
             if (string.IsNullOrEmpty(txtEmail.Text))
             {
                 //    e.Cancel = true;
-                errorProvider1.SetError(txtEmail, "Email should have a value!");
+                errorProvider1.SetError(txtEmail, "");
+            }
+            else if (!txtEmail.Text.EndsWith(".com"))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtEmail, "Inviled Email Address format");
             }
             else
             {
@@ -198,7 +212,6 @@ namespace DVLD_PresentationLayer.People
             {
                 // Process the selected file
                 string selectedFilePath = openFileDialog1.FileName;
-                // MessageBox.Show("Selected Image is:" + selectedFilePath);
                 imgImagePath.Load(selectedFilePath);
                 llRemoveImage.Visible = true;
                 // ...
@@ -245,29 +258,36 @@ namespace DVLD_PresentationLayer.People
             if (imgImagePath.ImageLocation != null)
             {
                 string selectedFilePath = openFileDialog1.FileName;
+                string PathDeleted = _Person.ImagePath;
 
-                if (!string.IsNullOrEmpty(_Person.ImagePath))
+
+                if (!string.IsNullOrEmpty(selectedFilePath) && selectedFilePath != "openFileDialog1")
                 {
-                    File.Delete(_Person.ImagePath);
+                    File.Copy(selectedFilePath, Path.Combine(@"D:\DVLD-People-Images\", Path.GetFileName(selectedFilePath)), true);
+                    _Person.ImagePath = Path.Combine(@"D:\DVLD-People-Images\", Path.GetFileName(selectedFilePath));
+                    if (_Person.ImagePath != PathDeleted)
+                    {
+                        if (!string.IsNullOrEmpty(PathDeleted))
+                            File.Delete(PathDeleted);
+                    }
                 }
 
-                File.Copy(selectedFilePath, Path.Combine(@"D:\DVLD-People-Images\", Path.GetFileName(selectedFilePath)), true);
 
-                _Person.ImagePath = Path.Combine(@"D:\DVLD-People-Images\", Path.GetFileName(selectedFilePath));
             }
             else
                 _Person.ImagePath = "";
 
             if (_Person.Save())
             {
-                MessageBox.Show("Data Saved Successfully.");
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 _Mode = enMode.Update;
                 lblMode.Text = "Edit Person ID = " + _Person.PersonID;
                 lblPersonID.Text = _Person.PersonID.ToString();
+
             }
             else
-                MessageBox.Show("Error: Data Is not Saved Successfully.");
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "NOT Saved", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
@@ -295,7 +315,7 @@ namespace DVLD_PresentationLayer.People
         private void rbFemale_CheckedChanged(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(_Person.ImagePath))
+            if (imgImagePath.Image == null)
             {
                 imgImagePath.Image = Properties.Resources.Female_512;
             }
@@ -305,7 +325,7 @@ namespace DVLD_PresentationLayer.People
         private void rbMale_CheckedChanged(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(_Person.ImagePath))
+            if (imgImagePath.Image == null)
             {
                 imgImagePath.Image = Properties.Resources.Male_512;
             }

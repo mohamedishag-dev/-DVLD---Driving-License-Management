@@ -10,8 +10,6 @@ namespace DVLD_BusinessLayer
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
 
-        clsPerson PersonInfo => clsPerson.Find(PersonID);
-
         public int UserID { set; get; }
         public int PersonID { set; get; }
         public string UserName { set; get; }
@@ -60,13 +58,12 @@ namespace DVLD_BusinessLayer
                 return null;
         }
 
-        public static clsUser Find(int userID, string password)
+        public static clsUser Find(string userName, string password)
         {
-            int personID = -1;
+            int personID = -1, userID = -1;
             bool isActive = false;
-            string userName = "";
 
-            if (clsUserData.GetUserInfoByUserID(userID, ref personID, ref userName, ref password, ref isActive))
+            if (clsUserData.GetUserInfoByUserNameAndPassword(userName, password, ref userID, ref personID, ref isActive)) 
                 return new clsUser(userID, personID, userName, password, isActive);
             else
                 return null;

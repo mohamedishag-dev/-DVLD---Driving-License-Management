@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer
 {
-    public partial class frmPerson : frmBase
+    public partial class frmPerson : Form
     {
         public frmPerson()
         {
@@ -17,16 +17,11 @@ namespace DVLD_PresentationLayer
 
         private void frmPreson_Load(object sender, EventArgs e)
         {
-
-            this.Tital = "Manage People";
-            this.BaseImage = Properties.Resources.People_400;
-
-            Image imgEidt = Properties.Resources.Close_32;
-            btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
-
             _FillAllPeople();
             _FillPeopeleInComoboBox();
             txtFiltering.Enabled = false;
+            Image imgEidt = Properties.Resources.Close_32;
+            btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
 
         }
 
@@ -52,7 +47,7 @@ namespace DVLD_PresentationLayer
                 frmPresonDitels presonDetailsForm = new frmPresonDitels(personID);
                 presonDetailsForm.ShowDialog();
             }
-            _FillAllPeople();
+
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -79,6 +74,7 @@ namespace DVLD_PresentationLayer
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             object PersonID = dgvPeople.CurrentRow.Cells[0].Value.ToString();
+
             if (int.TryParse(PersonID.ToString(), out int personID))
             {
                 if (MessageBox.Show($"Are you sure you want to delete this person [{PersonID.ToString()}]?", "Confirm Delete",
@@ -87,17 +83,12 @@ namespace DVLD_PresentationLayer
                     if (clsPerson.DeletePerson(personID))
                     {
                         MessageBox.Show($"Person id [{PersonID}] was delete.");
+                        _FillAllPeople();
                     }
                     else
-                    {
                         MessageBox.Show("Person was not deleted because it has data linked to it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    }
-
                 }
             }
-
-            _FillAllPeople();
 
         }
 
@@ -132,8 +123,11 @@ namespace DVLD_PresentationLayer
             dtPeople = clsPerson.GetAllPeople();
             dtPeople.Columns.Add("Gender", typeof(string));
 
-            dtPeople.Columns.Remove("ImagePath");
+            dtPeople.Columns["Gender"].SetOrdinal(6);
+            dtPeople.Columns["Nationality"].SetOrdinal(8);
+
             dtPeople.Columns.Remove("Address");
+            dtPeople.Columns.Remove("ImagePath");
 
             DataRow[] ResultRows = dtPeople.Select();
 
@@ -176,8 +170,11 @@ namespace DVLD_PresentationLayer
             DataTable dtPeople = clsPerson.GetAllPeople();
             dtPeople.Columns.Add("Gender", typeof(string));
 
-            dtPeople.Columns.Remove("ImagePath");
+            dtPeople.Columns["Gender"].SetOrdinal(6);
+            dtPeople.Columns["Nationality"].SetOrdinal(8);
+
             dtPeople.Columns.Remove("Address");
+            dtPeople.Columns.Remove("ImagePath");
 
             DataRow[] ResultRows = dtPeople.Select();
 

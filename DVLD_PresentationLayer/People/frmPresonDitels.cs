@@ -28,8 +28,7 @@ namespace DVLD_PresentationLayer.People
         {
             Image imgEidt = Properties.Resources.Close_32;
             btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
-
-
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)

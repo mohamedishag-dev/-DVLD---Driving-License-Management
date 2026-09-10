@@ -1,29 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DVLD_BusinessLayer;
+using DVLD_PresentationLayer.People;
 using System.Windows.Forms;
-using DVLD_BusinessLayer;
 
 namespace DVLD_PresentationLayer
 {
     public partial class ctrlPresonCard : UserControl
     {
         private clsPerson _Person = null;
-        private int _PersonID = -1;
-
-        public int PersonID
-        {
-            get { return _PersonID; }
-        }
-
+        
         public ctrlPresonCard()
         {
             InitializeComponent();
+        }
+        private void ctrlPresonCard_Load(object sender, System.EventArgs e)
+        {
+            pbPersonImage.Image = Properties.Resources.Male_5121;
+
         }
 
         public void LoadPresonCard(int PersonID)
@@ -31,7 +23,10 @@ namespace DVLD_PresentationLayer
             _Person = clsPerson.Find(PersonID);
 
             if (_Person == null)
+            {
+                _ResetPersonInfo();
                 MessageBox.Show("Person not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
                 _LoadPresonInfo();
 
@@ -42,7 +37,10 @@ namespace DVLD_PresentationLayer
             _Person = clsPerson.Find(NationailNO);
 
             if (_Person == null)
+            {
+                _ResetPersonInfo();
                 MessageBox.Show("Person not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
                 _LoadPresonInfo();
 
@@ -55,7 +53,7 @@ namespace DVLD_PresentationLayer
             lblName.Text = _Person.FullName;
             lblNationailNO.Text = _Person.NationalNo;
             lblPhone.Text = _Person.Phone;
-            
+
             if (_Person.Gendor == 0)
             {
                 lblGedor.Text = "Male";
@@ -84,5 +82,27 @@ namespace DVLD_PresentationLayer
                     MessageBox.Show("could not find this image." + _Person.ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
+
+        private void linkEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmAddEditPerson frmAddEditPerson = new frmAddEditPerson(_Person.PersonID);
+            frmAddEditPerson.ShowDialog();
+            LoadPresonCard(_Person.PersonID);
+        }
+
+        private void _ResetPersonInfo()
+        {
+            pbPersonImage.Image = Properties.Resources.Male_5121;
+            lblPresonID.Text = "N/A";
+            lblName.Text = "[????]";
+            lblNationailNO.Text = "[????]";
+            lblPhone.Text = "[????]";
+            lblGedor.Text = "[????]";
+            lblEmail.Text = "[????]";
+            lblDateOfBrith.Text = "[????]";
+            lblCountry.Text = "[????]";
+            lblAddress.Text = "[????]";
+        }
+
     }
 }

@@ -46,8 +46,11 @@
             this.txtFiltering = new System.Windows.Forms.TextBox();
             this.lblFelter = new System.Windows.Forms.Label();
             this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.imgPeople = new System.Windows.Forms.PictureBox();
+            this.lblTital = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPeople)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPeople
@@ -58,11 +61,11 @@
             this.dgvPeople.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPeople.ContextMenuStrip = this.contextMenuStrip1;
-            this.dgvPeople.Location = new System.Drawing.Point(70, 223);
+            this.dgvPeople.Location = new System.Drawing.Point(64, 199);
             this.dgvPeople.Name = "dgvPeople";
             this.dgvPeople.ReadOnly = true;
             this.dgvPeople.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPeople.Size = new System.Drawing.Size(984, 217);
+            this.dgvPeople.Size = new System.Drawing.Size(984, 241);
             this.dgvPeople.TabIndex = 6;
             this.dgvPeople.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvPeople_MouseDoubleClick);
             // 
@@ -177,7 +180,7 @@
             this.btnAddPreson.BackgroundImage = global::DVLD_PresentationLayer.Properties.Resources.Add_Person_401;
             this.btnAddPreson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAddPreson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPreson.Location = new System.Drawing.Point(1002, 177);
+            this.btnAddPreson.Location = new System.Drawing.Point(996, 153);
             this.btnAddPreson.Name = "btnAddPreson";
             this.btnAddPreson.Size = new System.Drawing.Size(52, 40);
             this.btnAddPreson.TabIndex = 15;
@@ -187,7 +190,7 @@
             // txtFiltering
             // 
             this.txtFiltering.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtFiltering.Location = new System.Drawing.Point(345, 191);
+            this.txtFiltering.Location = new System.Drawing.Point(326, 167);
             this.txtFiltering.Name = "txtFiltering";
             this.txtFiltering.Size = new System.Drawing.Size(175, 26);
             this.txtFiltering.TabIndex = 19;
@@ -197,7 +200,7 @@
             // 
             this.lblFelter.AutoSize = true;
             this.lblFelter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFelter.Location = new System.Drawing.Point(72, 192);
+            this.lblFelter.Location = new System.Drawing.Point(66, 168);
             this.lblFelter.Name = "lblFelter";
             this.lblFelter.Size = new System.Drawing.Size(72, 20);
             this.lblFelter.TabIndex = 18;
@@ -212,16 +215,37 @@
             this.cbFilter.FormattingEnabled = true;
             this.cbFilter.Items.AddRange(new object[] {
             "None"});
-            this.cbFilter.Location = new System.Drawing.Point(159, 189);
+            this.cbFilter.Location = new System.Drawing.Point(153, 165);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(167, 28);
             this.cbFilter.TabIndex = 0;
             this.cbFilter.SelectionChangeCommitted += new System.EventHandler(this.cbFilter_SelectionChangeCommitted);
             // 
+            // imgPeople
+            // 
+            this.imgPeople.Image = global::DVLD_PresentationLayer.Properties.Resources.People_400;
+            this.imgPeople.Location = new System.Drawing.Point(465, 3);
+            this.imgPeople.Name = "imgPeople";
+            this.imgPeople.Size = new System.Drawing.Size(153, 85);
+            this.imgPeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgPeople.TabIndex = 21;
+            this.imgPeople.TabStop = false;
+            // 
+            // lblTital
+            // 
+            this.lblTital.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTital.Location = new System.Drawing.Point(295, 109);
+            this.lblTital.Name = "lblTital";
+            this.lblTital.Size = new System.Drawing.Size(510, 31);
+            this.lblTital.TabIndex = 22;
+            this.lblTital.Text = "Manage People";
+            this.lblTital.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmPerson
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1117, 488);
+            this.Controls.Add(this.imgPeople);
+            this.Controls.Add(this.lblTital);
             this.Controls.Add(this.txtFiltering);
             this.Controls.Add(this.lblFelter);
             this.Controls.Add(this.cbFilter);
@@ -237,16 +261,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage People";
             this.Load += new System.EventHandler(this.frmPreson_Load);
-            this.Controls.SetChildIndex(this.dgvPeople, 0);
-            this.Controls.SetChildIndex(this.btnClose, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.lblTotalRecods, 0);
-            this.Controls.SetChildIndex(this.btnAddPreson, 0);
-            this.Controls.SetChildIndex(this.cbFilter, 0);
-            this.Controls.SetChildIndex(this.lblFelter, 0);
-            this.Controls.SetChildIndex(this.txtFiltering, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgPeople)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +288,7 @@
         private System.Windows.Forms.TextBox txtFiltering;
         private System.Windows.Forms.Label lblFelter;
         private System.Windows.Forms.ComboBox cbFilter;
+        private System.Windows.Forms.PictureBox imgPeople;
+        private System.Windows.Forms.Label lblTital;
     }
 }

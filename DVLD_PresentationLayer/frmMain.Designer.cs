@@ -51,6 +51,9 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.applicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.CrruentUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chengPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenuItemApplication.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -265,12 +268,42 @@
             // 
             // toolStripMenuItem4
             // 
+            this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CrruentUserToolStripMenuItem,
+            this.chengPasswordToolStripMenuItem,
+            this.logoutToolStripMenuItem});
             this.toolStripMenuItem4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.toolStripMenuItem4.Image = global::DVLD_PresentationLayer.Properties.Resources.account_settings_64;
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(168, 54);
             this.toolStripMenuItem4.Text = "Account Settings";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // CrruentUserToolStripMenuItem
+            // 
+            this.CrruentUserToolStripMenuItem.Image = global::DVLD_PresentationLayer.Properties.Resources.PersonDetails_32;
+            this.CrruentUserToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.CrruentUserToolStripMenuItem.Name = "CrruentUserToolStripMenuItem";
+            this.CrruentUserToolStripMenuItem.Size = new System.Drawing.Size(200, 38);
+            this.CrruentUserToolStripMenuItem.Text = "Crruent User Info";
+            this.CrruentUserToolStripMenuItem.Click += new System.EventHandler(this.CrruentUserToolStripMenuItem_Click);
+            // 
+            // chengPasswordToolStripMenuItem
+            // 
+            this.chengPasswordToolStripMenuItem.Image = global::DVLD_PresentationLayer.Properties.Resources.Password_32;
+            this.chengPasswordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.chengPasswordToolStripMenuItem.Name = "chengPasswordToolStripMenuItem";
+            this.chengPasswordToolStripMenuItem.Size = new System.Drawing.Size(200, 38);
+            this.chengPasswordToolStripMenuItem.Text = "Change Password";
+            this.chengPasswordToolStripMenuItem.Click += new System.EventHandler(this.chengPasswordToolStripMenuItem_Click);
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Image = global::DVLD_PresentationLayer.Properties.Resources.sign_out_32__21;
+            this.logoutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(200, 38);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click_1);
             // 
             // frmMain
             // 
@@ -314,6 +347,9 @@
         private System.Windows.Forms.ToolStripMenuItem internationalLicenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem localDrivingLicenseApplicationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem internationalDrivingLicenseApplicationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CrruentUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chengPasswordToolStripMenuItem;
     }
 }
 
