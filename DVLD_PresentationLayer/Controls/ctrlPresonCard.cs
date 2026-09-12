@@ -14,7 +14,7 @@ namespace DVLD_PresentationLayer
         }
         private void ctrlPresonCard_Load(object sender, System.EventArgs e)
         {
-            pbPersonImage.Image = Properties.Resources.Male_5121;
+            imgPerson.Image = Properties.Resources.Male_5121;
 
         }
 
@@ -57,12 +57,12 @@ namespace DVLD_PresentationLayer
             if (_Person.Gendor == 0)
             {
                 lblGedor.Text = "Male";
-                pbPersonImage.Image = Properties.Resources.Male_5121;
+                imgPerson.Image = Properties.Resources.Male_5121;
             }
             else
             {
                 lblGedor.Text = "Female";
-                pbPersonImage.Image = Properties.Resources.Female_512;
+                imgPerson.Image = Properties.Resources.Female_512;
             }
 
             lblEmail.Text = _Person.Email;
@@ -71,13 +71,13 @@ namespace DVLD_PresentationLayer
             lblAddress.Text = _Person.Address;
 
             if (_Person.Gendor == 0)
-                pbPersonImage.Image = Properties.Resources.Male_5121;
+                imgPerson.Image = Properties.Resources.Male_5121;
             else
-                pbPersonImage.Image = Properties.Resources.Female_512;
+                imgPerson.Image = Properties.Resources.Female_512;
 
             if (_Person.ImagePath != "")
                 if (System.IO.File.Exists(_Person.ImagePath))
-                    pbPersonImage.Load(_Person.ImagePath);
+                    imgPerson.Load(_Person.ImagePath);
                 else
                     MessageBox.Show("could not find this image." + _Person.ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -85,14 +85,14 @@ namespace DVLD_PresentationLayer
 
         private void linkEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmAddEditPerson frmAddEditPerson = new frmAddEditPerson(_Person.PersonID);
+            frmAddEditPerson frmAddEditPerson = new frmAddEditPerson(_Person.PersonID);  
             frmAddEditPerson.ShowDialog();
             LoadPresonCard(_Person.PersonID);
         }
 
         private void _ResetPersonInfo()
         {
-            pbPersonImage.Image = Properties.Resources.Male_5121;
+            imgPerson.Image = Properties.Resources.Male_5121;
             lblPresonID.Text = "N/A";
             lblName.Text = "[????]";
             lblNationailNO.Text = "[????]";

@@ -1,5 +1,4 @@
 ﻿using DVLD_BusinessLayer;
-using DVLD_PresentationLayer.People;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -21,9 +20,19 @@ namespace DVLD_PresentationLayer
 
         }
 
-        private void frmTest_Load_1(object sender, EventArgs e)
+        private void btnPrev_Click(object sender, EventArgs e)
         {
-            cbFilter.SelectedIndex = 0;
+            tbctrlAddUser.SelectedIndex = tbctrlAddUser.SelectedIndex - 1;
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void frmAddUser_Load(object sender, EventArgs e)
+        {
             Image imgEidt = Properties.Resources.Close_32;
             btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
 
@@ -39,49 +48,17 @@ namespace DVLD_PresentationLayer
             btnNext.Enabled = false;
             btnSave.Enabled = false;
             tabpLoginInfo.Enabled = false;
-
-
-        }
-
-        private void cbFilter_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            if (cbFilter.SelectedIndex != 0)
-            {
-                txtFiltering.Enabled = true;
-                txtFiltering.Focus();
-            }
-            else
-                txtFiltering.Enabled = false;
-        }
-
-        private void btnSearchPerson_Click(object sender, EventArgs e)
-        {
-
-            string NationailNO = txtFiltering.Text.Trim();
-
-            if (clsPerson.IsPersonExist(NationailNO))
-            {
-                _PersonID = clsPerson.Find(NationailNO).PersonID;
-
-                btnNext.Enabled = true;
-                btnSave.Enabled = true;
-                tabpLoginInfo.Enabled = true;
-
-            }
-
-            ctrlPresonCard1.LoadPresonCard(NationailNO);
+            ctrlPersonWithFilter1.DataBack += DataBackWithPersonID;
 
         }
 
-        private void btnPrev_Click(object sender, EventArgs e)
+        private void DataBackWithPersonID(object sender, int personID)
         {
-            tbctrlAddUser.SelectedIndex = tbctrlAddUser.SelectedIndex - 1;
+            _PersonID = personID;
 
-        }
-
-        private void btnClose_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
+            btnNext.Enabled = true;
+            btnSave.Enabled = true;
+            tabpLoginInfo.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -119,6 +96,7 @@ namespace DVLD_PresentationLayer
                 {
                     MessageBox.Show("Data Saved Successfully.");
                     lblUserID.Text = user.UserID.ToString();
+                    btnSave.Enabled = false;
                 }
                 else
                     MessageBox.Show("Error: Data Is not Saved Successfully.");
@@ -173,17 +151,6 @@ namespace DVLD_PresentationLayer
             }
         }
 
-        private void btnAddPreson_Click(object sender, EventArgs e)
-        {
-            frmAddEditPerson addPerson = new frmAddEditPerson(-1);
-            addPerson.ShowDialog();
-
-        }
-
-        private void txtConfirmPasd(int appapa)
-        {
-            appapa = 1;
-        }
     }
 
 }

@@ -24,10 +24,6 @@ namespace DVLD_Test
             presonCard.LoadPresonCard(1); // Load person card with PersonID = 1
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            tabPage1.Controls.Clear();
-            tabPage1.Controls.Add(new ctrlPresonCard());
-        }
+      
     }
 }

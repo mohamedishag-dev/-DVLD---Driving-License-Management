@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -10,8 +11,7 @@ namespace DVLD_PresentationLayer.People
 {
     public partial class frmAddEditPerson : Form
     {
-        public delegate void DataBackEventHandler(object sender, int personID);
-
+        public delegate void DataBackEventHandler(object sender, int PersonID);
         public event DataBackEventHandler DataBack;
 
         public enum enMode { AddNew = 0, Update = 1 };
@@ -255,21 +255,42 @@ namespace DVLD_PresentationLayer.People
 
             _Person.NationalityCountryID = NationalityCountryID;
 
+
             if (imgImagePath.ImageLocation != null)
             {
                 string selectedFilePath = openFileDialog1.FileName;
                 string PathDeleted = _Person.ImagePath;
 
 
+
                 if (!string.IsNullOrEmpty(selectedFilePath) && selectedFilePath != "openFileDialog1")
                 {
                     File.Copy(selectedFilePath, Path.Combine(@"D:\DVLD-People-Images\", Path.GetFileName(selectedFilePath)), true);
                     _Person.ImagePath = Path.Combine(@"D:\DVLD-People-Images\", Path.GetFileName(selectedFilePath));
+
+                    // after copying and setting _Person.ImagePath
                     if (_Person.ImagePath != PathDeleted)
                     {
-                        if (!string.IsNullOrEmpty(PathDeleted))
-                            File.Delete(PathDeleted);
+                        if (!string.IsNullOrEmpty(PathDeleted) && File.Exists(PathDeleted))
+                        {
+                            try
+                            {
+                                // release any Image handle held by the PictureBox
+                                var oldImg = imgImagePath.Image;
+                                imgImagePath.Image = null;
+                                oldImg?.Dispose();
+
+                                // now safe to delete
+                                File.Delete(PathDeleted);
+                            }
+                            catch (IOException ex)
+                            {
+                                // handle or log failure to delete (don't crash the UI)
+                                Debug.WriteLine($"Could not delete '{PathDeleted}': {ex.Message}");
+                            }
+                        }
                     }
+
                 }
 
 
@@ -281,9 +302,10 @@ namespace DVLD_PresentationLayer.People
             {
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                _Mode = enMode.Update;
                 lblMode.Text = "Edit Person ID = " + _Person.PersonID;
                 lblPersonID.Text = _Person.PersonID.ToString();
+                DataBack?.Invoke(this, _Person.PersonID);
+                _Mode = enMode.Update;
 
             }
             else

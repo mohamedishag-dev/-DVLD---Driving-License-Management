@@ -33,12 +33,6 @@
             this.tbctrlAddUser = new System.Windows.Forms.TabControl();
             this.tabpPersonInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
-            this.gbFilter = new System.Windows.Forms.GroupBox();
-            this.btnSearchPerson = new System.Windows.Forms.Button();
-            this.cbFilter = new System.Windows.Forms.ComboBox();
-            this.btnAddPreson = new System.Windows.Forms.Button();
-            this.lblFelter = new System.Windows.Forms.Label();
-            this.txtFiltering = new System.Windows.Forms.TextBox();
             this.tabpLoginInfo = new System.Windows.Forms.TabPage();
             this.btnPrev = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -57,10 +51,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ctrlPresonCard1 = new DVLD_PresentationLayer.ctrlPresonCard();
+            this.ctrlPersonWithFilter1 = new DVLD_PresentationLayer.ctrlPersonWithFilter();
             this.tbctrlAddUser.SuspendLayout();
             this.tabpPersonInfo.SuspendLayout();
-            this.gbFilter.SuspendLayout();
             this.tabpLoginInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -88,19 +81,18 @@
             this.tbctrlAddUser.Location = new System.Drawing.Point(12, 83);
             this.tbctrlAddUser.Name = "tbctrlAddUser";
             this.tbctrlAddUser.SelectedIndex = 0;
-            this.tbctrlAddUser.Size = new System.Drawing.Size(773, 413);
+            this.tbctrlAddUser.Size = new System.Drawing.Size(769, 409);
             this.tbctrlAddUser.TabIndex = 155;
             this.tbctrlAddUser.TabStop = false;
             // 
             // tabpPersonInfo
             // 
+            this.tabpPersonInfo.Controls.Add(this.ctrlPersonWithFilter1);
             this.tabpPersonInfo.Controls.Add(this.btnNext);
-            this.tabpPersonInfo.Controls.Add(this.gbFilter);
-            this.tabpPersonInfo.Controls.Add(this.ctrlPresonCard1);
             this.tabpPersonInfo.Location = new System.Drawing.Point(4, 22);
             this.tabpPersonInfo.Name = "tabpPersonInfo";
             this.tabpPersonInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpPersonInfo.Size = new System.Drawing.Size(765, 387);
+            this.tabpPersonInfo.Size = new System.Drawing.Size(761, 383);
             this.tabpPersonInfo.TabIndex = 0;
             this.tabpPersonInfo.Text = "Person Info";
             this.tabpPersonInfo.UseVisualStyleBackColor = true;
@@ -108,7 +100,7 @@
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(644, 347);
+            this.btnNext.Location = new System.Drawing.Point(641, 336);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(99, 34);
             this.btnNext.TabIndex = 158;
@@ -116,78 +108,6 @@
             this.btnNext.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // gbFilter
-            // 
-            this.gbFilter.Controls.Add(this.btnSearchPerson);
-            this.gbFilter.Controls.Add(this.cbFilter);
-            this.gbFilter.Controls.Add(this.btnAddPreson);
-            this.gbFilter.Controls.Add(this.lblFelter);
-            this.gbFilter.Controls.Add(this.txtFiltering);
-            this.gbFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gbFilter.Location = new System.Drawing.Point(6, 17);
-            this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(737, 60);
-            this.gbFilter.TabIndex = 156;
-            this.gbFilter.TabStop = false;
-            this.gbFilter.Text = "Filter";
-            // 
-            // btnSearchPerson
-            // 
-            this.btnSearchPerson.BackgroundImage = global::DVLD_PresentationLayer.Properties.Resources.SearchPerson;
-            this.btnSearchPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSearchPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchPerson.Location = new System.Drawing.Point(452, 19);
-            this.btnSearchPerson.Name = "btnSearchPerson";
-            this.btnSearchPerson.Size = new System.Drawing.Size(43, 34);
-            this.btnSearchPerson.TabIndex = 24;
-            this.btnSearchPerson.UseVisualStyleBackColor = true;
-            this.btnSearchPerson.Click += new System.EventHandler(this.btnSearchPerson_Click);
-            // 
-            // cbFilter
-            // 
-            this.cbFilter.BackColor = System.Drawing.SystemColors.Window;
-            this.cbFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Items.AddRange(new object[] {
-            "NationalNo"});
-            this.cbFilter.Location = new System.Drawing.Point(98, 19);
-            this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(167, 28);
-            this.cbFilter.TabIndex = 20;
-            this.cbFilter.SelectionChangeCommitted += new System.EventHandler(this.cbFilter_SelectionChangeCommitted);
-            // 
-            // btnAddPreson
-            // 
-            this.btnAddPreson.BackgroundImage = global::DVLD_PresentationLayer.Properties.Resources.Add_Person_401;
-            this.btnAddPreson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddPreson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPreson.Location = new System.Drawing.Point(501, 19);
-            this.btnAddPreson.Name = "btnAddPreson";
-            this.btnAddPreson.Size = new System.Drawing.Size(43, 34);
-            this.btnAddPreson.TabIndex = 23;
-            this.btnAddPreson.UseVisualStyleBackColor = true;
-            this.btnAddPreson.Click += new System.EventHandler(this.btnAddPreson_Click);
-            // 
-            // lblFelter
-            // 
-            this.lblFelter.AutoSize = true;
-            this.lblFelter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFelter.Location = new System.Drawing.Point(11, 22);
-            this.lblFelter.Name = "lblFelter";
-            this.lblFelter.Size = new System.Drawing.Size(72, 20);
-            this.lblFelter.TabIndex = 21;
-            this.lblFelter.Text = "Felter By";
-            // 
-            // txtFiltering
-            // 
-            this.txtFiltering.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtFiltering.Location = new System.Drawing.Point(271, 19);
-            this.txtFiltering.Name = "txtFiltering";
-            this.txtFiltering.Size = new System.Drawing.Size(175, 26);
-            this.txtFiltering.TabIndex = 22;
             // 
             // tabpLoginInfo
             // 
@@ -208,7 +128,7 @@
             this.tabpLoginInfo.Location = new System.Drawing.Point(4, 22);
             this.tabpLoginInfo.Name = "tabpLoginInfo";
             this.tabpLoginInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpLoginInfo.Size = new System.Drawing.Size(765, 387);
+            this.tabpLoginInfo.Size = new System.Drawing.Size(761, 383);
             this.tabpLoginInfo.TabIndex = 1;
             this.tabpLoginInfo.Text = "Login Info";
             this.tabpLoginInfo.UseVisualStyleBackColor = true;
@@ -372,7 +292,7 @@
             this.btnClose.Text = "Close";
             this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click_1);
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
@@ -390,14 +310,14 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // ctrlPresonCard1
+            // ctrlPersonWithFilter1
             // 
-            this.ctrlPresonCard1.Location = new System.Drawing.Point(6, 83);
-            this.ctrlPresonCard1.Name = "ctrlPresonCard1";
-            this.ctrlPresonCard1.Size = new System.Drawing.Size(747, 275);
-            this.ctrlPresonCard1.TabIndex = 0;
+            this.ctrlPersonWithFilter1.Location = new System.Drawing.Point(3, 3);
+            this.ctrlPersonWithFilter1.Name = "ctrlPersonWithFilter1";
+            this.ctrlPersonWithFilter1.Size = new System.Drawing.Size(746, 327);
+            this.ctrlPersonWithFilter1.TabIndex = 159;
             // 
-            // frmTest
+            // frmAddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -408,15 +328,13 @@
             this.Controls.Add(this.lblMode);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmTest";
+            this.Name = "frmAddUser";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmTest";
-            this.Load += new System.EventHandler(this.frmTest_Load_1);
+            this.Load += new System.EventHandler(this.frmAddUser_Load);
             this.tbctrlAddUser.ResumeLayout(false);
             this.tabpPersonInfo.ResumeLayout(false);
-            this.gbFilter.ResumeLayout(false);
-            this.gbFilter.PerformLayout();
             this.tabpLoginInfo.ResumeLayout(false);
             this.tabpLoginInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -432,15 +350,8 @@
         #endregion
         private System.Windows.Forms.Label lblMode;
         private System.Windows.Forms.TabPage tabpPersonInfo;
-        private ctrlPresonCard ctrlPresonCard1;
         private System.Windows.Forms.TabPage tabpLoginInfo;
         private System.Windows.Forms.TabControl tbctrlAddUser;
-        private System.Windows.Forms.TextBox txtFiltering;
-        private System.Windows.Forms.Label lblFelter;
-        private System.Windows.Forms.ComboBox cbFilter;
-        private System.Windows.Forms.GroupBox gbFilter;
-        private System.Windows.Forms.Button btnSearchPerson;
-        private System.Windows.Forms.Button btnAddPreson;
         private System.Windows.Forms.Label labelUserID;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnNext;
@@ -459,5 +370,6 @@
         private System.Windows.Forms.Label lblUserID;
         private System.Windows.Forms.Button btnPrev;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private ctrlPersonWithFilter ctrlPersonWithFilter1;
     }
 }

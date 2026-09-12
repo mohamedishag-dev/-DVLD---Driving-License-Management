@@ -24,21 +24,7 @@ namespace DVLD_PresentationLayer
             Image imgSave = Properties.Resources.Save_32;
             btnSave.Image = new Bitmap(imgSave, new Size(24, 24));
 
-            LoadUserCard();
-        }
-
-        public void LoadUserCard()
-        {
-
-            clsUser userInfo = clsUser.Find(_UserID);
-            ctrlPresonCard1.LoadPresonCard(userInfo.PersonID);
-
-            if (userInfo != null)
-            {
-                lblUserID.Text = userInfo.UserID.ToString();
-                lblUserName.Text = userInfo.UserName;
-                lblIsActive.Text = userInfo.IsActive ? "Yes" : "No";
-            }
+            ctrlUserCard1.LoadUserCard(_UserID);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -69,27 +55,24 @@ namespace DVLD_PresentationLayer
             if (user != null)
             {
                 if (user.Save())
-                {
                     MessageBox.Show("Data Saved Successfully.");
-                    lblUserID.Text = user.UserID.ToString();
-                }
                 else
                     MessageBox.Show("Error: Data Is not Saved Successfully.");
-
             }
 
         }
 
         private void txtCrruentPassword_Validating(object sender, CancelEventArgs e)
         {
-            if (txtConfirmPassword.Text != txtNewPassword.Text)
+
+            if (txtCrruentPassword.Text != clsUser.Find(_UserID).Password) 
             {
-                errorProvider1.SetError(txtNewPassword, "New Password should have a value!");
+                errorProvider1.SetError(txtCrruentPassword, "Crruent Password is not true!");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(txtNewPassword, null);
+                errorProvider1.SetError(txtCrruentPassword, null);
             }
         }
 
@@ -98,5 +81,30 @@ namespace DVLD_PresentationLayer
             this.Close();
         }
 
+        private void txtNewPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNewPassword.Text))
+            {
+                errorProvider1.SetError(txtNewPassword, "Invaled New Password!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtNewPassword, null);
+            }
+        }
+
+        private void txtConfirmPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtConfirmPassword.Text))
+            {
+                errorProvider1.SetError(txtConfirmPassword, "Confirm Password is not same New Password");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtConfirmPassword, null);
+            }
+        }
     }
 }

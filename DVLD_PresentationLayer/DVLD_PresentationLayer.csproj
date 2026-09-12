@@ -50,17 +50,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account Settings\Constants.cs" />
-    <Compile Include="ctrlPresonCard.cs">
+    <Compile Include="Controls\ctrlPersonWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ctrlPresonCard.Designer.cs">
+    <Compile Include="Controls\ctrlPersonWithFilter.Designer.cs">
+      <DependentUpon>ctrlPersonWithFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ctrlPresonCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctrlPresonCard.Designer.cs">
       <DependentUpon>ctrlPresonCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBase.cs">
+    <Compile Include="Controls\ctrlUserCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctrlUserCard.Designer.cs">
+      <DependentUpon>ctrlUserCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBase.Designer.cs">
-      <DependentUpon>frmBase.cs</DependentUpon>
+    <Compile Include="frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\frmChangePassword.cs">
       <SubType>Form</SubType>
@@ -68,16 +80,16 @@
     <Compile Include="Users\frmChangePassword.Designer.cs">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="Main Froms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
+    <Compile Include="Main Froms\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Main Froms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Main Froms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Account Settings\GlolbalUser.cs" />
@@ -119,19 +131,25 @@
     <Compile Include="Users\frmUserDitels.Designer.cs">
       <DependentUpon>frmUserDitels.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ctrlPresonCard.resx">
+    <EmbeddedResource Include="Controls\ctrlPersonWithFilter.resx">
+      <DependentUpon>ctrlPersonWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ctrlPresonCard.resx">
       <DependentUpon>ctrlPresonCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBase.resx">
-      <DependentUpon>frmBase.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\ctrlUserCard.resx">
+      <DependentUpon>ctrlUserCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
+    <EmbeddedResource Include="Main Froms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Main Froms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\frmAddEditPerson.resx">
@@ -364,6 +382,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Close 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DVLD Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo Final.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo Final1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DVLD Logo1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,7 +24,7 @@ namespace DVLD_PresentationLayer.Users
         {
             Image imgEidt = Properties.Resources.Close_32;
             btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
-            LoadUserCard();
+            ctrlUserCard1.LoadUserCard(_UserID);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -32,19 +32,6 @@ namespace DVLD_PresentationLayer.Users
             this.Close();
         }
     
-        public void LoadUserCard()
-        {
-
-            clsUser userInfo = clsUser.Find(_UserID);
-            ctrlPresonCard1.LoadPresonCard(userInfo.PersonID);
-
-            if (userInfo != null)
-            {
-                lblUserID.Text = userInfo.UserID.ToString();
-                lblUserName.Text = userInfo.UserName;
-                lblIsActive.Text = userInfo.IsActive ? "Yes" : "No";
-            }
-        }
 
     }
 }

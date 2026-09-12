@@ -56,7 +56,7 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pbPersonImage = new System.Windows.Forms.PictureBox();
+            this.imgPerson = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gbPresonInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,7 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPerson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -254,7 +254,7 @@
             this.gbPresonInformation.Controls.Add(this.pictureBox5);
             this.gbPresonInformation.Controls.Add(this.pictureBox4);
             this.gbPresonInformation.Controls.Add(this.pictureBox3);
-            this.gbPresonInformation.Controls.Add(this.pbPersonImage);
+            this.gbPresonInformation.Controls.Add(this.imgPerson);
             this.gbPresonInformation.Controls.Add(this.pictureBox2);
             this.gbPresonInformation.Controls.Add(this.lblName);
             this.gbPresonInformation.Controls.Add(this.lblPresonID);
@@ -382,15 +382,15 @@
             this.pictureBox3.TabIndex = 83;
             this.pictureBox3.TabStop = false;
             // 
-            // pbPersonImage
+            // imgPerson
             // 
-            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbPersonImage.Location = new System.Drawing.Point(536, 47);
-            this.pbPersonImage.Name = "pbPersonImage";
-            this.pbPersonImage.Size = new System.Drawing.Size(183, 188);
-            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPersonImage.TabIndex = 82;
-            this.pbPersonImage.TabStop = false;
+            this.imgPerson.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imgPerson.Location = new System.Drawing.Point(536, 47);
+            this.imgPerson.Name = "imgPerson";
+            this.imgPerson.Size = new System.Drawing.Size(183, 188);
+            this.imgPerson.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgPerson.TabIndex = 82;
+            this.imgPerson.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -409,7 +409,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gbPresonInformation);
             this.Name = "ctrlPresonCard";
-            this.Size = new System.Drawing.Size(752, 275);
+            this.Size = new System.Drawing.Size(744, 268);
             this.Load += new System.EventHandler(this.ctrlPresonCard_Load);
             this.gbPresonInformation.ResumeLayout(false);
             this.gbPresonInformation.PerformLayout();
@@ -421,7 +421,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPerson)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -436,7 +436,7 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pbPersonImage;
+        private System.Windows.Forms.PictureBox imgPerson;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblPresonID;

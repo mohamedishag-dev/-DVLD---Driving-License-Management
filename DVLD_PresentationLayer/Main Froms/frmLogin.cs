@@ -25,8 +25,7 @@ namespace DVLD_PresentationLayer
 
                 if (GlolbalUser.CurrentUser == null)
                 {
-                    MessageBox.Show($"UserName: [{UserName}], and Password: [******] is not Fund", "Wrong "
-                        , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Invaled UserName & Password", "Wrong ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 } 
 
