@@ -35,16 +35,36 @@ namespace DVLD_DataAccessLayer
                     // The record was found
                     isFound = true;
 
-                    NationalNo = (string)reader["NationalNo"];
                     FirstName = (string)reader["FirstName"];
                     SecondName = (string)reader["SecondName"];
-                    ThirdName = (string)reader["ThirdName"];
+
+                    //ThirdName: allows null in database so we should handle nll
+                    if (reader["ThirdName"] != DBNull.Value)
+                    {
+                        ThirdName = (string)reader["ThirdName"];
+                    }
+                    else
+                    {
+                        ThirdName = "";
+                    }
+
                     LastName = (string)reader["LastName"];
+                    NationalNo = (string)reader["NationalNo"];
                     DateOfBirth = (DateTime)reader["DateOfBirth"];
                     Gendor = (byte)reader["Gendor"];
                     Address = (string)reader["Address"];
                     Phone = (string)reader["Phone"];
-                    Email = (string)reader["Email"];
+
+                    //Email: allows null in database so we should handle nll
+                    if (reader["Email"] != DBNull.Value)
+                    {
+                        Email = (string)reader["Email"];
+                    }
+                    else
+                    {
+                        Email = "";
+                    }
+
                     NationalityCountryID = (int)reader["NationalityCountryID"];
 
                     //ImagePath: allows null in database so we should handle null
@@ -110,13 +130,33 @@ namespace DVLD_DataAccessLayer
                     PersonID = (int)reader["PersonID"];
                     FirstName = (string)reader["FirstName"];
                     SecondName = (string)reader["SecondName"];
-                    ThirdName = (string)reader["ThirdName"];
+
+                    //ThirdName: allows null in database so we should handle nll
+                    if (reader["ThirdName"] != DBNull.Value)
+                    {
+                        ThirdName = (string)reader["ThirdName"];
+                    }
+                    else
+                    {
+                        ThirdName = "";
+                    }
+
                     LastName = (string)reader["LastName"];
                     DateOfBirth = (DateTime)reader["DateOfBirth"];
                     Gendor = (byte)reader["Gendor"];
                     Address = (string)reader["Address"];
                     Phone = (string)reader["Phone"];
-                    Email = (string)reader["Email"];
+
+                    //Email: allows null in database so we should handle nll
+                    if (reader["Email"] != DBNull.Value)
+                    {
+                        Email = (string)reader["Email"];
+                    }
+                    else
+                    {
+                        Email = "";
+                    }
+
                     NationalityCountryID = (int)reader["NationalityCountryID"];
 
                     //ImagePath: allows null in database so we should handle null
@@ -160,9 +200,18 @@ namespace DVLD_DataAccessLayer
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"SELECT People.PersonID, People.NationalNo, People.FirstName, People.SecondName, People.ThirdName, People.LastName,
-                                     People.DateOfBirth, People.Gendor, People.Address, People.Phone, People.Email,Nationality = Countries.CountryName,People.ImagePath 
-                                            FROM   People INNER JOIN Countries ON People.NationalityCountryID = Countries.CountryID";
+            string query = @"SELECT People.PersonID, People.NationalNo,
+                           People.FirstName, People.SecondName, People.ThirdName, People.LastName,
+                           People.DateOfBirth, People.Gendor, 
+                           CASE
+                           WHEN People.Gendor = 0 THEN 'Male'
+                           ELSE 'Female'
+                           END as GendorCaption,
+                           People.Address, People.Phone, People.Email,
+                           People.NationalityCountryID, Countries.CountryName, People.ImagePath
+                           FROM        People INNER JOIN 
+                                   Countries ON People.NationalityCountryID = Countries.CountryID
+                           ORDER BY People.FirstName";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -185,7 +234,7 @@ namespace DVLD_DataAccessLayer
 
             catch (Exception ex)
             {
-                // Console.WriteLine("Error: " + ex.Message);
+
             }
             finally
             {
@@ -260,7 +309,7 @@ namespace DVLD_DataAccessLayer
         }
 
         public static bool UpdatePerson(int PersonID, string NationalNo, string FirstName, string SecondName,
-            string ThirdName, string LastName,DateTime DateOfBirth, short Gendor, string Address,
+            string ThirdName, string LastName, DateTime DateOfBirth, short Gendor, string Address,
              string Phone, string Email, int NationalityCountryID, string ImagePath)
         {
 
@@ -350,7 +399,6 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
                 isFound = false;
             }
             finally
@@ -384,7 +432,6 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
                 isFound = false;
             }
             finally
@@ -406,7 +453,7 @@ namespace DVLD_DataAccessLayer
                                 WHERE PersonID = @PersonID 
                                 AND NOT PersonID IN (SELECT PersonID FROM Drivers);";
 
-            SqlCommand command = new SqlCommand(query, connection); 
+            SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@PersonID", PersonID);
 
@@ -431,45 +478,6 @@ namespace DVLD_DataAccessLayer
             return (rowsAffected > 0);
 
         }
-
-        public static bool DeletePersonByNationalNo(string NationalNo)
-        {
-
-            int rowsAffected = 0;
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"Delete People 
-                                WHERE NationalNo = @NationalNo 
-                                AND PersonID IN NOT (SELECT PersonID FROM Drivers)";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@NationalNo", NationalNo);
-
-            try
-            {
-                connection.Open();
-
-                rowsAffected = command.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                // Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-
-                connection.Close();
-
-            }
-
-            return (rowsAffected > 0);
-
-        }
-
-
 
     }
 

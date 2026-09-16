@@ -26,8 +26,13 @@ namespace DVLD_BusinessLayer
         public string Phone { set; get; }
         public string Email { set; get; }
         public int NationalityCountryID { set; get; }
-        public string ImagePath { set; get; }
-
+        private string _ImagePath { set; get; }
+        public string ImagePath
+        {
+            get { return _ImagePath; }
+            set { _ImagePath = value; }
+        }
+        public clsCountry countryInfo;
         public string FullName
         {
             get
@@ -35,7 +40,6 @@ namespace DVLD_BusinessLayer
                 return FirstName + " " + SecondName + " " + ThirdName + " " + LastName;
             }
         }
-
 
         public clsPerson()
         {
@@ -73,7 +77,7 @@ namespace DVLD_BusinessLayer
             this.Email = Email;
             this.NationalityCountryID = NationalityCountryID;
             this.ImagePath = ImagePath;
-
+            this.countryInfo = clsCountry.Find(NationalityCountryID);
             this.Mode = enMode.Update;
         }
 
@@ -118,16 +122,6 @@ namespace DVLD_BusinessLayer
 
         private bool _AddNewPerson()
         {
-            if (this.NationalNo == "")
-                return false;
-            if (this.FirstName == "")
-                return false;
-            if (this.LastName == "")
-                return false;   
-            if (this.Address == "")
-                return false;   
-            if (this.Phone == "")
-                return false;
 
             this.PersonID = clsPersonData.AddNewPerson(this.NationalNo, this.FirstName, this.SecondName, this.ThirdName, this.LastName,
                 this.DateOfBirth, this.Gendor, this.Address, this.Phone, this.Email, this.NationalityCountryID, this.ImagePath);
@@ -152,7 +146,6 @@ namespace DVLD_BusinessLayer
                 case enMode.AddNew:
                     if (_AddNewPerson())
                     {
-
                         Mode = enMode.Update;
                         return true;
                     }
@@ -183,11 +176,6 @@ namespace DVLD_BusinessLayer
         public static bool DeletePerson(int PersonID)
         {
             return clsPersonData.DeletePersonByID(PersonID);
-        }
-
-        public static bool DeletePerson(string NationalNo)
-        {
-            return clsPersonData.DeletePersonByNationalNo(NationalNo);
         }
 
     }

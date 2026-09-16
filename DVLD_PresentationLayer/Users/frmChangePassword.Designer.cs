@@ -200,6 +200,7 @@
             this.MinimizeBox = false;
             this.Name = "frmChangePassword";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "change Password";
             this.Load += new System.EventHandler(this.frmChangePassword_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
