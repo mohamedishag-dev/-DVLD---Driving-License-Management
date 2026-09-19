@@ -12,14 +12,17 @@ namespace DVLD_PresentationLayer.People
 {
     public partial class frmAddUpdatePerson : Form
     {
+        // Declare a delegate
         public delegate void DataBackEventHandler(object sender, int PersonID);
-        public event DataBackEventHandler DataBack;
+
+        // Declare an event using the delegate
+         public event DataBackEventHandler DataBack;
 
         public enum enMode { AddNew = 0, Update = 1 };
         public enum enGendor { Male = 0, Female = 1 };
         private enMode _Mode;
 
-        private int _PersonID;
+        private int _PersonID = -1;
         private clsPerson _Person;
 
         public frmAddUpdatePerson()
@@ -32,12 +35,7 @@ namespace DVLD_PresentationLayer.People
             InitializeComponent();
 
             _PersonID = PersonID;
-
-            if (_PersonID == -1)
-                _Mode = enMode.AddNew;
-            else
-                _Mode = enMode.Update;
-
+            _Mode = enMode.Update;
         }
 
         private void _LoadData()
@@ -102,33 +100,6 @@ namespace DVLD_PresentationLayer.People
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void txtNationailNO_Validating(object sender, CancelEventArgs e)
-        {
-            if (clsPerson.IsPersonExist(txtNationalNo.Text))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtNationalNo, "This field is required!");
-                return;
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider1.SetError(txtNationalNo, null);
-            }
-
-            //Make sure the national number is not used by anothe person
-            if (txtNationalNo.Text.Trim() != _Person.NationalNo && clsPerson.IsPersonExist(txtNationalNo.Text.Trim()))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtNationalNo, "National Number used for another person!");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider1.SetError(txtNationalNo, null);
-            }
         }
 
         private void ValidateEmptyTestBox(object sender, CancelEventArgs e)
@@ -395,12 +366,14 @@ namespace DVLD_PresentationLayer.People
 
             //set default image the person
             if (rbMale.Checked)
-                pbPersonImage.Image = Properties.Resources.Male_512;
+                pbPersonImage.Image = Resources.Male_512;
             else
-                pbPersonImage.Image = Properties.Resources.Female_512;
+                pbPersonImage.Image = Resources.Female_512;
 
-            llRemoveImage.Visible = (pbPersonImage.Location != null);
+            //hide/show the remove linke incase there is no image for the person.
+            llRemoveImage.Visible = (pbPersonImage.ImageLocation != null);
 
+            //we set the max date to 18 years from today, and set the default value the same.
             dtpDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
             dtpDateOfBirth.Value = dtpDateOfBirth.MaxDate;
             // should not allow adding age more then 100 years

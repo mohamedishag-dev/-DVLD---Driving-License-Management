@@ -23,5 +23,10 @@ namespace DVLD_PresentationLayer
          
 
         }
+
+        private void ctrlPersonWithFilter1_OnPersonSelected(int obj)
+        {
+            MessageBox.Show(obj.ToString());
+        }
     }
 }

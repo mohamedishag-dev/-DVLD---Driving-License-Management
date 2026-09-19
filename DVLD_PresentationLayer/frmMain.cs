@@ -12,62 +12,54 @@ namespace DVLD_PresentationLayer
             InitializeComponent();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
-
         private void applicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frmListUser();
-            frm.MdiParent = this;
-            frm.Show();
+            frmListUser frm = new frmListUser();
+            frm.ShowDialog();
         }
-
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
-
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             Form frm = new frmListPeople();
-            frm.MdiParent = this;
-            frm.Show();
+            frm.ShowDialog();
 
         }
 
         private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+            clsGlobal.CurrentUser = null;
             this.Close();
         }
 
         private void chengPasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
-            frm.MdiParent = this;
-            frm.Show();
+            frmChangePassword frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
         }
 
         private void CrruentUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frmShowUserInfo(clsGlobal.CurrentUser.UserID);
+            frmUserInfo frm = new frmUserInfo(clsGlobal.CurrentUser.UserID);
             frm.ShowDialog();
 
         }
 
         private void manageTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frmListTestTypes();
-            frm.MdiParent = this;
-            frm.Show();
+            frmListTestTypes frm = new frmListTestTypes();
+            frm.ShowDialog();
+
         }
 
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frmListManageApplicationType();
-            frm.MdiParent = this;
-            frm.Show();
+            frmListManageApplicationType frm = new frmListManageApplicationType();
+            frm.ShowDialog();
+            
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)

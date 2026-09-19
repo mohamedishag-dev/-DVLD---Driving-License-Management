@@ -1,7 +1,6 @@
 ﻿using DVLD_BusinessLayer;
 using System;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer
@@ -15,54 +14,46 @@ namespace DVLD_PresentationLayer
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            try
+
+            clsUser user = clsUser.FindByUsernameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+
+            if (user == null)
             {
-                
-                string UserName = txtUserName.Text;
-                string Password = txtPassword.Text;
+                txtUserName.Focus();
+                MessageBox.Show("Invalid Username/Password.", "Wrong Credintials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                clsGlobal.CurrentUser = clsUser.Find(UserName, Password);
+            if (user.IsActive)
+            {
 
-                if (clsGlobal.CurrentUser == null)
+                if (chkRememberMe.Checked)
+                    clsGlobal.RememberMe();
+                else
                 {
-                    MessageBox.Show($"Invaled UserName & Password", "Wrong ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                } 
-
-                if (clsGlobal.CurrentUser.IsActive)
-                {
-
-                    if (chkRememberMe.Checked)
-                        clsGlobal.RememberMe();
-                    else
-                    {
-                        txtUserName.Text = "";
-                        txtPassword.Text = "";
-                        clsGlobal.Remove();
-
-                    }
-
-
-                    frmMain MainScreen = new frmMain();
-                    this.Hide();
-                    clsGlobal.RegisterLogIn();
-                    MainScreen.ShowDialog();
-                    this.Show();
+                    txtUserName.Text = "";
+                    txtPassword.Text = "";
+                    clsGlobal.Remove();
 
                 }
 
-                else
-                    MessageBox.Show($"The User [{clsGlobal.CurrentUser.UserName}], is not Active", "Wrong ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clsGlobal.CurrentUser = user;
+                this.Hide();
+                frmMain MainScreen = new frmMain();
+                clsGlobal.RegisterLogIn();
+                MainScreen.ShowDialog();
+                this.Show();
 
             }
-
-            catch (Exception ex)
+            else
             {
-
-                MessageBox.Show(ex.Message.ToString());
-
+                txtUserName.Focus();
+                MessageBox.Show("Your accound is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
+
+
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -73,14 +64,16 @@ namespace DVLD_PresentationLayer
         {
             Image imgLogin = Properties.Resources.sign_in_32;
             btnLogin.Image = new Bitmap(imgLogin, new Size(24, 24));
-  
-            chkRememberMe.Checked = true;
+
 
             if (clsGlobal.Login())
             {
                 txtUserName.Text = clsGlobal.CurrentUser.UserName;
                 txtPassword.Text = clsGlobal.CurrentUser.Password;
+                chkRememberMe.Checked = true;
             }
+            else
+                chkRememberMe.Checked = false;
 
         }
 

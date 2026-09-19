@@ -58,7 +58,7 @@ namespace DVLD_BusinessLayer
                 return null;
         }
 
-        public static clsUser Find(string userName, string password)
+        public static clsUser FindByUsernameAndPassword(string userName, string password)
         {
             int personID = -1, userID = -1;
             bool isActive = false;

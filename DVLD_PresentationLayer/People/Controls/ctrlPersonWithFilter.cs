@@ -7,84 +7,129 @@ namespace DVLD_PresentationLayer
 {
     public partial class ctrlPersonWithFilter : UserControl
     {
-        public delegate void DataBackEventHandler(object sender, int PersonID);
-        public event DataBackEventHandler DataBack;
+
+        // Define a custom event handler delegate with parameters
+        public event Action<int> OnPersonSelected;
+        // Create a protected method to raise the event with a parameter
+        protected virtual void PersonSelected(int PersonID)
+        {
+            Action<int> handler = OnPersonSelected;
+            if (handler != null)
+            {
+                handler(PersonID); // Raise the event with the parameter
+            }
+        }
+
+        private bool _ShowAddPerson = true;
+        public bool ShowAddPerson
+        {
+            get
+            {
+                return _ShowAddPerson;
+            }
+            set
+            {
+                _ShowAddPerson = value;
+                btnAddNewPerson.Visible = _ShowAddPerson;
+            }
+        }
+
+        private bool _FilterEnabled = true;
+        public bool FilterEnabled
+        {
+            get
+            {
+                return _FilterEnabled;
+            }
+            set
+            {
+                _FilterEnabled = value;
+                gbFilters.Enabled = _FilterEnabled;
+            }
+        }
 
         public ctrlPersonWithFilter()
         {
             InitializeComponent();
         }
 
-        private void ctrlFindPerson_Load(object sender, EventArgs e)
+        private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
         {
-
-            cbFilter.SelectedIndex = 0;
+            cbFilterBy.SelectedIndex = 0;
+            txtFilterValue.Focus();
 
         }
 
-        private void btnSearchPerson_Click(object sender, EventArgs e)
+        private void btnFind_Click(object sender, EventArgs e)
         {
-            string txtSearch = txtFilter.Text.Trim();
-
-            if (cbFilter.SelectedIndex == 0)
+            if (!this.ValidateChildren())
             {
-                ctrlPresonCard1.LoadPresonCard(txtSearch);
-                if (clsPerson.IsPersonExist(txtSearch))
-                    DataBack?.Invoke(this, clsPerson.Find(txtSearch).PersonID);
+                //Here we dont continue becuase the form is not valid
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
 
             }
-            else
-            {
-                if (int.TryParse(txtSearch.ToString(), out int PersonID))
-                {
-                    ctrlPresonCard1.LoadPresonCard(PersonID);
-                    if (clsPerson.IsPersonExist(txtSearch))
-                        DataBack?.Invoke(this, PersonID);
-
-                }
-            }
-            txtFilter.Focus();
+            FindNew();
 
         }
 
-        private void txtFiltering_TextChanged(object sender, EventArgs e)
+        private void FindNew()
         {
-            if (cbFilter.SelectedIndex == 1)
+            switch (cbFilterBy.Text)
             {
-                if (string.IsNullOrEmpty(txtFilter.Text))
-                    return;
+                case "Person ID":
+                    ctrlPresonCard1.LoadPresonCard(int.Parse(txtFilterValue.Text));
+                    break;
 
-                if (!int.TryParse(txtFilter.Text, out int PersonID))
-                {
-                    txtFilter.Text = txtFilter.Text.Remove(txtFilter.Text.Length - 1);
-                    return;
-                }
+                case "National No.":
+                    ctrlPresonCard1.LoadPresonCard(txtFilterValue.Text);
+                    break;
+
+                default:
+                    break;
 
             }
+
+            if (OnPersonSelected != null && FilterEnabled) 
+                // Raise the event with a parameter
+                PersonSelected(ctrlPresonCard1.PersonID);
         }
 
         private void btnAddPreson_Click(object sender, EventArgs e)
         {
-            frmAddUpdatePerson addPerson = new frmAddUpdatePerson(-1);
-            addPerson.DataBack += BackPersonID;
-            addPerson.ShowDialog();
+            frmAddUpdatePerson frm = new frmAddUpdatePerson();
+            frm.DataBack += DataBackEvent;
+            frm.ShowDialog();
         }
 
-        private void cbFilter_SelectionChangeCommitted(object sender, EventArgs e)
+        private void DataBackEvent(object sender, int PersonID)
         {
-            txtFilter.Focus();
+            // Handle the data received
+
+            cbFilterBy.SelectedIndex = 1;
+            txtFilterValue.Text = PersonID.ToString();
+            ctrlPresonCard1.LoadPresonCard(PersonID);
         }
 
-        private void BackPersonID(object sender, int personID)
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtFilter.Text = clsPerson.Find(personID).NationalNo;
+            txtFilterValue.Text = "";
+            txtFilterValue.Focus();
+        }
 
-            if (int.TryParse(personID.ToString(), out int PersonID))
+        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the pressed key is Enter (character code 13)
+            if (e.KeyChar == (char)13)
             {
-                ctrlPresonCard1.LoadPresonCard(PersonID);
-                DataBack?.Invoke(this, PersonID);
-            }
-        }
 
+                btnFind.PerformClick();
+            }
+
+            //this will allow only digits if person id is selected
+            if (cbFilterBy.Text == "Person ID")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+
+        }
     }
 }

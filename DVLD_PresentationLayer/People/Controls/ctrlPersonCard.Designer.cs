@@ -47,7 +47,7 @@
             this.labelName = new System.Windows.Forms.Label();
             this.lblGedor = new System.Windows.Forms.Label();
             this.gbPresonInformation = new System.Windows.Forms.GroupBox();
-            this.linkEditPerson = new System.Windows.Forms.LinkLabel();
+            this.llEditPersonInfo = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -246,7 +246,7 @@
             // 
             // gbPresonInformation
             // 
-            this.gbPresonInformation.Controls.Add(this.linkEditPerson);
+            this.gbPresonInformation.Controls.Add(this.llEditPersonInfo);
             this.gbPresonInformation.Controls.Add(this.pictureBox1);
             this.gbPresonInformation.Controls.Add(this.pictureBox9);
             this.gbPresonInformation.Controls.Add(this.pictureBox8);
@@ -284,16 +284,16 @@
             this.gbPresonInformation.TabStop = false;
             this.gbPresonInformation.Text = "Preson Information";
             // 
-            // linkEditPerson
+            // llEditPersonInfo
             // 
-            this.linkEditPerson.AutoSize = true;
-            this.linkEditPerson.Location = new System.Drawing.Point(574, 26);
-            this.linkEditPerson.Name = "linkEditPerson";
-            this.linkEditPerson.Size = new System.Drawing.Size(116, 16);
-            this.linkEditPerson.TabIndex = 161;
-            this.linkEditPerson.TabStop = true;
-            this.linkEditPerson.Text = "Edit Person Info";
-            this.linkEditPerson.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEditPerson_LinkClicked);
+            this.llEditPersonInfo.AutoSize = true;
+            this.llEditPersonInfo.Location = new System.Drawing.Point(574, 26);
+            this.llEditPersonInfo.Name = "llEditPersonInfo";
+            this.llEditPersonInfo.Size = new System.Drawing.Size(116, 16);
+            this.llEditPersonInfo.TabIndex = 161;
+            this.llEditPersonInfo.TabStop = true;
+            this.llEditPersonInfo.Text = "Edit Person Info";
+            this.llEditPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditPersonInfo_LinkClicked);
             // 
             // pictureBox1
             // 
@@ -386,6 +386,7 @@
             // imgPerson
             // 
             this.imgPerson.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imgPerson.Image = global::DVLD_PresentationLayer.Properties.Resources.Male_512;
             this.imgPerson.Location = new System.Drawing.Point(536, 47);
             this.imgPerson.Name = "imgPerson";
             this.imgPerson.Size = new System.Drawing.Size(183, 188);
@@ -411,6 +412,7 @@
             this.Controls.Add(this.gbPresonInformation);
             this.Name = "ctrlPresonCard";
             this.Size = new System.Drawing.Size(744, 268);
+            this.Load += new System.EventHandler(this.ctrlPresonCard_Load);
             this.gbPresonInformation.ResumeLayout(false);
             this.gbPresonInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -458,6 +460,6 @@
         private System.Windows.Forms.Label lblGedor;
         private System.Windows.Forms.GroupBox gbPresonInformation;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.LinkLabel linkEditPerson;
+        private System.Windows.Forms.LinkLabel llEditPersonInfo;
     }
 }

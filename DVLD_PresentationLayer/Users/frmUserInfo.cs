@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer.Users
 {
-    public partial class frmShowUserInfo : Form
+    public partial class frmUserInfo : Form
     {
         private int _UserID;
-        public frmShowUserInfo(int UserID)
+        public frmUserInfo(int UserID)
         {
             InitializeComponent();
             _UserID = UserID;

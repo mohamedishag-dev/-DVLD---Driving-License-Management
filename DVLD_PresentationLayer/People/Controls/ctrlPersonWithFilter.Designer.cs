@@ -28,70 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbFilter = new System.Windows.Forms.GroupBox();
-            this.btnSearchPerson = new System.Windows.Forms.Button();
-            this.cbFilter = new System.Windows.Forms.ComboBox();
-            this.btnAddPreson = new System.Windows.Forms.Button();
+            this.gbFilters = new System.Windows.Forms.GroupBox();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.cbFilterBy = new System.Windows.Forms.ComboBox();
+            this.btnAddNewPerson = new System.Windows.Forms.Button();
             this.lblFelter = new System.Windows.Forms.Label();
-            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.ctrlPresonCard1 = new DVLD_PresentationLayer.ctrlPresonCard();
-            this.gbFilter.SuspendLayout();
+            this.gbFilters.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gbFilter
+            // gbFilters
             // 
-            this.gbFilter.Controls.Add(this.btnSearchPerson);
-            this.gbFilter.Controls.Add(this.cbFilter);
-            this.gbFilter.Controls.Add(this.btnAddPreson);
-            this.gbFilter.Controls.Add(this.lblFelter);
-            this.gbFilter.Controls.Add(this.txtFilter);
-            this.gbFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gbFilter.Location = new System.Drawing.Point(3, 3);
-            this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(737, 60);
-            this.gbFilter.TabIndex = 0;
-            this.gbFilter.TabStop = false;
-            this.gbFilter.Text = "Filter";
+            this.gbFilters.Controls.Add(this.btnFind);
+            this.gbFilters.Controls.Add(this.cbFilterBy);
+            this.gbFilters.Controls.Add(this.btnAddNewPerson);
+            this.gbFilters.Controls.Add(this.lblFelter);
+            this.gbFilters.Controls.Add(this.txtFilterValue);
+            this.gbFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gbFilters.Location = new System.Drawing.Point(3, 3);
+            this.gbFilters.Name = "gbFilters";
+            this.gbFilters.Size = new System.Drawing.Size(737, 60);
+            this.gbFilters.TabIndex = 0;
+            this.gbFilters.TabStop = false;
+            this.gbFilters.Text = "Filter";
             // 
-            // btnSearchPerson
+            // btnFind
             // 
-            this.btnSearchPerson.BackgroundImage = global::DVLD_PresentationLayer.Properties.Resources.SearchPerson;
-            this.btnSearchPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSearchPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchPerson.Location = new System.Drawing.Point(452, 19);
-            this.btnSearchPerson.Name = "btnSearchPerson";
-            this.btnSearchPerson.Size = new System.Drawing.Size(43, 34);
-            this.btnSearchPerson.TabIndex = 1;
-            this.btnSearchPerson.UseVisualStyleBackColor = true;
-            this.btnSearchPerson.Click += new System.EventHandler(this.btnSearchPerson_Click);
+            this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.Image = global::DVLD_PresentationLayer.Properties.Resources.SearchPerson;
+            this.btnFind.Location = new System.Drawing.Point(437, 19);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(43, 34);
+            this.btnFind.TabIndex = 1;
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
-            // cbFilter
+            // cbFilterBy
             // 
-            this.cbFilter.BackColor = System.Drawing.SystemColors.Window;
-            this.cbFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Items.AddRange(new object[] {
-            "NationalNo",
-            "PersonID"});
-            this.cbFilter.Location = new System.Drawing.Point(98, 19);
-            this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(167, 28);
-            this.cbFilter.TabIndex = 20;
-            this.cbFilter.SelectionChangeCommitted += new System.EventHandler(this.cbFilter_SelectionChangeCommitted);
+            this.cbFilterBy.BackColor = System.Drawing.SystemColors.Window;
+            this.cbFilterBy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cbFilterBy.FormattingEnabled = true;
+            this.cbFilterBy.Items.AddRange(new object[] {
+            "National No.",
+            "Person ID"});
+            this.cbFilterBy.Location = new System.Drawing.Point(83, 19);
+            this.cbFilterBy.Name = "cbFilterBy";
+            this.cbFilterBy.Size = new System.Drawing.Size(167, 28);
+            this.cbFilterBy.TabIndex = 20;
+            this.cbFilterBy.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
-            // btnAddPreson
+            // btnAddNewPerson
             // 
-            this.btnAddPreson.BackgroundImage = global::DVLD_PresentationLayer.Properties.Resources.Add_Person_401;
-            this.btnAddPreson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddPreson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPreson.Location = new System.Drawing.Point(501, 19);
-            this.btnAddPreson.Name = "btnAddPreson";
-            this.btnAddPreson.Size = new System.Drawing.Size(43, 34);
-            this.btnAddPreson.TabIndex = 2;
-            this.btnAddPreson.UseVisualStyleBackColor = true;
-            this.btnAddPreson.Click += new System.EventHandler(this.btnAddPreson_Click);
+            this.btnAddNewPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddNewPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNewPerson.Image = global::DVLD_PresentationLayer.Properties.Resources.Add_Person_401;
+            this.btnAddNewPerson.Location = new System.Drawing.Point(486, 19);
+            this.btnAddNewPerson.Name = "btnAddNewPerson";
+            this.btnAddNewPerson.Size = new System.Drawing.Size(43, 34);
+            this.btnAddNewPerson.TabIndex = 2;
+            this.btnAddNewPerson.UseVisualStyleBackColor = true;
+            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddPreson_Click);
             // 
             // lblFelter
             // 
@@ -99,49 +99,48 @@
             this.lblFelter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFelter.Location = new System.Drawing.Point(11, 22);
             this.lblFelter.Name = "lblFelter";
-            this.lblFelter.Size = new System.Drawing.Size(72, 20);
+            this.lblFelter.Size = new System.Drawing.Size(76, 20);
             this.lblFelter.TabIndex = 21;
-            this.lblFelter.Text = "Felter By";
+            this.lblFelter.Text = "Felter By:";
             // 
-            // txtFilter
+            // txtFilterValue
             // 
-            this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtFilter.Location = new System.Drawing.Point(271, 19);
-            this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(175, 26);
-            this.txtFilter.TabIndex = 0;
-            this.txtFilter.TextChanged += new System.EventHandler(this.txtFiltering_TextChanged);
+            this.txtFilterValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtFilterValue.Location = new System.Drawing.Point(256, 19);
+            this.txtFilterValue.Name = "txtFilterValue";
+            this.txtFilterValue.Size = new System.Drawing.Size(175, 26);
+            this.txtFilterValue.TabIndex = 0;
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
             // ctrlPresonCard1
             // 
-            this.ctrlPresonCard1.Location = new System.Drawing.Point(0, 69);
+            this.ctrlPresonCard1.Location = new System.Drawing.Point(3, 62);
             this.ctrlPresonCard1.Name = "ctrlPresonCard1";
-            this.ctrlPresonCard1.Size = new System.Drawing.Size(737, 255);
+            this.ctrlPresonCard1.Size = new System.Drawing.Size(744, 268);
             this.ctrlPresonCard1.TabIndex = 1;
             // 
             // ctrlPersonWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.gbFilter);
             this.Controls.Add(this.ctrlPresonCard1);
+            this.Controls.Add(this.gbFilters);
             this.Name = "ctrlPersonWithFilter";
             this.Size = new System.Drawing.Size(746, 327);
-            this.Load += new System.EventHandler(this.ctrlFindPerson_Load);
-            this.gbFilter.ResumeLayout(false);
-            this.gbFilter.PerformLayout();
+            this.Load += new System.EventHandler(this.ctrlPersonCardWithFilter_Load);
+            this.gbFilters.ResumeLayout(false);
+            this.gbFilters.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private ctrlPresonCard ctrlPresonCard1;
-        private System.Windows.Forms.GroupBox gbFilter;
-        private System.Windows.Forms.Button btnSearchPerson;
-        private System.Windows.Forms.ComboBox cbFilter;
-        private System.Windows.Forms.Button btnAddPreson;
+        private System.Windows.Forms.GroupBox gbFilters;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.ComboBox cbFilterBy;
+        private System.Windows.Forms.Button btnAddNewPerson;
         private System.Windows.Forms.Label lblFelter;
-        private System.Windows.Forms.TextBox txtFilter;
+        private System.Windows.Forms.TextBox txtFilterValue;
+        private ctrlPresonCard ctrlPresonCard1;
     }
 }

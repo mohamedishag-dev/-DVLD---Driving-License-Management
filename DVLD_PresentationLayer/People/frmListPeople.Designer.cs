@@ -57,7 +57,6 @@
             // 
             this.dgvPeople.AllowUserToAddRows = false;
             this.dgvPeople.AllowUserToDeleteRows = false;
-            this.dgvPeople.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvPeople.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPeople.ContextMenuStrip = this.cmsPeople;
@@ -146,9 +145,9 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(1004, 446);
+            this.btnClose.Location = new System.Drawing.Point(987, 446);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(73, 34);
+            this.btnClose.Size = new System.Drawing.Size(90, 34);
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Close";
             this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -200,7 +199,7 @@
             // 
             this.lblFelter.AutoSize = true;
             this.lblFelter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFelter.Location = new System.Drawing.Point(41, 167);
+            this.lblFelter.Location = new System.Drawing.Point(41, 173);
             this.lblFelter.Name = "lblFelter";
             this.lblFelter.Size = new System.Drawing.Size(72, 20);
             this.lblFelter.TabIndex = 18;
@@ -236,7 +235,7 @@
             this.imgPeople.Image = global::DVLD_PresentationLayer.Properties.Resources.People_400;
             this.imgPeople.Location = new System.Drawing.Point(465, 3);
             this.imgPeople.Name = "imgPeople";
-            this.imgPeople.Size = new System.Drawing.Size(153, 85);
+            this.imgPeople.Size = new System.Drawing.Size(162, 103);
             this.imgPeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgPeople.TabIndex = 21;
             this.imgPeople.TabStop = false;
@@ -244,6 +243,7 @@
             // lblTital
             // 
             this.lblTital.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTital.ForeColor = System.Drawing.Color.Red;
             this.lblTital.Location = new System.Drawing.Point(295, 109);
             this.lblTital.Name = "lblTital";
             this.lblTital.Size = new System.Drawing.Size(510, 31);

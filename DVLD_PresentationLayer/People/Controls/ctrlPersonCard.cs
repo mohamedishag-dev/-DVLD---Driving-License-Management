@@ -1,7 +1,7 @@
 ﻿using DVLD_BusinessLayer;
 using DVLD_PresentationLayer.People;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer
 {
@@ -14,25 +14,25 @@ namespace DVLD_PresentationLayer
         {
             get { return _PersonID; }
         }
-   
+
         public ctrlPresonCard()
         {
             InitializeComponent();
         }
-    
+
         public void LoadPresonCard(int PersonID)
         {
 
             _Person = clsPerson.Find(PersonID);
             if (_Person == null)
             {
+                _PersonID = -1;
                 _ResetPersonInfo();
                 MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
                 _FillPresonInfo();
-            _PersonID = _Person.PersonID;
 
         }
 
@@ -42,13 +42,13 @@ namespace DVLD_PresentationLayer
 
             if (_Person == null)
             {
+                _PersonID = -1;
                 _ResetPersonInfo();
                 MessageBox.Show("No Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
                 _FillPresonInfo();
-            _PersonID = _Person.PersonID;
 
         }
 
@@ -60,17 +60,19 @@ namespace DVLD_PresentationLayer
             else
                 imgPerson.Image = Properties.Resources.Female_512;
 
-            if (_Person.ImagePath != "")
-                if (File.Exists(_Person.ImagePath))
-                    imgPerson.Load(_Person.ImagePath);
+            string ImagePath = _Person.ImagePath;
+            if (ImagePath != "")
+                if (File.Exists(ImagePath))
+                    imgPerson.Load(ImagePath);
                 else
-                    MessageBox.Show("could not find this image." + _Person.ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("could not find this image." + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
         private void _FillPresonInfo()
         {
-
+            llEditPersonInfo.Enabled = true;
+            _PersonID = _Person.PersonID;
             lblPresonID.Text = _Person.PersonID.ToString();
             lblName.Text = _Person.FullName;
             lblNationailNO.Text = _Person.NationalNo;
@@ -84,18 +86,18 @@ namespace DVLD_PresentationLayer
 
         }
 
-        private void linkEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void llEditPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Form frm = new frmAddUpdatePerson(PersonID);
+            frmAddUpdatePerson frm = new frmAddUpdatePerson(_PersonID);
             frm.ShowDialog();
 
             //refresh
-            LoadPresonCard(PersonID);
+            LoadPresonCard(_PersonID);
         }
 
         private void _ResetPersonInfo()
         {
-            imgPerson.Image = Properties.Resources.Male_5121;
+            _PersonID = -1;
             lblPresonID.Text = "N/A";
             lblName.Text = "[????]";
             lblNationailNO.Text = "[????]";
@@ -105,7 +107,14 @@ namespace DVLD_PresentationLayer
             lblDateOfBrith.Text = "[????]";
             lblCountry.Text = "[????]";
             lblAddress.Text = "[????]";
+            imgPerson.Image = Properties.Resources.Male_5121;
+            llEditPersonInfo.Enabled = false;
         }
 
+        private void ctrlPresonCard_Load(object sender, System.EventArgs e)
+        {
+            llEditPersonInfo.Enabled = (_Person != null);
+
+        }
     }
 }

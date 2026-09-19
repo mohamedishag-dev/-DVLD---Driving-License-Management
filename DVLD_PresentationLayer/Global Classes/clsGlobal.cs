@@ -12,7 +12,7 @@ namespace DVLD_PresentationLayer
 
         public static bool Login()
         {
-            using (StreamReader reDatabase = new StreamReader(Constants.RememberMeFile))
+            using (StreamReader reDatabase = new StreamReader(Constants.RememberMeFile, false))
             {
 
                 string record = reDatabase.ReadLine();
@@ -23,7 +23,7 @@ namespace DVLD_PresentationLayer
 
                 if (data.Length == 2)
                 {
-                    CurrentUser = clsUser.Find(data[0], data[1]);
+                    CurrentUser = clsUser.FindByUsernameAndPassword(data[0], data[1]);
                 }
 
             }

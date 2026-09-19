@@ -13,7 +13,7 @@ namespace DVLD_PresentationLayer
 
         }
         private int _PersonID = -1;
-
+      
         private void btnNext_Click(object sender, EventArgs e)
         {
             tbctrlAddUser.SelectedIndex = tbctrlAddUser.SelectedIndex + 1;
@@ -48,7 +48,6 @@ namespace DVLD_PresentationLayer
             btnNext.Enabled = false;
             btnSave.Enabled = false;
             tabpLoginInfo.Enabled = false;
-            ctrlPersonWithFilter1.DataBack += DataBackWithPersonID;
 
         }
 
@@ -150,6 +149,19 @@ namespace DVLD_PresentationLayer
                 errorProvider1.SetError(txtConfirmPassword, null);
             }
         }
+
+        private void ctrlPersonWithFilter1_OnPersonSelected(int obj)
+        {
+            _PersonID = obj;
+            if (_PersonID != -1)
+            {
+                btnNext.Enabled = true;
+                btnSave.Enabled = true;
+                tabpLoginInfo.Enabled = true;
+
+            }
+        }
+
 
     }
 

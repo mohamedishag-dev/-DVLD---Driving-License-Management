@@ -23,10 +23,11 @@ namespace DVLD_PresentationLayer.Users
             Image imgEidt = Properties.Resources.Close_32;
             btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
 
-            txtFilterValue.Visible = (cbFilterBy.Text != "None");
             cbFilterBy.SelectedIndex = 0;
-
             dgvUsers.DataSource = _dtUsers;
+            txtFilterValue.Visible = (cbFilterBy.Text != "None");
+            lblRecordsCount.Text = _dtUsers.Rows.Count.ToString();
+
             if (dgvUsers.Rows.Count > 0)
             {
                 dgvUsers.Columns[0].HeaderText = "User ID";
@@ -52,14 +53,14 @@ namespace DVLD_PresentationLayer.Users
 
         private void showDetalisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frmShowUserInfo((int)dgvUsers.CurrentRow.Cells[0].Value);
+            frmUserInfo frm = new frmUserInfo((int)dgvUsers.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
 
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frmAddUser();
+            frmAddUser frm = new frmAddUser();
             frm.ShowDialog();
 
             //refresh
@@ -89,7 +90,7 @@ namespace DVLD_PresentationLayer.Users
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frmChangePassword((int)dgvUsers.CurrentRow.Cells[0].Value);
+            frmChangePassword frm = new frmChangePassword((int)dgvUsers.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
 
             //refresh dgvUsers
@@ -98,12 +99,12 @@ namespace DVLD_PresentationLayer.Users
 
         private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Send Email Clicked");
+            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void phoneCallToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Phone Call Clicked");
+            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
         }
 
@@ -114,8 +115,8 @@ namespace DVLD_PresentationLayer.Users
 
         private void dgvUsers_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Form UserInfo = new frmShowUserInfo((int)dgvUsers.CurrentRow.Cells[0].Value);
-            UserInfo.ShowDialog();
+            frmUserInfo frm = new frmUserInfo((int)dgvUsers.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
 
         }
 
@@ -171,7 +172,7 @@ namespace DVLD_PresentationLayer.Users
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            Form frm = new frmAddUser();
+            frmAddUser frm = new frmAddUser();
             frm.ShowDialog();
 
             //refresh dgvUsers
@@ -217,6 +218,12 @@ namespace DVLD_PresentationLayer.Users
 
             dgvUsers.DataSource = _dtUsers.DefaultView;
             lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
         }
     }
 }

@@ -32,6 +32,7 @@
             this.lblMode = new System.Windows.Forms.Label();
             this.tbctrlAddUser = new System.Windows.Forms.TabControl();
             this.tabpPersonInfo = new System.Windows.Forms.TabPage();
+            this.ctrlPersonWithFilter1 = new DVLD_PresentationLayer.ctrlPersonWithFilter();
             this.btnNext = new System.Windows.Forms.Button();
             this.tabpLoginInfo = new System.Windows.Forms.TabPage();
             this.btnPrev = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ctrlPersonWithFilter1 = new DVLD_PresentationLayer.ctrlPersonWithFilter();
             this.tbctrlAddUser.SuspendLayout();
             this.tabpPersonInfo.SuspendLayout();
             this.tabpLoginInfo.SuspendLayout();
@@ -96,6 +96,14 @@
             this.tabpPersonInfo.TabIndex = 0;
             this.tabpPersonInfo.Text = "Person Info";
             this.tabpPersonInfo.UseVisualStyleBackColor = true;
+            // 
+            // ctrlPersonWithFilter1
+            // 
+            this.ctrlPersonWithFilter1.Location = new System.Drawing.Point(3, 3);
+            this.ctrlPersonWithFilter1.Name = "ctrlPersonWithFilter1";
+            this.ctrlPersonWithFilter1.Size = new System.Drawing.Size(746, 327);
+            this.ctrlPersonWithFilter1.TabIndex = 159;
+            this.ctrlPersonWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonWithFilter1_OnPersonSelected);
             // 
             // btnNext
             // 
@@ -310,13 +318,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // ctrlPersonWithFilter1
-            // 
-            this.ctrlPersonWithFilter1.Location = new System.Drawing.Point(3, 3);
-            this.ctrlPersonWithFilter1.Name = "ctrlPersonWithFilter1";
-            this.ctrlPersonWithFilter1.Size = new System.Drawing.Size(746, 327);
-            this.ctrlPersonWithFilter1.TabIndex = 159;
-            // 
             // frmAddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,7 +332,7 @@
             this.Name = "frmAddUser";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmTest";
+            this.Text = "Add User";
             this.Load += new System.EventHandler(this.frmAddUser_Load);
             this.tbctrlAddUser.ResumeLayout(false);
             this.tabpPersonInfo.ResumeLayout(false);
