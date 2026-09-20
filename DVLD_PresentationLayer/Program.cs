@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DVLD_PresentationLayer.People;
+using DVLD_PresentationLayer.Tests;
+using System;
 using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer
@@ -14,8 +16,6 @@ namespace DVLD_PresentationLayer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
-            //  Application.Run(new frmListTestTypes());
-            //   Application.Run(new frmTest());
         }
     }
 }

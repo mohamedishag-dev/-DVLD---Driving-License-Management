@@ -33,8 +33,10 @@
             // 
             // ctrlPersonWithFilter1
             // 
-            this.ctrlPersonWithFilter1.Location = new System.Drawing.Point(44, 22);
+            this.ctrlPersonWithFilter1.FilterEnabled = true;
+            this.ctrlPersonWithFilter1.Location = new System.Drawing.Point(22, 83);
             this.ctrlPersonWithFilter1.Name = "ctrlPersonWithFilter1";
+            this.ctrlPersonWithFilter1.ShowAddPerson = true;
             this.ctrlPersonWithFilter1.Size = new System.Drawing.Size(746, 327);
             this.ctrlPersonWithFilter1.TabIndex = 0;
             this.ctrlPersonWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonWithFilter1_OnPersonSelected);

@@ -69,7 +69,6 @@
     </Compile>
     <Compile Include="Global Classes\clsUtil.cs" />
     <Compile Include="Global Classes\clsValidatoin.cs" />
-    <Compile Include="Global Classes\Constants.cs" />
     <Compile Include="People\Controls\ctrlPersonWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,6 +86,12 @@
     </Compile>
     <Compile Include="Applications\Manage Application Type\frmUpdateApplicationType.Designer.cs">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\frmLocalDrivingLicenseApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\frmLocalDrivingLicenseApplication.Designer.cs">
+      <DependentUpon>frmLocalDrivingLicenseApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\Controls\ctrlUserCard.cs">
       <SubType>UserControl</SubType>
@@ -131,11 +136,11 @@
     <Compile Include="People\frmListPeople.Designer.cs">
       <DependentUpon>frmListPeople.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\frmAddUser.cs">
+    <Compile Include="Users\frmAddUpdateUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\frmAddUser.Designer.cs">
-      <DependentUpon>frmAddUser.cs</DependentUpon>
+    <Compile Include="Users\frmAddUpdateUser.Designer.cs">
+      <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="People\frmShowPersonInfo.cs">
       <SubType>Form</SubType>
@@ -175,6 +180,9 @@
     <EmbeddedResource Include="Applications\Manage Application Type\frmUpdateApplicationType.resx">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tests\frmLocalDrivingLicenseApplication.resx">
+      <DependentUpon>frmLocalDrivingLicenseApplication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\Controls\ctrlUserCard.resx">
       <DependentUpon>ctrlUserCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,8 +204,8 @@
     <EmbeddedResource Include="People\frmListPeople.resx">
       <DependentUpon>frmListPeople.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\frmAddUser.resx">
-      <DependentUpon>frmAddUser.cs</DependentUpon>
+    <EmbeddedResource Include="Users\frmAddUpdateUser.resx">
+      <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\frmShowPersonInfo.resx">
       <DependentUpon>frmShowPersonInfo.cs</DependentUpon>
@@ -344,6 +352,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Account Settings\" />
+    <Folder Include="Applications\Driving Licenses Services\New Driving Licenses\Local License\" />
+    <Folder Include="Applications\Driving Licenses Services\Renew Driving Licenses\" />
     <Folder Include="Drivers\" />
   </ItemGroup>
   <ItemGroup>
@@ -447,6 +457,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo Final2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User 32 -2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Renew Driving License 321.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

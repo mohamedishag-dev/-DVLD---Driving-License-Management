@@ -28,20 +28,19 @@ namespace DVLD_PresentationLayer
             {
 
                 if (chkRememberMe.Checked)
-                    clsGlobal.RememberMe();
+                    clsGlobal.RememberMe(txtUserName.Text.Trim(), txtPassword.Text.Trim());
                 else
                 {
+                    clsGlobal.RememberMe("", "");
                     txtUserName.Text = "";
                     txtPassword.Text = "";
-                    clsGlobal.Remove();
-
                 }
 
                 clsGlobal.CurrentUser = user;
                 this.Hide();
                 frmMain MainScreen = new frmMain();
-                clsGlobal.RegisterLogIn();
                 MainScreen.ShowDialog();
+                clsGlobal.IsLoad();
                 this.Show();
 
             }
@@ -53,20 +52,12 @@ namespace DVLD_PresentationLayer
             }
         }
 
-
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void frmLogin_Load(object sender, EventArgs e)
         {
             Image imgLogin = Properties.Resources.sign_in_32;
             btnLogin.Image = new Bitmap(imgLogin, new Size(24, 24));
 
-
-            if (clsGlobal.Login())
+            if (clsGlobal.IsLoad())
             {
                 txtUserName.Text = clsGlobal.CurrentUser.UserName;
                 txtPassword.Text = clsGlobal.CurrentUser.Password;
@@ -77,14 +68,11 @@ namespace DVLD_PresentationLayer
 
         }
 
-        private void btnClose_Click_1(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnLogin_Click_1(object sender, EventArgs e)
-        {
 
-        }
     }
 }

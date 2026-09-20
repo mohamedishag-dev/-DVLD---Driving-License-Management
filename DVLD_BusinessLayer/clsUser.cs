@@ -71,14 +71,10 @@ namespace DVLD_BusinessLayer
 
         private bool _AddNewUser()
         {
-            if (this.UserName == "")
+            if (this.UserName == "" || this.Password == "")
                 return false;
-            if (this.Password == "")
-                return false;
-
 
             this.UserID = clsUserData.AddNewUser(this.PersonID, this.UserName, this.Password, this.IsActive);
-
             return (this.UserID != -1);
 
         }
@@ -119,6 +115,11 @@ namespace DVLD_BusinessLayer
         public static bool IsUserExist(int UserID)
         {
             return clsUserData.IsUserExistByID(UserID);
+        }
+
+        public static bool IsUserExistByPersonID(int PersonID)
+        {
+            return clsUserData.IsUserExistByPersonID(PersonID);
         }
 
         public static bool DeleteUser(int UserID)

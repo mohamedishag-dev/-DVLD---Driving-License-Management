@@ -48,9 +48,23 @@ namespace DVLD_PresentationLayer
             }
         }
 
+        public int PersonID
+        {
+            get { return ctrlPresonCard1.PersonID; }
+        }
+
         public ctrlPersonWithFilter()
         {
             InitializeComponent();
+        }
+
+        public void LoadPersonInfo(int PersonID)
+        {
+
+            cbFilterBy.SelectedIndex = 1;
+            txtFilterValue.Text = PersonID.ToString();
+            FindNow();
+
         }
 
         private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
@@ -69,11 +83,11 @@ namespace DVLD_PresentationLayer
                 return;
 
             }
-            FindNew();
+            FindNow();
 
         }
 
-        private void FindNew()
+        private void FindNow()
         {
             switch (cbFilterBy.Text)
             {

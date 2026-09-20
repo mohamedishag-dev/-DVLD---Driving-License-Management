@@ -231,40 +231,7 @@ namespace DVLD_PresentationLayer.People
             _Person.Phone = txtPhone.Text.Trim();
             _Person.Email = txtEmail.Text.Trim();
             _Person.Address = txtAddress.Text.Trim();
-
             _Person.NationalityCountryID = NationalityCountryID;
-
-
-            if (pbPersonImage.ImageLocation != null)
-            {
-                string selectedFilePath = openFileDialog1.FileName;
-                string PathDeleted = _Person.ImagePath;
-
-
-                _Person.FirstName = txtFirstName.Text.Trim();
-                _Person.SecondName = txtSecondName.Text.Trim();
-                _Person.ThirdName = txtThirdName.Text.Trim();
-                _Person.LastName = txtLastName.Text.Trim();
-                _Person.NationalNo = txtNationalNo.Text.Trim();
-                _Person.Email = txtEmail.Text.Trim();
-                _Person.Phone = txtPhone.Text.Trim();
-                _Person.Address = txtAddress.Text.Trim();
-                _Person.DateOfBirth = dtpDateOfBirth.Value;
-
-                if (rbMale.Checked)
-                    _Person.Gendor = (short)enGendor.Male;
-                else
-                    _Person.Gendor = (short)enGendor.Female;
-
-                _Person.NationalityCountryID = NationalityCountryID;
-
-                if (pbPersonImage.ImageLocation != null)
-                    _Person.ImagePath = pbPersonImage.ImageLocation;
-                else
-                    _Person.ImagePath = "";
-
-            }
-
 
             if (_Person.Save())
             {

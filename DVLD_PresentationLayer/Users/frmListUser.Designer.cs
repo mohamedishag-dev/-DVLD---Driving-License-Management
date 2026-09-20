@@ -241,9 +241,9 @@
             this.btnAddUser.BackgroundImage = global::DVLD_PresentationLayer.Properties.Resources.Add_New_User_72;
             this.btnAddUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddUser.Location = new System.Drawing.Point(549, 178);
+            this.btnAddUser.Location = new System.Drawing.Point(557, 179);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(57, 41);
+            this.btnAddUser.Size = new System.Drawing.Size(49, 40);
             this.btnAddUser.TabIndex = 1;
             this.btnAddUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddUser.UseVisualStyleBackColor = true;

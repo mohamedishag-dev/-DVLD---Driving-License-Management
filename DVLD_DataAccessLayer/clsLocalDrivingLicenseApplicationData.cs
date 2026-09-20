@@ -9,20 +9,21 @@ using System.Threading.Tasks;
 namespace DVLD_DataAccessLayer
 {
 
-    public class clsUserData
+    public class clsLocalDrivingLicenseApplicationData
     {
-        public static bool GetUserInfoByUserID(int UserID, ref int PersonID, ref string UserName, ref string Password, ref bool IsActive)
+
+        public static bool GetLocalDrivingLicenseApplicationInfoByID(int LocalDrivingLicenseApplicationID, ref int ApplicationID, ref int LicenseClassID)
         {
 
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT * FROM Users WHERE UserID = @UserID;";
+            string query = "SELECT * FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@UserID", UserID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
 
             try
             {
@@ -33,10 +34,60 @@ namespace DVLD_DataAccessLayer
                 {
                     // The record was found
                     isFound = true;
-                    PersonID = (int)reader["PersonID"];
-                    UserName = (string)reader["UserName"];
-                    Password = (string)reader["Password"];
-                    IsActive = (bool)reader["IsActive"];
+
+                    ApplicationID = (int)reader["ApplicationID"];
+                    LicenseClassID = (int)reader["LicenseClassID"];
+      
+                }
+                else
+                {
+                    // The record was not found
+                    isFound = false;
+                }
+
+                reader.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                isFound = false;
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+        public static bool GetLocalDrivingLicenseApplicationInfoByApplicationID(int ApplicationID, ref int LocalDrivingLicenseApplicationID, ref int LicenseClassID)
+        {
+
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * FROM LocalDrivingLicenseApplications WHERE ApplicationID = @ApplicationID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // The record was found
+                    isFound = true;
+
+                    LocalDrivingLicenseApplicationID = (int)reader["LocalDrivingLicenseApplicationID"];
+                    LicenseClassID = (int)reader["LicenseClassID"];
 
                 }
                 else
@@ -63,68 +114,24 @@ namespace DVLD_DataAccessLayer
             return isFound;
         }
 
-        public static bool GetUserInfoByUserNameAndPassword(string UserName, string Password, ref int UserID, ref int PersonID, ref bool IsActive)
-        {
-
-            bool isFound = false;
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = @"SELECT * FROM Users 
-                             WHERE UserName = @UserName AND Password = @Password;";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@UserName", UserName);
-            command.Parameters.AddWithValue("@Password", Password);
-
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    // The record was found
-                    isFound = true;
-                    UserID = (int)reader["UserID"];
-                    PersonID = (int)reader["PersonID"];
-                    IsActive = (bool)reader["IsActive"];
-
-                }
-                else
-                {
-                    // The record was not found
-                    isFound = false;
-                }
-
-                reader.Close();
-
-
-            }
-            catch (Exception ex)
-            {
-
-                isFound = false;
-
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isFound;
-        }
-
-        public static DataTable GetAllUsers()
+        public static DataTable GetAllPeople()
         {
 
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"SELECT Users.UserID, Users.PersonID, FullName = People.FirstName +' '+ People.SecondName +' '+ People.ThirdName +' '+ 
-                                    People.LastName, Users.UserName, Users.IsActive
-                                    FROM  Users INNER JOIN   People ON Users.PersonID = People.PersonID";
+            string query = @"SELECT People.PersonID, People.NationalNo,
+                           People.FirstName, People.SecondName, People.ThirdName, People.LastName,
+                           People.DateOfBirth, People.Gendor, 
+                           CASE
+                           WHEN People.Gendor = 0 THEN 'Male'
+                           ELSE 'Female'
+                           END as GendorCaption,
+                           People.Address, People.Phone, People.Email,
+                           People.NationalityCountryID, Countries.CountryName, People.ImagePath
+                           FROM        People INNER JOIN 
+                                   Countries ON People.NationalityCountryID = Countries.CountryID
+                           ORDER BY People.FirstName";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -158,23 +165,23 @@ namespace DVLD_DataAccessLayer
 
         }
 
-        public static int AddNewUser(int PersonID, string UserName, string Password, bool IsActive)
+
+        public static int AddNewLocalDrivingLicenseApplication(int ApplicationID, int LicenseClassID)  
         {
-            //this function will return the new User id if succeeded and -1 if not.
-            int UserID = -1;
+            //this function will return the new LocalDrivingLicenseApplication id if succeeded and -1 if not.
+            int LocalDrivingLicenseApplicationID = -1;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"INSERT INTO Users (PersonID, UserName, Password, IsActive)
-                             VALUES (@PersonID, @UserName, @Password, @IsActive)
+            string query = @"INSERT INTO LocalDrivingLicenseApplications (ApplicationID, LicenseClassID)
+                             VALUES (@ApplicationID, @LicenseClassID)
                              SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@PersonID", PersonID);
-            command.Parameters.AddWithValue("@UserName", UserName);
-            command.Parameters.AddWithValue("@Password", Password);
-            command.Parameters.AddWithValue("@IsActive", IsActive);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+
 
             try
             {
@@ -185,7 +192,7 @@ namespace DVLD_DataAccessLayer
 
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                 {
-                    UserID = insertedID;
+                    LocalDrivingLicenseApplicationID = insertedID;
                 }
             }
 
@@ -202,30 +209,25 @@ namespace DVLD_DataAccessLayer
             }
 
 
-            return UserID;
+            return LocalDrivingLicenseApplicationID;
         }
 
-        public static bool UpdateUser(int UserID, int PersonID, string UserName, string Password, bool IsActive)
+        public static bool UpdateLocalDrivingLicenseApplication(int LocalDrivingLicenseApplicationID, int ApplicationID, int LicenseClassID)
         {
 
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"Update Users  
-                            SET PersonID = @PersonID, 
-                                UserName = @UserName, 
-                                Password = @Password, 
-                                IsActive = @IsActive
-                                WHERE UserID = @UserID";
-                              
+            string query = @"Update LocalDrivingLicenseApplications  
+                            SET ApplicationID = @ApplicationID,
+                                LicenseClassID = @LicenseClassID,
+                                WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@UserID", UserID);
-            command.Parameters.AddWithValue("@PersonID", PersonID);
-            command.Parameters.AddWithValue("@UserName", UserName);
-            command.Parameters.AddWithValue("@Password", Password);
-            command.Parameters.AddWithValue("@IsActive", IsActive);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
 
             try
             {
@@ -250,17 +252,17 @@ namespace DVLD_DataAccessLayer
             return (rowsAffected > 0);
         }
 
-        public static bool IsUserExistByID(int UserID)
+        public static bool IsLocalDrivingLicenseApplicationExistByID(int LocalDrivingLicenseApplicationID)
         {
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT Found=1 FROM Users WHERE UserID = @UserID";
+            string query = "SELECT Found=1 FROM LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@UserID", UserID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
 
             try
             {
@@ -283,17 +285,17 @@ namespace DVLD_DataAccessLayer
             return isFound;
         }
 
-        public static bool IsUserExistByPersonID(int PersonID)
+        public static bool IsLocalDrivingLicenseApplicationExistByApplicationID(string ApplicationID)
         {
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT Found=1 FROM Users WHERE PersonID = @PersonID";
+            string query = "SELECT Found=1 FROM LocalDrivingLicenseApplications WHERE ApplicationID = @ApplicationID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@PersonID", PersonID);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
 
             try
             {
@@ -316,20 +318,19 @@ namespace DVLD_DataAccessLayer
             return isFound;
         }
 
-        public static bool DeleteUserByID(int UserID)
+        public static bool DeleteLocalDrivingLicenseApplicationByID(int LocalDrivingLicenseApplicationID)
         {
 
             int rowsAffected = 0;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"Delete Users 
-                                WHERE UserID = @UserID 
-                                AND NOT UserID IN (SELECT CreatedByUserID FROM Applications);";
+            string query = @"Delete LocalDrivingLicenseApplications 
+                                WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID);";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@UserID", UserID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
 
             try
             {
@@ -340,7 +341,7 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception ex)
             {
-                // Console.WriteLine("Error: " + ex.Message);
+
             }
             finally
             {
@@ -354,4 +355,5 @@ namespace DVLD_DataAccessLayer
         }
 
     }
+
 }

@@ -60,7 +60,7 @@ namespace DVLD_PresentationLayer.Users
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUser frm = new frmAddUser();
+            frmAddUpdateUser frm = new frmAddUpdateUser();
             frm.ShowDialog();
 
             //refresh
@@ -95,17 +95,6 @@ namespace DVLD_PresentationLayer.Users
 
             //refresh dgvUsers
             _RefreshUsersList();
-        }
-
-        private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
-
-        private void phoneCallToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -172,7 +161,7 @@ namespace DVLD_PresentationLayer.Users
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            frmAddUser frm = new frmAddUser();
+            frmAddUpdateUser frm = new frmAddUpdateUser();
             frm.ShowDialog();
 
             //refresh dgvUsers
@@ -221,6 +210,21 @@ namespace DVLD_PresentationLayer.Users
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            frmAddUpdateUser frm = new frmAddUpdateUser((int)dgvUsers.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+
+            //refresh dgvUsers
+            _RefreshUsersList();
+        }
+
+        private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void phoneCallToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 

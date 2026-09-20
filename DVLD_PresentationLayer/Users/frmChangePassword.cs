@@ -30,20 +30,22 @@ namespace DVLD_PresentationLayer
         private void btnSave_Click(object sender, EventArgs e)
         {
 
+            if (!this.ValidateChildren())
+            {
+                //Here we don't continue becuase the from is not valid
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon");
+                return;
+            }
+
             clsUser user = clsUser.Find(_UserID);
 
-            if (user.Password == txtCrruentPassword.Text)
+            if (user.Password == txtCrruentPassword.Text.Trim())
             {
 
-                if (!string.IsNullOrEmpty(txtNewPassword.Text))
-                {
-                    if (txtNewPassword.Text == txtNewPassword.Text)
-                        user.Password = txtNewPassword.Text;
-                    else
-                        MessageBox.Show("Confirm Password Not Equal Password");
-                }
+                if (txtNewPassword.Text.Trim() == txtConfirmPassword.Text.Trim() && txtNewPassword.Text.Trim() != "")
+                    user.Password = txtNewPassword.Text.Trim();
                 else
-                    MessageBox.Show("New Password Is Null Or Empty");
+                    MessageBox.Show("Confirm Password Does Not Match Password!");
 
             }
             else
@@ -52,26 +54,22 @@ namespace DVLD_PresentationLayer
                 return;
             }
 
-            if (user != null)
-            {
-                if (user.Save())
-                    MessageBox.Show("Data Saved Successfully.");
-                else
-                    MessageBox.Show("Error: Data Is not Saved Successfully.");
-            }
 
+            if (user.Save())
+                MessageBox.Show("Data Saved Successfully.");
+            else
+                MessageBox.Show("Error: Data Is not Saved Successfully.");
         }
 
         private void txtCrruentPassword_Validating(object sender, CancelEventArgs e)
         {
 
-            if (txtCrruentPassword.Text != clsUser.Find(_UserID).Password) 
+            if (txtCrruentPassword.Text != clsUser.Find(_UserID).Password)
             {
-                errorProvider1.SetError(txtCrruentPassword, "Crruent Password is not true!");
+                errorProvider1.SetError(txtCrruentPassword, "Crruent Password is wrong!");
             }
             else
             {
-                e.Cancel = false;
                 errorProvider1.SetError(txtCrruentPassword, null);
             }
         }
@@ -81,30 +79,19 @@ namespace DVLD_PresentationLayer
             this.Close();
         }
 
-        private void txtNewPassword_Validating(object sender, CancelEventArgs e)
+        private void ValidateEmptyTestBox(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNewPassword.Text))
+
+            TextBox Temp = ((TextBox)sender);
+            if (string.IsNullOrEmpty(Temp.Text))
             {
-                errorProvider1.SetError(txtNewPassword, "Invaled New Password!");
+                errorProvider1.SetError(Temp, "This field is required!");
             }
             else
             {
-                e.Cancel = false;
-                errorProvider1.SetError(txtNewPassword, null);
+                errorProvider1.SetError(Temp, null);
             }
         }
 
-        private void txtConfirmPassword_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtConfirmPassword.Text))
-            {
-                errorProvider1.SetError(txtConfirmPassword, "Confirm Password is not same New Password");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider1.SetError(txtConfirmPassword, null);
-            }
-        }
     }
 }

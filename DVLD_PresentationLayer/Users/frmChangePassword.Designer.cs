@@ -57,7 +57,7 @@
             this.txtNewPassword.Size = new System.Drawing.Size(175, 26);
             this.txtNewPassword.TabIndex = 1;
             this.txtNewPassword.UseSystemPasswordChar = true;
-            this.txtNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtNewPassword_Validating);
+            this.txtNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTestBox);
             // 
             // txtConfirmPassword
             // 
@@ -68,7 +68,7 @@
             this.txtConfirmPassword.Size = new System.Drawing.Size(175, 26);
             this.txtConfirmPassword.TabIndex = 2;
             this.txtConfirmPassword.UseSystemPasswordChar = true;
-            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
+            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTestBox);
             // 
             // txtCrruentPassword
             // 

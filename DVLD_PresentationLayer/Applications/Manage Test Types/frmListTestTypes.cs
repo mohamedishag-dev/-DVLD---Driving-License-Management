@@ -21,7 +21,7 @@ namespace DVLD_PresentationLayer.Applications.Manage_Test_Types
             dgvTestTypes.DataSource = clsTestType.GetAllTestTypes();
             dgvTestTypes.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvTestTypes.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+            lblRecordsCount.Text = dgvTestTypes.RowCount.ToString();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
