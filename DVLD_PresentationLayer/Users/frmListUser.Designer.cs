@@ -157,9 +157,10 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnClose.Location = new System.Drawing.Point(525, 469);
+            this.btnClose.Image = global::DVLD_PresentationLayer.Properties.Resources.Close_32;
+            this.btnClose.Location = new System.Drawing.Point(500, 474);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(81, 31);
+            this.btnClose.Size = new System.Drawing.Size(106, 38);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -225,6 +226,7 @@
             this.txtFilterValue.Size = new System.Drawing.Size(167, 24);
             this.txtFilterValue.TabIndex = 0;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFiltering_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
             // lblFilter
             // 
@@ -298,7 +300,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Users";
-            this.Load += new System.EventHandler(this.frmUser_Load);
+            this.Load += new System.EventHandler(this.frmListUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.cmsUser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgTital)).EndInit();

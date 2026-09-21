@@ -6,7 +6,12 @@ namespace DVLD_PresentationLayer
 {
     public partial class ctrlUserCard : UserControl
     {
-
+        private clsUser _User;
+        private int _UserID = -1;
+        public int UserID
+        { 
+            get { return _UserID; }
+        }
         public ctrlUserCard()
         {
             InitializeComponent();
@@ -14,16 +19,39 @@ namespace DVLD_PresentationLayer
 
         public void LoadUserCard(int userID)
         {
-            clsUser userInfo = clsUser.Find(userID);
-            ctrlPresonCard1.LoadPresonCard(userInfo.PersonID);
+            _UserID = userID;
+            _User = clsUser.Find(userID);
 
-            if (userInfo != null)
+            if (_User == null)
             {
-                lblUserID.Text = userInfo.UserID.ToString();
-                lblUserName.Text = userInfo.UserName;
-                lblIsActive.Text = userInfo.IsActive ? "Yes" : "No";
+                _ResetUserInfo();
+                MessageBox.Show("No User with UserID = " + UserID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            _FillUserInfo();
         }
+
+        private void _FillUserInfo()
+        {
+            
+            ctrlPresonCard1.LoadPresonCard(_User.PersonID);
+            lblUserID.Text = _User.UserID.ToString();
+            lblUserName.Text = _User.UserName;
+            lblIsActive.Text = _User.IsActive ? "Yes" : "No";
+
+        }
+
+        private void _ResetUserInfo()
+        {
+
+           ctrlPresonCard1.ResetPersonInfo();
+            lblUserID.Text = "[???]";
+            lblUserName.Text = "[???]";
+            lblIsActive.Text = "[???]";
+
+        }
+
 
     }
 }

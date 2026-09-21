@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.tbctrlAddUser = new System.Windows.Forms.TabControl();
-            this.tabpPersonInfo = new System.Windows.Forms.TabPage();
+            this.tcUserInfo = new System.Windows.Forms.TabControl();
+            this.tbPersonInfo = new System.Windows.Forms.TabPage();
             this.ctrlPersonWithFilter1 = new DVLD_PresentationLayer.ctrlPersonWithFilter();
             this.btnNext = new System.Windows.Forms.Button();
-            this.tabpLoginInfo = new System.Windows.Forms.TabPage();
+            this.tpLoginInfo = new System.Windows.Forms.TabPage();
             this.btnPrev = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
@@ -52,9 +52,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.tbctrlAddUser.SuspendLayout();
-            this.tabpPersonInfo.SuspendLayout();
-            this.tabpLoginInfo.SuspendLayout();
+            this.tcUserInfo.SuspendLayout();
+            this.tbPersonInfo.SuspendLayout();
+            this.tpLoginInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -74,29 +74,29 @@
             this.lblTitle.Text = "Add New User";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tbctrlAddUser
+            // tcUserInfo
             // 
-            this.tbctrlAddUser.Controls.Add(this.tabpPersonInfo);
-            this.tbctrlAddUser.Controls.Add(this.tabpLoginInfo);
-            this.tbctrlAddUser.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tbctrlAddUser.Location = new System.Drawing.Point(12, 83);
-            this.tbctrlAddUser.Name = "tbctrlAddUser";
-            this.tbctrlAddUser.SelectedIndex = 0;
-            this.tbctrlAddUser.Size = new System.Drawing.Size(769, 409);
-            this.tbctrlAddUser.TabIndex = 0;
-            this.tbctrlAddUser.TabStop = false;
+            this.tcUserInfo.Controls.Add(this.tbPersonInfo);
+            this.tcUserInfo.Controls.Add(this.tpLoginInfo);
+            this.tcUserInfo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.tcUserInfo.Location = new System.Drawing.Point(12, 83);
+            this.tcUserInfo.Name = "tcUserInfo";
+            this.tcUserInfo.SelectedIndex = 0;
+            this.tcUserInfo.Size = new System.Drawing.Size(769, 409);
+            this.tcUserInfo.TabIndex = 0;
+            this.tcUserInfo.TabStop = false;
             // 
-            // tabpPersonInfo
+            // tbPersonInfo
             // 
-            this.tabpPersonInfo.Controls.Add(this.ctrlPersonWithFilter1);
-            this.tabpPersonInfo.Controls.Add(this.btnNext);
-            this.tabpPersonInfo.Location = new System.Drawing.Point(4, 22);
-            this.tabpPersonInfo.Name = "tabpPersonInfo";
-            this.tabpPersonInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpPersonInfo.Size = new System.Drawing.Size(761, 383);
-            this.tabpPersonInfo.TabIndex = 0;
-            this.tabpPersonInfo.Text = "Person Info";
-            this.tabpPersonInfo.UseVisualStyleBackColor = true;
+            this.tbPersonInfo.Controls.Add(this.ctrlPersonWithFilter1);
+            this.tbPersonInfo.Controls.Add(this.btnNext);
+            this.tbPersonInfo.Location = new System.Drawing.Point(4, 22);
+            this.tbPersonInfo.Name = "tbPersonInfo";
+            this.tbPersonInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPersonInfo.Size = new System.Drawing.Size(761, 383);
+            this.tbPersonInfo.TabIndex = 0;
+            this.tbPersonInfo.Text = "Person Info";
+            this.tbPersonInfo.UseVisualStyleBackColor = true;
             // 
             // ctrlPersonWithFilter1
             // 
@@ -106,50 +106,49 @@
             this.ctrlPersonWithFilter1.ShowAddPerson = true;
             this.ctrlPersonWithFilter1.Size = new System.Drawing.Size(746, 327);
             this.ctrlPersonWithFilter1.TabIndex = 0;
-            this.ctrlPersonWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonWithFilter1_OnPersonSelected);
             // 
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(641, 336);
+            this.btnNext.Location = new System.Drawing.Point(643, 336);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(99, 34);
+            this.btnNext.Size = new System.Drawing.Size(106, 38);
             this.btnNext.TabIndex = 158;
             this.btnNext.Text = "Next";
             this.btnNext.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // tabpLoginInfo
+            // tpLoginInfo
             // 
-            this.tabpLoginInfo.Controls.Add(this.btnPrev);
-            this.tabpLoginInfo.Controls.Add(this.txtPassword);
-            this.tabpLoginInfo.Controls.Add(this.txtConfirmPassword);
-            this.tabpLoginInfo.Controls.Add(this.txtUserName);
-            this.tabpLoginInfo.Controls.Add(this.checkbIsActive);
-            this.tabpLoginInfo.Controls.Add(this.labelUserName);
-            this.tabpLoginInfo.Controls.Add(this.labelPassword);
-            this.tabpLoginInfo.Controls.Add(this.labelConfirmPassword);
-            this.tabpLoginInfo.Controls.Add(this.lblUserID);
-            this.tabpLoginInfo.Controls.Add(this.labelUserID);
-            this.tabpLoginInfo.Controls.Add(this.pictureBox4);
-            this.tabpLoginInfo.Controls.Add(this.pictureBox3);
-            this.tabpLoginInfo.Controls.Add(this.pictureBox2);
-            this.tabpLoginInfo.Controls.Add(this.pictureBox1);
-            this.tabpLoginInfo.Location = new System.Drawing.Point(4, 22);
-            this.tabpLoginInfo.Name = "tabpLoginInfo";
-            this.tabpLoginInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpLoginInfo.Size = new System.Drawing.Size(761, 383);
-            this.tabpLoginInfo.TabIndex = 1;
-            this.tabpLoginInfo.Text = "Login Info";
-            this.tabpLoginInfo.UseVisualStyleBackColor = true;
+            this.tpLoginInfo.Controls.Add(this.btnPrev);
+            this.tpLoginInfo.Controls.Add(this.txtPassword);
+            this.tpLoginInfo.Controls.Add(this.txtConfirmPassword);
+            this.tpLoginInfo.Controls.Add(this.txtUserName);
+            this.tpLoginInfo.Controls.Add(this.checkbIsActive);
+            this.tpLoginInfo.Controls.Add(this.labelUserName);
+            this.tpLoginInfo.Controls.Add(this.labelPassword);
+            this.tpLoginInfo.Controls.Add(this.labelConfirmPassword);
+            this.tpLoginInfo.Controls.Add(this.lblUserID);
+            this.tpLoginInfo.Controls.Add(this.labelUserID);
+            this.tpLoginInfo.Controls.Add(this.pictureBox4);
+            this.tpLoginInfo.Controls.Add(this.pictureBox3);
+            this.tpLoginInfo.Controls.Add(this.pictureBox2);
+            this.tpLoginInfo.Controls.Add(this.pictureBox1);
+            this.tpLoginInfo.Location = new System.Drawing.Point(4, 22);
+            this.tpLoginInfo.Name = "tpLoginInfo";
+            this.tpLoginInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tpLoginInfo.Size = new System.Drawing.Size(761, 383);
+            this.tpLoginInfo.TabIndex = 1;
+            this.tpLoginInfo.Text = "Login Info";
+            this.tpLoginInfo.UseVisualStyleBackColor = true;
             // 
             // btnPrev
             // 
             this.btnPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrev.Location = new System.Drawing.Point(641, 336);
+            this.btnPrev.Location = new System.Drawing.Point(643, 336);
             this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(99, 34);
+            this.btnPrev.Size = new System.Drawing.Size(106, 38);
             this.btnPrev.TabIndex = 159;
             this.btnPrev.Text = "Prev";
             this.btnPrev.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -165,7 +164,7 @@
             this.txtPassword.Size = new System.Drawing.Size(175, 26);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTestBox);
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
             // txtConfirmPassword
             // 
@@ -184,7 +183,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(175, 26);
             this.txtUserName.TabIndex = 0;
-            this.txtUserName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTestBox);
+            this.txtUserName.Validating += new System.ComponentModel.CancelEventHandler(this.txtUserName_Validating);
             // 
             // checkbIsActive
             // 
@@ -296,9 +295,10 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(603, 498);
+            this.btnClose.Image = global::DVLD_PresentationLayer.Properties.Resources.Close_32;
+            this.btnClose.Location = new System.Drawing.Point(563, 494);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(86, 34);
+            this.btnClose.Size = new System.Drawing.Size(106, 38);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -308,9 +308,10 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(695, 498);
+            this.btnSave.Image = global::DVLD_PresentationLayer.Properties.Resources.Save_32;
+            this.btnSave.Location = new System.Drawing.Point(675, 494);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(86, 34);
+            this.btnSave.Size = new System.Drawing.Size(106, 38);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -328,19 +329,19 @@
             this.ClientSize = new System.Drawing.Size(787, 537);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.tbctrlAddUser);
+            this.Controls.Add(this.tcUserInfo);
             this.Controls.Add(this.lblTitle);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddUpdateUser";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add User";
+            this.Text = "Add New User";
             this.Load += new System.EventHandler(this.frmAddUser_Load);
-            this.tbctrlAddUser.ResumeLayout(false);
-            this.tabpPersonInfo.ResumeLayout(false);
-            this.tabpLoginInfo.ResumeLayout(false);
-            this.tabpLoginInfo.PerformLayout();
+            this.tcUserInfo.ResumeLayout(false);
+            this.tbPersonInfo.ResumeLayout(false);
+            this.tpLoginInfo.ResumeLayout(false);
+            this.tpLoginInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -352,9 +353,9 @@
 
         #endregion
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.TabPage tabpPersonInfo;
-        private System.Windows.Forms.TabPage tabpLoginInfo;
-        private System.Windows.Forms.TabControl tbctrlAddUser;
+        private System.Windows.Forms.TabPage tbPersonInfo;
+        private System.Windows.Forms.TabPage tpLoginInfo;
+        private System.Windows.Forms.TabControl tcUserInfo;
         private System.Windows.Forms.Label labelUserID;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnNext;

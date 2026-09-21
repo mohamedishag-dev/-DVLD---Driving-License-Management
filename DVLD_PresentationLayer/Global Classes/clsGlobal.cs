@@ -1,6 +1,8 @@
 ﻿using DVLD_BusinessLayer;
 using System;
 using System.IO;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace DVLD_PresentationLayer
 {
@@ -10,53 +12,120 @@ namespace DVLD_PresentationLayer
     {
         public static clsUser CurrentUser;
 
-        private static string folderPath = @"C:\data";
-        private static string LoginRegistersFile = Path.Combine(folderPath, "LoginRegister.txt");
-        private static string RememberMeFile = Path.Combine(folderPath, "RememberMeFile.txt");
-
-        public static bool IsLoad()
+        public static bool RememberUsernameAndPassword(string Username, string Password)
         {
+            RegisterLogIn(Username);
 
-            if (!Directory.Exists(folderPath))
+            try
             {
-                Directory.CreateDirectory(folderPath);
+                //this will get the current project directory folder.
+                string currentDirectory = System.IO.Directory.GetCurrentDirectory();
+
+
+                // Define the path to the text file where you want to save the data
+                string filePath = currentDirectory + "\\data.txt";
+
+                //incase the username is empty, delete the file
+                if (Username == "" && File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                    return true;
+
+                }
+
+                // concatonate username and passwrod withe seperator.
+                string dataToSave = Username + "#//#" + Password;
+
+                // Create a StreamWriter to write to the file
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    // Write the data to the file
+                    writer.WriteLine(dataToSave);
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+                return false;
             }
 
-            using (StreamReader reDatabase = new StreamReader(RememberMeFile))
-            {
+        }
 
-                string record = reDatabase.ReadLine();
-                if (record == null)
+        public static bool GetStoredCredential(ref string Username, ref string Password)
+        {
+            //this will get the stored username and password and will return true if found and false if not found.
+            try
+            {
+                //gets the current project's directory
+                string currentDirectory = System.IO.Directory.GetCurrentDirectory();
+
+                // Path for the file that contains the credential.
+                string filePath = currentDirectory + "\\data.txt";
+
+                // Check if the file exists before attempting to read it
+                if (File.Exists(filePath))
+                {
+                    // Create a StreamReader to read from the file
+                    using (StreamReader reader = new StreamReader(filePath))
+                    {
+                        // Read data line by line until the end of the file
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            Console.WriteLine(line); // Output each line of data to the console
+                            string[] result = line.Split(new string[] { "#//#" }, StringSplitOptions.None);
+
+                            Username = result[0];
+                            Password = result[1];
+                        }
+                        return true;
+                    }
+                }
+                else
+                {
                     return false;
-
-                string[] data = record.Split(new string[] { "#//#" }, StringSplitOptions.None);
-                CurrentUser = clsUser.FindByUsernameAndPassword(data[0], data[1]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+                return false;
             }
 
-            return CurrentUser != null;
         }
 
-        public static void RememberMe(string UserName, string Password)
+        private static bool RegisterLogIn(string Username)
         {
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
 
-            using (StreamWriter reDatabase = new StreamWriter(RememberMeFile))
+            try
             {
-                reDatabase.WriteLine(UserName + "#//#" + Password);
-            }
-            RegisterLogIn();
-        }
+                //this will get the current project directory folder.
+                string currentDirectory = System.IO.Directory.GetCurrentDirectory();
 
-        private static void RegisterLogIn()
-        {
-            using (StreamWriter reDatabase = new StreamWriter(LoginRegistersFile, true))
+
+                // Define the path to the text file where you want to save the data
+                string filePath = currentDirectory + "\\LoginRegister.txt";
+
+
+                // concatonate username and passwrod withe seperator.
+                string dataToSave = Username + "  -  " + DateTime.Now.ToString();
+
+                // Create a StreamWriter to write to the file
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    // Write the data to the file
+                    writer.WriteLine(dataToSave);
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
             {
-                reDatabase.WriteLine(CurrentUser.UserName + "  -  " + DateTime.Now.ToString());
+                MessageBox.Show($"An error occurred: {ex.Message}");
+                return false;
             }
-
         }
 
     }

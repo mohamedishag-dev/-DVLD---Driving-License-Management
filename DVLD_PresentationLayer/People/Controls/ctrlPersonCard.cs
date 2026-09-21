@@ -27,7 +27,7 @@ namespace DVLD_PresentationLayer
             if (_Person == null)
             {
                 _PersonID = -1;
-                _ResetPersonInfo();
+                ResetPersonInfo();
                 MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -43,7 +43,7 @@ namespace DVLD_PresentationLayer
             if (_Person == null)
             {
                 _PersonID = -1;
-                _ResetPersonInfo();
+                ResetPersonInfo();
                 MessageBox.Show("No Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -95,7 +95,7 @@ namespace DVLD_PresentationLayer
             LoadPresonCard(_PersonID);
         }
 
-        private void _ResetPersonInfo()
+        public void ResetPersonInfo()
         {
             _PersonID = -1;
             lblPresonID.Text = "N/A";

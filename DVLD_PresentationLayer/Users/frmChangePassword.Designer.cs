@@ -57,7 +57,7 @@
             this.txtNewPassword.Size = new System.Drawing.Size(175, 26);
             this.txtNewPassword.TabIndex = 1;
             this.txtNewPassword.UseSystemPasswordChar = true;
-            this.txtNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTestBox);
+            this.txtNewPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtNewPassword_Validating);
             // 
             // txtConfirmPassword
             // 
@@ -68,7 +68,7 @@
             this.txtConfirmPassword.Size = new System.Drawing.Size(175, 26);
             this.txtConfirmPassword.TabIndex = 2;
             this.txtConfirmPassword.UseSystemPasswordChar = true;
-            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyTestBox);
+            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
             // 
             // txtCrruentPassword
             // 
@@ -114,9 +114,10 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Image = global::DVLD_PresentationLayer.Properties.Resources.Close_32;
             this.btnCancel.Location = new System.Drawing.Point(529, 478);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(101, 34);
+            this.btnCancel.Size = new System.Drawing.Size(106, 38);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -126,9 +127,10 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = global::DVLD_PresentationLayer.Properties.Resources.Save_32;
             this.btnSave.Location = new System.Drawing.Point(636, 478);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(101, 34);
+            this.btnSave.Size = new System.Drawing.Size(106, 38);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

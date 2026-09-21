@@ -11,7 +11,9 @@ namespace DVLD_BusinessLayer
 
         public int ApplicationID { set; get; }
         public int ApplicantPersonID { set; get; }
+        public clsPerson PersonInfo;
         public int ApplicationTypeID { set; get; }
+        public clsApplicationType ApplicationTypeInfo;
         public DateTime ApplicationDate { set; get; }
         public byte ApplicationStatus { set; get; }
         public DateTime LastStatusDate { set; get; }
@@ -36,7 +38,12 @@ namespace DVLD_BusinessLayer
         {
             this.ApplicationID = ApplicationID;
             this.ApplicantPersonID = ApplicantPersonID;
+            this.PersonInfo = clsPerson.Find(ApplicantPersonID);
+
             this.ApplicationDate = ApplicationDate;
+            this.ApplicationTypeID = ApplicationTypeID;
+            this.ApplicationTypeInfo = clsApplicationType.Find(ApplicationTypeID);
+
             this.ApplicationStatus = ApplicationStatus;
             this.LastStatusDate = LastStatusDate;
             this.PaidFees = PaidFees;

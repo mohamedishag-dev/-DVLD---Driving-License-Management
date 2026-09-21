@@ -87,11 +87,11 @@
     <Compile Include="Applications\Manage Application Type\frmUpdateApplicationType.Designer.cs">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tests\frmLocalDrivingLicenseApplication.cs">
+    <Compile Include="Applications\Driving Licenses Services\New Driving Licenses\Local License\frmAddLocalDrivingLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tests\frmLocalDrivingLicenseApplication.Designer.cs">
-      <DependentUpon>frmLocalDrivingLicenseApplication.cs</DependentUpon>
+    <Compile Include="Applications\Driving Licenses Services\New Driving Licenses\Local License\frmAddLocalDrivingLicenseApplication.Designer.cs">
+      <DependentUpon>frmAddLocalDrivingLicenseApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\Controls\ctrlUserCard.cs">
       <SubType>UserControl</SubType>
@@ -180,8 +180,8 @@
     <EmbeddedResource Include="Applications\Manage Application Type\frmUpdateApplicationType.resx">
       <DependentUpon>frmUpdateApplicationType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tests\frmLocalDrivingLicenseApplication.resx">
-      <DependentUpon>frmLocalDrivingLicenseApplication.cs</DependentUpon>
+    <EmbeddedResource Include="Applications\Driving Licenses Services\New Driving Licenses\Local License\frmAddLocalDrivingLicenseApplication.resx">
+      <DependentUpon>frmAddLocalDrivingLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\Controls\ctrlUserCard.resx">
       <DependentUpon>ctrlUserCard.cs</DependentUpon>
@@ -351,8 +351,6 @@
     <None Include="Resources\Male 5121.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Account Settings\" />
-    <Folder Include="Applications\Driving Licenses Services\New Driving Licenses\Local License\" />
     <Folder Include="Applications\Driving Licenses Services\Renew Driving Licenses\" />
     <Folder Include="Drivers\" />
   </ItemGroup>

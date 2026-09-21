@@ -1,4 +1,5 @@
 ﻿using DVLD_PresentationLayer.Applications.Manage_Test_Types;
+using DVLD_PresentationLayer.Tests;
 using DVLD_PresentationLayer.Users;
 using System;
 using System.Windows.Forms;
@@ -7,16 +8,25 @@ namespace DVLD_PresentationLayer
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        private frmLogin _login;
+        public frmMain(frmLogin frm)
         {
             InitializeComponent();
+            _login = frm;
         }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _login.Close();
+        }
+
 
         private void applicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListUser frm = new frmListUser();
             frm.ShowDialog();
         }
+
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             Form frm = new frmListPeople();
@@ -27,6 +37,7 @@ namespace DVLD_PresentationLayer
         private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             clsGlobal.CurrentUser = null;
+            _login.Show();
             this.Close();
         }
 
@@ -55,6 +66,12 @@ namespace DVLD_PresentationLayer
             frmListManageApplicationType frm = new frmListManageApplicationType();
             frm.ShowDialog();
             
+        }
+
+        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddLocalDrivingLicenseApplication frm = new frmAddLocalDrivingLicenseApplication();
+            frm.ShowDialog();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -98,16 +115,12 @@ namespace DVLD_PresentationLayer
 
         }
 
-        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-        }
 
         private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
         }
+
     }
 }

@@ -16,39 +16,36 @@ namespace DVLD_PresentationLayer
         {
 
             clsUser user = clsUser.FindByUsernameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
-
-            if (user == null)
-            {
-                txtUserName.Focus();
-                MessageBox.Show("Invalid Username/Password.", "Wrong Credintials", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (user.IsActive)
+           
+            if (user != null)
             {
 
                 if (chkRememberMe.Checked)
-                    clsGlobal.RememberMe(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+                    //store username and password
+                    clsGlobal.RememberUsernameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
                 else
+                    //store empty username and password
+                    clsGlobal.RememberUsernameAndPassword("", "");
+
+                if (!user.IsActive)
                 {
-                    clsGlobal.RememberMe("", "");
-                    txtUserName.Text = "";
-                    txtPassword.Text = "";
+                    txtUserName.Focus();
+                    MessageBox.Show("Your accound is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+
+                txtUserName.Text = "";
+                txtPassword.Text = "";
 
                 clsGlobal.CurrentUser = user;
                 this.Hide();
-                frmMain MainScreen = new frmMain();
-                MainScreen.ShowDialog();
-                clsGlobal.IsLoad();
-                this.Show();
-
+                frmMain frm = new frmMain(this);
+                frm.ShowDialog();
             }
             else
             {
                 txtUserName.Focus();
-                MessageBox.Show("Your accound is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Invalid Username/Password.", "Wrong Credintials", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -57,10 +54,12 @@ namespace DVLD_PresentationLayer
             Image imgLogin = Properties.Resources.sign_in_32;
             btnLogin.Image = new Bitmap(imgLogin, new Size(24, 24));
 
-            if (clsGlobal.IsLoad())
+            string UserName = "", Password = "";
+
+            if (clsGlobal.GetStoredCredential(ref UserName, ref Password))
             {
-                txtUserName.Text = clsGlobal.CurrentUser.UserName;
-                txtPassword.Text = clsGlobal.CurrentUser.Password;
+                txtUserName.Text = UserName;
+                txtPassword.Text = Password;
                 chkRememberMe.Checked = true;
             }
             else

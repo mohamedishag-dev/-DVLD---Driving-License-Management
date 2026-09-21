@@ -3,7 +3,6 @@ using System.Data;
 
 namespace DVLD_BusinessLayer
 {
-
     public class clsUser
     {
 
@@ -12,10 +11,10 @@ namespace DVLD_BusinessLayer
 
         public int UserID { set; get; }
         public int PersonID { set; get; }
+        public clsPerson PersonInfo;
         public string UserName { set; get; }
         public string Password { set; get; }
         public bool IsActive { set; get; }
-
 
         public clsUser()
         {
@@ -26,11 +25,11 @@ namespace DVLD_BusinessLayer
             IsActive = false;
             this.Mode = enMode.AddNew;
         }
-
         private clsUser(int UserID, int PersonID, string userName, string password, bool isActive)
         {
             this.UserID = UserID;
             this.PersonID = PersonID;
+            this.PersonInfo = clsPerson.Find(PersonID);
             this.UserName = userName;
             this.Password = password;
             this.IsActive = isActive;
@@ -43,7 +42,6 @@ namespace DVLD_BusinessLayer
             return clsUserData.GetAllUsers();
 
         }
-
         public static clsUser Find(int userID)
         {
             int personID = -1;
@@ -51,13 +49,23 @@ namespace DVLD_BusinessLayer
             string userName = "", password = "";
 
             if (clsUserData.GetUserInfoByUserID(userID, ref personID, ref userName, ref password, ref isActive))
-            {
+
                 return new clsUser(userID, personID, userName, password, isActive);
-            }
             else
                 return null;
         }
+        public static clsUser FindByPersonID(int personID)
+        {
+            int userID = -1;
+            bool isActive = false;
+            string userName = "", password = "";
 
+            if (clsUserData.GetUserInfoByPersonID(personID, ref userID, ref userName, ref password, ref isActive))
+
+                return new clsUser(userID, personID, userName, password, isActive);
+            else
+                return null;
+        }
         public static clsUser FindByUsernameAndPassword(string userName, string password)
         {
             int personID = -1, userID = -1;
@@ -67,23 +75,6 @@ namespace DVLD_BusinessLayer
                 return new clsUser(userID, personID, userName, password, isActive);
             else
                 return null;
-        }
-
-        private bool _AddNewUser()
-        {
-            if (this.UserName == "" || this.Password == "")
-                return false;
-
-            this.UserID = clsUserData.AddNewUser(this.PersonID, this.UserName, this.Password, this.IsActive);
-            return (this.UserID != -1);
-
-        }
-
-        private bool _UpdateUser()
-        {
-
-            return clsUserData.UpdateUser(this.UserID, this.PersonID, this.UserName, this.Password, this.IsActive);
-
         }
 
         public bool Save()
@@ -111,21 +102,37 @@ namespace DVLD_BusinessLayer
 
             return false;
         }
+        private bool _AddNewUser()
+        {
+
+            this.UserID = clsUserData.AddNewUser(this.PersonID, this.UserName, this.Password, this.IsActive);
+            return (this.UserID != -1);
+
+        }
+        private bool _UpdateUser()
+        {
+
+            return clsUserData.UpdateUser(this.UserID, this.PersonID, this.UserName, this.Password, this.IsActive);
+
+        }
+        public static bool DeleteUser(int UserID)
+        {
+            return clsUserData.DeleteUser(UserID);
+        }
 
         public static bool IsUserExist(int UserID)
         {
-            return clsUserData.IsUserExistByID(UserID);
+            return clsUserData.IsUserExist(UserID);
+        }
+        public static bool IsUserExist(string userName)
+        {
+            return clsUserData.IsUserExist(userName);
+        }
+        public static bool IsUserExistForPersonID(int PersonID)
+        {
+            return clsUserData.IsUserExistForPersonID(PersonID);
         }
 
-        public static bool IsUserExistByPersonID(int PersonID)
-        {
-            return clsUserData.IsUserExistByPersonID(PersonID);
-        }
-
-        public static bool DeleteUser(int UserID)
-        {
-            return clsUserData.DeleteUserByID(UserID);
-        }
 
     }
 

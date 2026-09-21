@@ -1,7 +1,6 @@
-﻿using System;
+﻿using DVLD_BusinessLayer;
+using System;
 using System.Data;
-using System.Drawing;
-using DVLD_BusinessLayer;
 using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer.Users
@@ -10,23 +9,19 @@ namespace DVLD_PresentationLayer.Users
     {
         private static DataTable _dtAllUsers = clsUser.GetAllUsers();
 
-        private DataTable _dtUsers = _dtAllUsers.DefaultView.ToTable(false, "UserID", "PersonID", "FullName",
-                                                       "UserName", "IsActive");
         public frmListUser()
         {
             InitializeComponent();
         }
 
-        private void frmUser_Load(object sender, EventArgs e)
+        private void frmListUser_Load(object sender, EventArgs e)
         {
-
-            Image imgEidt = Properties.Resources.Close_32;
-            btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
+            _dtAllUsers = clsUser.GetAllUsers();
 
             cbFilterBy.SelectedIndex = 0;
-            dgvUsers.DataSource = _dtUsers;
+            dgvUsers.DataSource = _dtAllUsers;
             txtFilterValue.Visible = (cbFilterBy.Text != "None");
-            lblRecordsCount.Text = _dtUsers.Rows.Count.ToString();
+            lblRecordsCount.Text = _dtAllUsers.Rows.Count.ToString();
 
             if (dgvUsers.Rows.Count > 0)
             {
@@ -37,18 +32,6 @@ namespace DVLD_PresentationLayer.Users
                 dgvUsers.Columns[4].HeaderText = "Is Active";
 
             }
-        }
-
-        private void _RefreshUsersList()
-        {
-
-            _dtAllUsers = clsUser.GetAllUsers();
-            _dtUsers = _dtAllUsers.DefaultView.ToTable(false, "UserID", "PersonID", "FullName",
-                                                       "UserName", "IsActive");
-
-            dgvUsers.DataSource = _dtUsers.DefaultView;
-            lblRecordsCount.Text = _dtUsers.Rows.Count.ToString();
-
         }
 
         private void showDetalisToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,8 +46,8 @@ namespace DVLD_PresentationLayer.Users
             frmAddUpdateUser frm = new frmAddUpdateUser();
             frm.ShowDialog();
 
-            //refresh
-            _RefreshUsersList();
+            //refresh List Users
+            frmListUser_Load(null, null);
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,8 +61,8 @@ namespace DVLD_PresentationLayer.Users
                 {
                     MessageBox.Show($"Person id [{UserID}] was delete.");
 
-                    //refresh dgvUsers
-                    _RefreshUsersList();
+                    //refresh List Users
+                    frmListUser_Load(null, null);
                 }
                 else
                     MessageBox.Show("Person was not deleted because it has data linked to it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -93,8 +76,6 @@ namespace DVLD_PresentationLayer.Users
             frmChangePassword frm = new frmChangePassword((int)dgvUsers.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
 
-            //refresh dgvUsers
-            _RefreshUsersList();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -140,20 +121,17 @@ namespace DVLD_PresentationLayer.Users
             //Reset the filters in case nothing selected or filter value conains nothing.
             if (txtFilterValue.Text.Trim() == "" || FilterColumn == "None")
             {
-                _dtUsers.DefaultView.RowFilter = "";
+                _dtAllUsers.DefaultView.RowFilter = "";
                 lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
                 return;
             }
 
-            if (FilterColumn == "UserID")
-                //in this case we deal with integer not string.
-                _dtUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text.Trim());
 
-            else if (FilterColumn == "PersonID")
+            if (FilterColumn != "UserName" || FilterColumn != "FullName")
                 //in this case we deal with integer not string.
-                _dtUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text.Trim());
+                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text.Trim());
             else
-                _dtUsers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilterValue.Text.Trim());
+                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilterValue.Text.Trim());
 
             lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
 
@@ -164,48 +142,59 @@ namespace DVLD_PresentationLayer.Users
             frmAddUpdateUser frm = new frmAddUpdateUser();
             frm.ShowDialog();
 
-            //refresh dgvUsers
-            _RefreshUsersList();
+            //refresh List Users
+            frmListUser_Load(null, null);
         }
 
         private void cbFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _dtUsers.DefaultView.RowFilter = "";
 
-            if (cbFilterBy.Text == "None")
-            {
-                cbIsActive.Visible = false;
-                txtFilterValue.Visible = false;
-                lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
-                return;
-
-            }
-            else if (cbFilterBy.Text == "Is Active")
+            if (cbFilterBy.Text == "Is Active")
             {
                 cbIsActive.Visible = true;
-                txtFilterValue.Visible = false;
+                cbIsActive.Focus();
                 cbIsActive.SelectedIndex = 0;
+                txtFilterValue.Visible = false;
                 return;
             }
             else
             {
+
                 cbIsActive.Visible = false;
-                txtFilterValue.Visible = true;
+                txtFilterValue.Visible = (cbFilterBy.Text != "None");
+                txtFilterValue.Text = "";
                 txtFilterValue.Focus();
+
             }
 
         }
 
         private void cbIsActive_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _dtUsers.DefaultView.RowFilter = "";
+            string FilterColumn = "IsActive";
+            string FilterValue = cbIsActive.Text;
 
-            if (cbIsActive.Text == "Yes")
-                _dtUsers.DefaultView.RowFilter = "IsActive = true";
-            else if (cbIsActive.Text == "No")
-                _dtUsers.DefaultView.RowFilter = "IsActive = false";
+            switch (FilterValue)
+            {
+                case "All":
+                    break;
 
-            dgvUsers.DataSource = _dtUsers.DefaultView;
+                case "Yes":
+                    FilterValue = "1";
+                    break;
+
+                case "No":
+                    FilterValue = "0";
+                    break;
+
+                default:
+                    break;
+            }
+            if (FilterValue == "All")
+                _dtAllUsers.DefaultView.RowFilter = "";
+            else
+                _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, FilterValue);
+
             lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
         }
 
@@ -215,8 +204,8 @@ namespace DVLD_PresentationLayer.Users
             frmAddUpdateUser frm = new frmAddUpdateUser((int)dgvUsers.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
 
-            //refresh dgvUsers
-            _RefreshUsersList();
+            //refresh List Users
+            frmListUser_Load(null, null);
         }
 
         private void sendEmailToolStripMenuItem_Click(object sender, EventArgs e)
@@ -228,6 +217,13 @@ namespace DVLD_PresentationLayer.Users
         {
             MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+        }
+
+        private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //we allow number incase person id or user id is selected.
+            if (cbFilterBy.Text == "Person ID" || cbFilterBy.Text == "User ID")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
