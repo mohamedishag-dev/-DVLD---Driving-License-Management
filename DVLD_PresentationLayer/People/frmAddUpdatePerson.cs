@@ -1,5 +1,5 @@
 ﻿using DVLD.Classes;
-using DVLD_Business;
+using DVLD_BusinessLayer;
 using DVLD_PresentationLayer.Properties;
 using System;
 using System.ComponentModel;

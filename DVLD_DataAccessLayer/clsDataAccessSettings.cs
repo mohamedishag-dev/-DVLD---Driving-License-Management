@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace DVLD_DataAccess
+namespace DVLD_DataAccessLayer
 {
 
     static class clsDataAccessSettings

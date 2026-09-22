@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace DVLD_DataAccess
+namespace DVLD_DataAccessLayer
 {
     public class clsApplicationData
     {

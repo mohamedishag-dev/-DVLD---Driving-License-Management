@@ -1,8 +1,8 @@
-﻿using DVLD_DataAccess;
+﻿using DVLD_DataAccessLayer;
 using System;
 using System.Data;
 
-namespace DVLD_Business
+namespace DVLD_BusinessLayer
 {
     public class clsApplication
     {

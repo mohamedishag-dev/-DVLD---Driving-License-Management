@@ -15,6 +15,12 @@ namespace DVLD_PresentationLayer
             _login = frm;
         }
 
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _login.Close();
+        }
+
+
         private void applicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListUser frm = new frmListUser();
