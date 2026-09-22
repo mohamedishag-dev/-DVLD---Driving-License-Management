@@ -1,24 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace DVLD_DataAccessLayer
+namespace DVLD_DataAccess
 {
-    public class clsLecenseClassData
+    public class clsCountryData
     {
-        public static bool GetLecenseClassInfoByID(int LecenseClassID, ref string ClassName, ref string ClassDescription, ref byte MinimumAllowedAge,
-            ref byte DefaultValidityLength, ref decimal ClassFees)
+
+        public static bool GetCountryInfoByID(int CountryID, ref string CountryName)
         {
 
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT * FROM LicenseClasses WHERE LicenseClassID = @LicenseClassID;";
+            string query = "SELECT * FROM Countries WHERE CountryID = @CountryID;";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@LecenseClassID", LecenseClassID);
+            command.Parameters.AddWithValue("@CountryID", CountryID);
 
             try
             {
@@ -30,11 +34,7 @@ namespace DVLD_DataAccessLayer
                     // The record was found
                     isFound = true;
 
-                    ClassName = (string)reader["ClassName"];
-                    ClassDescription = (string)reader["ClassDescription"];
-                    MinimumAllowedAge = (byte)reader["MinimumAllowedAge"];
-                    DefaultValidityLength = (byte)reader["DefaultValidityLength"];
-                    ClassFees = (decimal)reader["ClassFees"];
+                    CountryName = (string)reader["CountryName"];
 
                 }
                 else
@@ -61,19 +61,18 @@ namespace DVLD_DataAccessLayer
             return isFound;
         }
 
-        public static bool GetLecenseClassInfoByClassName(string ClassName, ref int LicenseClassID, ref string ClassDescription, ref byte MinimumAllowedAge,
-            ref byte DefaultValidityLength, ref decimal ClassFees)
+        public static bool GetCountryInfoByName(string CountryName, ref int CountryID)
         {
 
             bool isFound = false;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT * FROM LicenseClasses WHERE ClassName = @ClassName;";
+            string query = "SELECT * FROM Countries WHERE CountryName = @CountryName;";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@ClassName", ClassName);
+            command.Parameters.AddWithValue("@CountryName", CountryName);
 
             try
             {
@@ -85,11 +84,7 @@ namespace DVLD_DataAccessLayer
                     // The record was found
                     isFound = true;
 
-                    LicenseClassID = (int)reader["LicenseClassID"];
-                    ClassDescription = (string)reader["ClassDescription"];
-                    MinimumAllowedAge = (byte)reader["MinimumAllowedAge"];
-                    DefaultValidityLength = (byte)reader["DefaultValidityLength"];
-                    ClassFees = (decimal)reader["ClassFees"];
+                    CountryID = (int)reader["CountryID"];
 
                 }
                 else
@@ -116,14 +111,13 @@ namespace DVLD_DataAccessLayer
             return isFound;
         }
 
-        public static DataTable GetAllLicenseClasses()
+        public static DataTable GetAllCountries()
         {
 
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"SELECT * FROM LicenseClasses
-                             ORDER BY ClassName";
+            string query = "SELECT * FROM Countries";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -146,7 +140,7 @@ namespace DVLD_DataAccessLayer
 
             catch (Exception ex)
             {
-
+                // Console.WriteLine("Error: " + ex.Message);
             }
             finally
             {
@@ -156,6 +150,7 @@ namespace DVLD_DataAccessLayer
             return dt;
 
         }
+
 
     }
 }

@@ -1,4 +1,4 @@
-﻿using DVLD_BusinessLayer;
+﻿using DVLD_Business;
 using DVLD_PresentationLayer.People;
 using System;
 using System.Windows.Forms;

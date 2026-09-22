@@ -1,4 +1,4 @@
-﻿using DVLD_BusinessLayer;
+﻿using DVLD_Business;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -33,9 +33,6 @@ namespace DVLD_PresentationLayer
                     MessageBox.Show("Your accound is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                txtUserName.Text = "";
-                txtPassword.Text = "";
 
                 clsGlobal.CurrentUser = user;
                 this.Hide();

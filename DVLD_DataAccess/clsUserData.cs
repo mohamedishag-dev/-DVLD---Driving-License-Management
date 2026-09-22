@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DVLD_DataAccessLayer
+namespace DVLD_DataAccess
 {
 
     public class clsUserData
