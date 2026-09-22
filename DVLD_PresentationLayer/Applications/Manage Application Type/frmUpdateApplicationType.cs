@@ -1,57 +1,106 @@
-﻿using DVLD_BusinessLayer;
+﻿using DVLD.Classes;
+using DVLD_BusinessLayer;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer.Tests
 {
     public partial class frmUpdateApplicationType : Form
     {
-        private int _ApplicationTypeID;
+        private int _ApplicationTypeID = -1;
+        private clsApplicationType _ApplicationType;
         public frmUpdateApplicationType(int ApplicationTypeID)
         {
             InitializeComponent();
-            this._ApplicationTypeID = ApplicationTypeID;
+            _ApplicationTypeID = ApplicationTypeID;
         }
 
-        private void clsUpdate_Load(object sender, EventArgs e)
+        private void frmUpdate_Load(object sender, EventArgs e)
         {
-            Image imgEidt = Properties.Resources.Close_32;
-            btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
 
-            Image imgSave = Properties.Resources.Save_32;
-            btnSave.Image = new Bitmap(imgSave, new Size(24, 24));
+            _ApplicationType = clsApplicationType.Find(_ApplicationTypeID);
 
-            clsApplicationType applicationType = clsApplicationType.Find(_ApplicationTypeID);
-            lblApplicationTypeID.Text = applicationType.ApplicationTypeID.ToString();
-            txtTypeTitle.Text = applicationType.ApplicationTypeTitle.ToString();
-            txtFees.Text = applicationType.ApplicationFees.ToString();
+            lblTypeID.Text = _ApplicationType.ID.ToString();
+            txtTitle.Text = _ApplicationType.Title.ToString();
+            txtFees.Text = _ApplicationType.Fees.ToString();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            clsApplicationType applicationType = clsApplicationType.Find(_ApplicationTypeID);
-            if (!string.IsNullOrEmpty(txtTypeTitle.Text.Trim()))
-                applicationType.ApplicationTypeTitle = txtTypeTitle.Text.Trim();
-            else
+            if (!this.ValidateChildren())
+            {
+                //Here we dont continue becuase the form is not valid
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
-            if (decimal.TryParse(txtFees.Text, out decimal Fess)) 
-                applicationType.ApplicationFees = Fess;
+            }
 
-            if (applicationType.UpdateApplicationType())
+            _ApplicationType.Title = txtTitle.Text.Trim();
+            _ApplicationType.Fees = Convert.ToSingle(txtFees.Text.Trim()); ;
+
+            if (_ApplicationType.Save())
+            {
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
+            }
+            else
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
-                
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void txtTitle_Validating(object sender, CancelEventArgs e)
+        {
+
+
+            if (string.IsNullOrEmpty(txtTitle.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtTitle, "Title cannot be empty!");
+            }
+            else
+            {
+                errorProvider1.SetError(txtTitle, null);
+            }
+            ;
+
+
+        }
+
+        private void txtFees_Validating(object sender, CancelEventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(txtFees.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtFees, "Fees cannot be empty!");
+                return;
+            }
+            else
+            {
+                errorProvider1.SetError(txtFees, null);
+
+            }
+            ;
+
+
+            if (!clsValidatoin.IsNumber(txtFees.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtFees, "Invalid Number.");
+            }
+            else
+            {
+                errorProvider1.SetError(txtFees, null);
+            }
+            ;
+
+        }
+
     }
 }

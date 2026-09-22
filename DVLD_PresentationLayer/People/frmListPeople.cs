@@ -25,8 +25,6 @@ namespace DVLD_PresentationLayer
 
         private void frmListPeople_Load(object sender, EventArgs e)
         {
-            Image imgEidt = Properties.Resources.Close_32;
-            btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
 
             dgvPeople.DataSource = _dtPeople;
             cbFilterBy.SelectedIndex = 0;

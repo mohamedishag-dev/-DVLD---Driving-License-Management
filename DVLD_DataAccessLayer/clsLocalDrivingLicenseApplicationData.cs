@@ -114,24 +114,19 @@ namespace DVLD_DataAccessLayer
             return isFound;
         }
 
-        public static DataTable GetAllPeople()
+        public static DataTable GetAllLocalDrivingLicenseApplication()
         {
 
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"SELECT People.PersonID, People.NationalNo,
-                           People.FirstName, People.SecondName, People.ThirdName, People.LastName,
-                           People.DateOfBirth, People.Gendor, 
-                           CASE
-                           WHEN People.Gendor = 0 THEN 'Male'
-                           ELSE 'Female'
-                           END as GendorCaption,
-                           People.Address, People.Phone, People.Email,
-                           People.NationalityCountryID, Countries.CountryName, People.ImagePath
-                           FROM        People INNER JOIN 
-                                   Countries ON People.NationalityCountryID = Countries.CountryID
-                           ORDER BY People.FirstName";
+            string query = @"SELECT  LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID, LicenseClasses.ClassName, People.NationalNo,
+                                     FullName= People.FirstName+' '+ People.SecondName+' '+ People.ThirdName+' '+ People.LastName,
+                                     Applications.ApplicationDate, Applications.ApplicationStatus
+                             FROM    LocalDrivingLicenseApplications INNER JOIN
+                                     LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID INNER JOIN
+                                     Applications ON LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID INNER JOIN
+                                     People ON Applications.ApplicantPersonID = People.PersonID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -164,7 +159,6 @@ namespace DVLD_DataAccessLayer
             return dt;
 
         }
-
 
         public static int AddNewLocalDrivingLicenseApplication(int ApplicationID, int LicenseClassID)  
         {

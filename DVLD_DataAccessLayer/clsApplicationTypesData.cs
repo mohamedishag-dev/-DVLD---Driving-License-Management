@@ -6,7 +6,7 @@ namespace DVLD_DataAccessLayer
 {
     public class clsApplicationTypesData
     {
-        public static bool GetApplicationTypeInfoByID(int ApplicationTypeID, ref string ApplicationTypeTitle, ref decimal ApplicationFees)
+        public static bool GetApplicationTypeInfoByID(int ID, ref string Title, ref float Fees)
         {  
 
             bool isFound = false;
@@ -17,7 +17,7 @@ namespace DVLD_DataAccessLayer
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+            command.Parameters.AddWithValue("@ApplicationTypeID", ID);
 
             try
             {
@@ -29,8 +29,8 @@ namespace DVLD_DataAccessLayer
                     // The record was found
                     isFound = true;
 
-                    ApplicationTypeTitle = (string)reader["ApplicationTypeTitle"];
-                    ApplicationFees = (decimal)reader["ApplicationFees"];
+                    Title = (string)reader["ApplicationTypeTitle"];
+                    Fees = Convert.ToSingle(reader["ApplicationFees"]);
 
                 }
                 else
@@ -98,7 +98,7 @@ namespace DVLD_DataAccessLayer
 
         }
 
-        public static bool UpdateApplicationType(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationFees)
+        public static bool UpdateApplicationType(int ID, string Title, float Fees)
         {
 
             int rowsAffected = 0;
@@ -111,9 +111,9 @@ namespace DVLD_DataAccessLayer
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@ApplicationFees", ApplicationFees);
-            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
-            command.Parameters.AddWithValue("@ApplicationTypeTitle", ApplicationTypeTitle);
+            command.Parameters.AddWithValue("@ApplicationTypeID", ID);
+            command.Parameters.AddWithValue("@ApplicationFees", Fees);
+            command.Parameters.AddWithValue("@ApplicationTypeTitle", Title);
 
             try
             {

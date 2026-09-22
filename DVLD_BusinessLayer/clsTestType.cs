@@ -37,7 +37,7 @@ namespace DVLD_BusinessLayer
                 return null;
         }
 
-        public bool UpdateTestType()
+        public bool Save()
         {
 
             if (clsTestTypeData.UpdateTestType(this.TestTypeID, this.TestTypeTitle, this.TestTypeDescription, this.TestTypeFees))

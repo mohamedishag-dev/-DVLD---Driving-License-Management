@@ -1,6 +1,6 @@
 ﻿namespace DVLD_PresentationLayer
 {
-    partial class frmListManageApplicationType
+    partial class frmListApplicationType
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvApplicationTypes = new System.Windows.Forms.DataGridView();
-            this.cmsManageApplication = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsApplicationType = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -38,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.imgApplication = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplicationTypes)).BeginInit();
-            this.cmsManageApplication.SuspendLayout();
+            this.cmsApplicationType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgApplication)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,10 +46,9 @@
             // 
             this.dgvApplicationTypes.AllowUserToAddRows = false;
             this.dgvApplicationTypes.AllowUserToDeleteRows = false;
-            this.dgvApplicationTypes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvApplicationTypes.BackgroundColor = System.Drawing.Color.White;
             this.dgvApplicationTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvApplicationTypes.ContextMenuStrip = this.cmsManageApplication;
+            this.dgvApplicationTypes.ContextMenuStrip = this.cmsApplicationType;
             this.dgvApplicationTypes.Location = new System.Drawing.Point(12, 188);
             this.dgvApplicationTypes.Name = "dgvApplicationTypes";
             this.dgvApplicationTypes.ReadOnly = true;
@@ -58,12 +57,12 @@
             this.dgvApplicationTypes.TabIndex = 8;
             this.dgvApplicationTypes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvApplicationTypes_MouseDoubleClick);
             // 
-            // cmsManageApplication
+            // cmsApplicationType
             // 
-            this.cmsManageApplication.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsApplicationType.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editToolStripMenuItem});
-            this.cmsManageApplication.Name = "cmsManageApplication";
-            this.cmsManageApplication.Size = new System.Drawing.Size(120, 42);
+            this.cmsApplicationType.Name = "cmsManageApplication";
+            this.cmsApplicationType.Size = new System.Drawing.Size(238, 64);
             // 
             // editToolStripMenuItem
             // 
@@ -71,14 +70,14 @@
             this.editToolStripMenuItem.Image = global::DVLD_PresentationLayer.Properties.Resources.edit_32;
             this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(119, 38);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(237, 38);
+            this.editToolStripMenuItem.Text = "Edit Application Type";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // lblTitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.Red;
             this.lblTitle.Location = new System.Drawing.Point(44, 138);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(419, 47);
@@ -88,9 +87,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(382, 463);
+            this.btnClose.Image = global::DVLD_PresentationLayer.Properties.Resources.Close_32;
+            this.btnClose.Location = new System.Drawing.Point(393, 465);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(117, 43);
+            this.btnClose.Size = new System.Drawing.Size(106, 38);
             this.btnClose.TabIndex = 162;
             this.btnClose.Text = "Close";
             this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -127,7 +127,7 @@
             this.imgApplication.TabIndex = 9;
             this.imgApplication.TabStop = false;
             // 
-            // frmListManageApplicationType
+            // frmListApplicationType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,13 +141,13 @@
             this.Controls.Add(this.dgvApplicationTypes);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmListManageApplicationType";
+            this.Name = "frmListApplicationType";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Application Types";
             this.Load += new System.EventHandler(this.frmManageApplicationType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplicationTypes)).EndInit();
-            this.cmsManageApplication.ResumeLayout(false);
+            this.cmsApplicationType.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgApplication)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -162,7 +162,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblRecordsCount;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ContextMenuStrip cmsManageApplication;
+        private System.Windows.Forms.ContextMenuStrip cmsApplicationType;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
     }
 }

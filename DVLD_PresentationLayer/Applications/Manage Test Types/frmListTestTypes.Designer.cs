@@ -63,7 +63,7 @@
             this.cmsTestType.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editToolStripMenuItem});
             this.cmsTestType.Name = "cmsManageApplication";
-            this.cmsTestType.Size = new System.Drawing.Size(186, 42);
+            this.cmsTestType.Size = new System.Drawing.Size(197, 64);
             // 
             // editToolStripMenuItem
             // 
@@ -71,7 +71,7 @@
             this.editToolStripMenuItem.Image = global::DVLD_PresentationLayer.Properties.Resources.edit_32;
             this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(185, 38);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
             this.editToolStripMenuItem.Text = "Edit Test Type";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -97,6 +97,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.Image = global::DVLD_PresentationLayer.Properties.Resources.Close_32;
             this.btnClose.Location = new System.Drawing.Point(545, 468);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(117, 43);

@@ -18,7 +18,7 @@ namespace DVLD_PresentationLayer.Tests
             _FillLeceseClassInComoboBox();
 
             Application.ApplicationTypeID = 1;
-            Application.PaidFees = clsApplicationType.Find(Application.ApplicationTypeID).ApplicationFees;
+            Application.PaidFees = clsApplicationType.Find(Application.ApplicationTypeID).Fees;
             Application.CreatedByUserID = clsGlobal.CurrentUser.UserID;
             Application.ApplicationStatus = 1;
 

@@ -1,7 +1,5 @@
 ﻿using DVLD_BusinessLayer;
-using DVLD_PresentationLayer.Tests;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace DVLD_PresentationLayer.Applications.Manage_Test_Types
@@ -15,23 +13,34 @@ namespace DVLD_PresentationLayer.Applications.Manage_Test_Types
 
         private void frmListTestTypes_Load(object sender, EventArgs e)
         {
-            Image imgEidt = Properties.Resources.Close_32;
-            btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
 
             dgvTestTypes.DataSource = clsTestType.GetAllTestTypes();
-            dgvTestTypes.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvTestTypes.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             lblRecordsCount.Text = dgvTestTypes.RowCount.ToString();
+
+            if (dgvTestTypes.RowCount > 0)
+            {
+                dgvTestTypes.Columns[0].HeaderText = "ID";
+                dgvTestTypes.Columns[0].Width = 80;
+
+                dgvTestTypes.Columns[1].HeaderText = "Title";
+                dgvTestTypes.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                dgvTestTypes.Columns[2].HeaderText = "Description";
+                dgvTestTypes.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                dgvTestTypes.Columns[3].HeaderText = "Fess";
+                dgvTestTypes.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            }
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frmUpdateTestType((int)dgvTestTypes.CurrentRow.Cells[0].Value);
+            frmUpdateTestType frm = new frmUpdateTestType((int)dgvTestTypes.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
 
             //revrsh
-            dgvTestTypes.DataSource = clsTestType.GetAllTestTypes();
-            lblRecordsCount.Text = dgvTestTypes.Rows.Count.ToString();
+            frmListTestTypes_Load(null, null);
 
         }
 
@@ -39,5 +48,6 @@ namespace DVLD_PresentationLayer.Applications.Manage_Test_Types
         {
             this.Close();
         }
+
     }
 }

@@ -352,6 +352,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.Image = global::DVLD_PresentationLayer.Properties.Resources.Close_32;
             this.btnClose.Location = new System.Drawing.Point(387, 283);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(117, 43);
@@ -363,6 +364,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Image = global::DVLD_PresentationLayer.Properties.Resources.Save_32;
             this.btnSave.Location = new System.Drawing.Point(510, 283);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(117, 43);

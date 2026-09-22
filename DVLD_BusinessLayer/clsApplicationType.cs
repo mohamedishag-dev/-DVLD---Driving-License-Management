@@ -10,39 +10,39 @@ namespace DVLD_BusinessLayer
 {
     public class clsApplicationType
     {
-        public int ApplicationTypeID { set; get; }
-        public string ApplicationTypeTitle { set; get; }
-        public decimal ApplicationFees { set; get; }
+        public int ID { set; get; }
+        public string Title { set; get; }
+        public float Fees { set; get; }
 
         public clsApplicationType()
         {
-            this.ApplicationTypeID = -1;
-            this.ApplicationTypeTitle = "";
-            this.ApplicationFees = 0;
+            this.ID = -1;
+            this.Title = "";
+            this.Fees = 0;
         }
 
-        clsApplicationType(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationFees)
+        clsApplicationType(int ID, string Title, float Fees)
         {
-            this.ApplicationTypeID = ApplicationTypeID;
-            this.ApplicationTypeTitle = ApplicationTypeTitle;
-            this.ApplicationFees = ApplicationFees;
+            this.ID = ID;
+            this.Title = Title;
+            this.Fees = Fees;
         }
 
-        public static clsApplicationType Find(int ApplicationTypeID)
+        public static clsApplicationType Find(int ID)
         {
-            string ApplicationTypeTitle = "";
-            decimal ApplicationFees = 0;
+            string Title = "";
+            float Fees = 0;
 
-            if (clsApplicationTypesData.GetApplicationTypeInfoByID(ApplicationTypeID, ref ApplicationTypeTitle, ref ApplicationFees))
-                return new clsApplicationType(ApplicationTypeID, ApplicationTypeTitle, ApplicationFees);
+            if (clsApplicationTypesData.GetApplicationTypeInfoByID(ID, ref Title, ref Fees))
+                return new clsApplicationType(ID, Title, Fees);
             else
                 return null;
         }
 
-        public bool UpdateApplicationType()
+        public bool Save()
         {
 
-            if (clsApplicationTypesData.UpdateApplicationType(this.ApplicationTypeID, this.ApplicationTypeTitle, this.ApplicationFees))
+            if (clsApplicationTypesData.UpdateApplicationType(this.ID, this.Title, this.Fees))
                 return true;
             else
                 return false;

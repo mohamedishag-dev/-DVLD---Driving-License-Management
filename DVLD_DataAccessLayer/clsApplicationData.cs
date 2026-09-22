@@ -8,7 +8,7 @@ namespace DVLD_DataAccessLayer
     {
 
         public static bool GetApplicationInfoByID(int ApplicationID, ref int ApplicantPersonID, ref DateTime ApplicationDate, ref int ApplicationTypeID,
-            ref byte ApplicationStatus, ref DateTime LastStatusDate, ref decimal PaidFees, ref int CreatedByUserID)
+            ref byte ApplicationStatus, ref DateTime LastStatusDate, ref float PaidFees, ref int CreatedByUserID)
         {
 
             bool isFound = false;
@@ -31,8 +31,7 @@ namespace DVLD_DataAccessLayer
                     // The record was found
                     isFound = true;
 
-                    PaidFees = (decimal)reader["PaidFees"];
-
+                    PaidFees = (float)reader["PaidFees"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                     ApplicantPersonID = (int)reader["ApplicantPersonID"];
                     ApplicationTypeID = (int)reader["ApplicationTypeID"];
@@ -67,7 +66,7 @@ namespace DVLD_DataAccessLayer
         }
       
         public static bool GetApplicationInfoByApplicantPersonID(int ApplicantPersonID, ref int ApplicationID , ref DateTime ApplicationDate, ref int ApplicationTypeID,
-            ref byte ApplicationStatus, ref DateTime LastStatusDate, ref decimal PaidFees, ref int CreatedByUserID)
+            ref byte ApplicationStatus, ref DateTime LastStatusDate, ref float PaidFees, ref int CreatedByUserID)
         {
 
             bool isFound = false;
@@ -90,7 +89,7 @@ namespace DVLD_DataAccessLayer
                     // The record was found
                     isFound = true;
 
-                    PaidFees = (decimal)reader["PaidFees"];
+                    PaidFees = (float)reader["PaidFees"];
 
                     ApplicationID = (int)reader["ApplicationID"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
@@ -126,7 +125,7 @@ namespace DVLD_DataAccessLayer
         }
 
         public static int AddNewApplication(int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, byte ApplicationStatus,
-            DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID)
+            DateTime LastStatusDate, float PaidFees, int CreatedByUserID)
         {
             //this function will return the new Application id if succeeded and -1 if not.
             int ApplicationID = -1;
@@ -180,7 +179,7 @@ namespace DVLD_DataAccessLayer
         }
 
         public static bool UpdateApplication(int ApplicationID,int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, byte ApplicationStatus,
-            DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID)
+            DateTime LastStatusDate, float PaidFees, int CreatedByUserID)
         {
 
             int rowsAffected = 0;

@@ -10,10 +10,11 @@ namespace DVLD_PresentationLayer.Applications.Manage_Test_Types
     {
 
         private int _TestTypeID = -1;
+        private clsTestType _TestType ;
         public frmUpdateTestType(int TestTypeID)
         {
             InitializeComponent();
-            this._TestTypeID = TestTypeID;
+            _TestTypeID = TestTypeID;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -23,30 +24,24 @@ namespace DVLD_PresentationLayer.Applications.Manage_Test_Types
 
         private void frmUpdtaeTestType_Load(object sender, EventArgs e)
         {
-            Image imgEidt = Properties.Resources.Close_32;
-            btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
 
-            Image imgSave = Properties.Resources.Save_32;
-            btnSave.Image = new Bitmap(imgSave, new Size(24, 24));
-
-            clsTestType TestType = clsTestType.Find(_TestTypeID);
-            lblApplicationTypeID.Text = TestType.TestTypeID.ToString();
-            txtTypeTitle.Text = TestType.TestTypeTitle;
-            txtDescription.Text = TestType.TestTypeDescription;
-            txtFees.Text = ((int)TestType.TestTypeFees).ToString();
+            _TestType = clsTestType.Find(_TestTypeID);
+            lblApplicationTypeID.Text = _TestType.TestTypeID.ToString();
+            txtTypeTitle.Text = _TestType.TestTypeTitle;
+            txtDescription.Text = _TestType.TestTypeDescription;
+            txtFees.Text = ((int)_TestType.TestTypeFees).ToString();
 
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            clsTestType TestType = clsTestType.Find(_TestTypeID);
-            TestType.TestTypeTitle = txtTypeTitle.Text.Trim();
-            TestType.TestTypeDescription = txtDescription.Text.Trim();
+            _TestType.TestTypeTitle = txtTypeTitle.Text.Trim();
+            _TestType.TestTypeDescription = txtDescription.Text.Trim();
 
             if (int.TryParse(txtFees.Text, out int Fess))
-                TestType.TestTypeFees = Fess;
+                _TestType.TestTypeFees = Fess;
 
-            if (TestType.UpdateTestType())
+            if (_TestType.Save())
                 this.Close();
         }
 

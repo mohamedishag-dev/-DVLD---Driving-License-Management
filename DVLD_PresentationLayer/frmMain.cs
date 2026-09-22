@@ -63,7 +63,7 @@ namespace DVLD_PresentationLayer
 
         private void manageApplicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmListManageApplicationType frm = new frmListManageApplicationType();
+            frmListApplicationType frm = new frmListApplicationType();
             frm.ShowDialog();
             
         }

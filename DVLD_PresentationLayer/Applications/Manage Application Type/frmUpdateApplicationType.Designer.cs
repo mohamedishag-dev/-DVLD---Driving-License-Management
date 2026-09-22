@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtTypeTitle = new System.Windows.Forms.TextBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
             this.labelApplicationTypeID = new System.Windows.Forms.Label();
-            this.lblApplicationTypeID = new System.Windows.Forms.Label();
+            this.lblTypeID = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lebleTitle = new System.Windows.Forms.Label();
             this.lblFees = new System.Windows.Forms.Label();
@@ -40,13 +41,16 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
             // 
+            this.btnClose.Image = global::DVLD_PresentationLayer.Properties.Resources.Close_32;
             this.btnClose.Location = new System.Drawing.Point(162, 148);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(117, 43);
@@ -58,6 +62,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Image = global::DVLD_PresentationLayer.Properties.Resources.Save_32;
             this.btnSave.Location = new System.Drawing.Point(285, 148);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(117, 43);
@@ -67,14 +72,15 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtTypeTitle
+            // txtTitle
             // 
-            this.txtTypeTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTypeTitle.Location = new System.Drawing.Point(88, 88);
-            this.txtTypeTitle.MaxLength = 3250;
-            this.txtTypeTitle.Name = "txtTypeTitle";
-            this.txtTypeTitle.Size = new System.Drawing.Size(314, 22);
-            this.txtTypeTitle.TabIndex = 0;
+            this.txtTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle.Location = new System.Drawing.Point(88, 88);
+            this.txtTitle.MaxLength = 3250;
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(314, 22);
+            this.txtTitle.TabIndex = 0;
+            this.txtTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtTitle_Validating);
             // 
             // labelApplicationTypeID
             // 
@@ -86,16 +92,16 @@
             this.labelApplicationTypeID.TabIndex = 158;
             this.labelApplicationTypeID.Text = "ID:";
             // 
-            // lblApplicationTypeID
+            // lblTypeID
             // 
-            this.lblApplicationTypeID.AutoSize = true;
-            this.lblApplicationTypeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblApplicationTypeID.ForeColor = System.Drawing.Color.Red;
-            this.lblApplicationTypeID.Location = new System.Drawing.Point(88, 58);
-            this.lblApplicationTypeID.Name = "lblApplicationTypeID";
-            this.lblApplicationTypeID.Size = new System.Drawing.Size(33, 16);
-            this.lblApplicationTypeID.TabIndex = 159;
-            this.lblApplicationTypeID.Text = "N/A";
+            this.lblTypeID.AutoSize = true;
+            this.lblTypeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblTypeID.ForeColor = System.Drawing.Color.Red;
+            this.lblTypeID.Location = new System.Drawing.Point(88, 58);
+            this.lblTypeID.Name = "lblTypeID";
+            this.lblTypeID.Size = new System.Drawing.Size(33, 16);
+            this.lblTypeID.TabIndex = 159;
+            this.lblTypeID.Text = "N/A";
             // 
             // lblTitle
             // 
@@ -137,6 +143,7 @@
             this.txtFees.Name = "txtFees";
             this.txtFees.Size = new System.Drawing.Size(314, 22);
             this.txtFees.TabIndex = 1;
+            this.txtFees.Validating += new System.ComponentModel.CancelEventHandler(this.txtFees_Validating);
             // 
             // pictureBox3
             // 
@@ -171,7 +178,11 @@
             this.pictureBox1.TabIndex = 164;
             this.pictureBox1.TabStop = false;
             // 
-            // clsUpdate
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // frmUpdateApplicationType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -185,20 +196,21 @@
             this.Controls.Add(this.lebleTitle);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.labelApplicationTypeID);
-            this.Controls.Add(this.lblApplicationTypeID);
-            this.Controls.Add(this.txtTypeTitle);
+            this.Controls.Add(this.lblTypeID);
+            this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "clsUpdate";
+            this.Name = "frmUpdateApplicationType";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Application Type";
-            this.Load += new System.EventHandler(this.clsUpdate_Load);
+            this.Load += new System.EventHandler(this.frmUpdate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,9 +220,9 @@
 
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtTypeTitle;
+        private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label labelApplicationTypeID;
-        private System.Windows.Forms.Label lblApplicationTypeID;
+        private System.Windows.Forms.Label lblTypeID;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lebleTitle;
         private System.Windows.Forms.Label lblFees;
@@ -218,5 +230,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

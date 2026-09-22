@@ -24,12 +24,6 @@ namespace DVLD_PresentationLayer.People
             ctrlPresonCard1.LoadPresonCard(NationalNo);
         }
 
-        private void frmPresonDitels_Load(object sender, EventArgs e)
-        {
-            Image imgEidt = Properties.Resources.Close_32;
-            btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();

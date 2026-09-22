@@ -84,11 +84,6 @@ namespace DVLD_PresentationLayer.People
 
         private void frmAddEditPerson_Load(object sender, EventArgs e)
         {
-            Image imgEidt = Resources.Close_32;
-            btnClose.Image = new Bitmap(imgEidt, new Size(24, 24));
-
-            Image imgSave = Resources.Save_32;
-            btnSave.Image = new Bitmap(imgSave, new Size(24, 24));
 
             _ResetDefualtValues();
 
@@ -233,6 +228,11 @@ namespace DVLD_PresentationLayer.People
             _Person.Address = txtAddress.Text.Trim();
             _Person.NationalityCountryID = NationalityCountryID;
 
+            if (pbPersonImage.ImageLocation != null)
+                _Person.ImagePath = pbPersonImage.ImageLocation;
+            else
+                _Person.ImagePath = "";
+
             if (_Person.Save())
             {
                 lblPersonID.Text = _Person.PersonID.ToString();
@@ -365,5 +365,7 @@ namespace DVLD_PresentationLayer.People
             if (!clsValidatoin.IsNumber(txtPhone.Text))
                 txtPhone.Text = txtPhone.Text.Remove(txtPhone.Text.Length - 1);
         }
+
+
     }
 }
