@@ -6,7 +6,7 @@ namespace DVLD_PresentationLayer.Tests
 {
     public partial class frmAddLocalDrivingLicenseApplication : Form
     {
-        clsLocalDrivingLicenseApplication L_D_L_App = new clsLocalDrivingLicenseApplication();
+        clsLocalDrivingLicenseApplication _LicenseApplication = new clsLocalDrivingLicenseApplication();
         public frmAddLocalDrivingLicenseApplication()
         {
             InitializeComponent();
@@ -16,16 +16,16 @@ namespace DVLD_PresentationLayer.Tests
         {
             _FillLeceseClassInComoboBox();
 
-            L_D_L_App.ApplicationInfo.ApplicationTypeID = 1;
-            L_D_L_App.ApplicationInfo.PaidFees = clsApplicationType.Find(L_D_L_App.ApplicationInfo.ApplicationTypeID).Fees;
-            L_D_L_App.ApplicationInfo.CreatedByUserID = clsGlobal.CurrentUser.UserID;
-            L_D_L_App.ApplicationInfo.Status = 1;
+            _LicenseApplication.ApplicationInfo.ApplicationTypeID = 1;
+            _LicenseApplication.ApplicationInfo.PaidFees = clsApplicationType.Find(_LicenseApplication.ApplicationInfo.ApplicationTypeID).Fees;
+            _LicenseApplication.ApplicationInfo.CreatedByUserID = clsGlobal.CurrentUser.UserID;
+            _LicenseApplication.ApplicationInfo.Status = 1;
 
 
             btnSave.Enabled = false;
-            lblFess.Text = ((int)L_D_L_App.ApplicationInfo.PaidFees).ToString();
+            lblFess.Text = ((int)_LicenseApplication.ApplicationInfo.PaidFees).ToString();
             lblCreatedBy.Text = clsGlobal.CurrentUser.UserName;
-            lblApplicationDate.Text = L_D_L_App.ApplicationInfo.ApplicationDate.ToShortDateString();
+            lblApplicationDate.Text = _LicenseApplication.ApplicationInfo.ApplicationDate.ToShortDateString();
 
         }
 
@@ -52,8 +52,14 @@ namespace DVLD_PresentationLayer.Tests
         {
             if (obj != -1)
             {
-                L_D_L_App.ApplicationInfo.ApplicantPersonID = ctrlPersonWithFilter1.PersonID;
+                _LicenseApplication.ApplicationInfo.ApplicantPersonID = ctrlPersonWithFilter1.PersonID;
                 btnSave.Enabled = true;
+
+            }
+            else
+            {
+                _LicenseApplication.ApplicationInfo.ApplicantPersonID = -1;
+                btnSave.Enabled = false;
 
             }
 
@@ -62,17 +68,19 @@ namespace DVLD_PresentationLayer.Tests
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            L_D_L_App.LicenseClassID = clsLecenseClass.Find(cbLecenseClass.Text.Trim()).LecenseClassID;
+            _LicenseApplication.LicenseClassID = clsLecenseClass.Find(cbLecenseClass.Text.Trim()).LecenseClassID;
 
 
-            if (L_D_L_App.Save())
+            if (_LicenseApplication.Save())
             {
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                lblDL_ApplicationID.Text = L_D_L_App.LocalDrivingLicenseApplicationID.ToString();
+                lblDL_ApplicationID.Text = _LicenseApplication.LocalDrivingLicenseApplicationID.ToString();
             }
             else
             {
-                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Choose another license Class, the selected Person Already have an active application for the selected class with id=" +
+                    clsLocalDrivingLicenseApplication.Find(_LicenseApplication.ApplicationInfo.ApplicantPersonID, _LicenseApplication.LicenseClassID).LocalDrivingLicenseApplicationID,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -81,6 +89,7 @@ namespace DVLD_PresentationLayer.Tests
             tbApplications.SelectedTab = tbApplications.TabPages["tpApplicatinInfo"];
 
         }
+
     }
 }
 

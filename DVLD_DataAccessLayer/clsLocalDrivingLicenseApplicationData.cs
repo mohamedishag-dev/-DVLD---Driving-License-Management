@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD_DataAccessLayer
 {
@@ -37,6 +38,62 @@ namespace DVLD_DataAccessLayer
 
                     ApplicationID = (int)reader["ApplicationID"];
                     LicenseClassID = (int)reader["LicenseClassID"];
+      
+                }
+                else
+                {
+                    // The record was not found
+                    isFound = false;
+                }
+
+                reader.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                isFound = false;
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+        public static bool GetLocalDrivingLicenseApplicationInfoByApplicationIdAndLicenseClassID(int ApplicantPersonID, int LicenseClassID, ref int ApplicationID, ref int LocalDrivingLicenseApplicationID)
+        {
+
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT L.*
+                            FROM LocalDrivingLicenseApplications L INNER JOIN
+                            Applications ON L.ApplicationID = Applications.ApplicationID
+                            WHERE ApplicantPersonID = @ApplicantPersonID
+                            AND LicenseClassID = @LicenseClassID AND ApplicationStatus = 1";
+
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+            command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // The record was found
+                    isFound = true;
+                    ApplicationID = (int)reader["ApplicationID"];
+                    LocalDrivingLicenseApplicationID = (int)reader["LocalDrivingLicenseApplicationID"];
       
                 }
                 else
@@ -120,21 +177,25 @@ namespace DVLD_DataAccessLayer
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"SELECT   L.LocalDrivingLicenseApplicationID, C.ClassName, P.NationalNo,
-                                      CONCAT(P.FirstName,' ', P.SecondName, ' ', P.ThirdName, ' ', P.LastName) AS FullName, App.ApplicationDate,
-	                                        (SELECT COUNT(T.TestAppointmentID) 
-	                                        FROM  TestAppointments TA JOIN Tests T ON TA.TestAppointmentID = T.TestAppointmentID
-	                                	    WHERE (T.TestResult = 1 AND TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID)) AS PassedTestCount,	      
-                                            CASE
-	                                            WHEN App.ApplicationStatus = 1 THEN 'New'
-	                                            WHEN App.ApplicationStatus = 2 THEN 'Canceled'
-	                                            WHEN App.ApplicationStatus = 3 THEN 'Completed'
-	                                        END AS [Status]
-                             FROM     Applications App
-                             JOIN     People P ON App.ApplicantPersonID = P.PersonID
-                             JOIN     LocalDrivingLicenseApplications L ON 	App.ApplicationID = L.ApplicationID
-                             JOIN     LicenseClasses C ON 	C.LicenseClassID = C.LicenseClassID
-                             ORDER BY [Status] DESC";
+            string query = @"SELECT L.LocalDrivingLicenseApplicationID, LicenseClasses.ClassName, P.NationalNo,
+                                 CONCAT (P.FirstName,' ', P.SecondName, ' ', P.ThirdName, ' ', P.LastName) AS FullName,
+                                 App.ApplicationDate,
+                                        (SELECT COUNT(T.TestAppointmentID) 
+                                        FROM  TestAppointments TA JOIN Tests T ON TA.TestAppointmentID = T.TestAppointmentID
+                                        WHERE (T.TestResult = 1 AND TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID)) 
+                                 AS PassedTestCount,
+                                 CASE
+                                   WHEN App.ApplicationStatus = 1 THEN 'New'
+                                   WHEN App.ApplicationStatus = 2 THEN 'Canceled'
+                                   WHEN App.ApplicationStatus = 3 THEN 'Completed'
+                                 END AS [Status]
+
+                            FROM   LocalDrivingLicenseApplications L INNER JOIN
+                                   LicenseClasses ON L.LicenseClassID = LicenseClasses.LicenseClassID INNER JOIN
+                                   Applications App ON L.ApplicationID = App.ApplicationID INNER JOIN
+                                   People P ON App.ApplicantPersonID = P.PersonID
+                            ORDER BY L.LocalDrivingLicenseApplicationID DESC";
+
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -287,6 +348,43 @@ namespace DVLD_DataAccessLayer
             return isFound;
         }
 
+        public static bool IsLocalDrivingLicenseApplicationExistForApplicationIdAndLicenseClassID(int ApplicantPersonID, int LicenseClassID)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = @"SELECT Found=1 FROM LocalDrivingLicenseApplications L INNER JOIN
+                            Applications ON L.ApplicationID = Applications.ApplicationID
+                            WHERE ApplicantPersonID = @ApplicantPersonID
+                            AND LicenseClassID = @LicenseClassID AND ApplicationStatus = 1";
+
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                isFound = reader.HasRows;
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
         public static bool IsLocalDrivingLicenseApplicationExistByApplicationID(string ApplicationID)
         {
             bool isFound = false;
@@ -355,54 +453,7 @@ namespace DVLD_DataAccessLayer
             return (rowsAffected > 0);
 
         }
-        //public static DataTable GetAllLocalDrivingLicenseApplication()
-        //{
-
-        //    DataTable dt = new DataTable();
-        //    SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-        //    string query = @"SELECT  LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID, LicenseClasses.ClassName, People.NationalNo,
-        //                             FullName= People.FirstName+' '+ People.SecondName+' '+ People.ThirdName+' '+ People.LastName,
-        //                             Applications.ApplicationDate, Applications.ApplicationStatus
-        //                     FROM    LocalDrivingLicenseApplications INNER JOIN
-        //                             LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID INNER JOIN
-        //                             Applications ON LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID INNER JOIN
-        //                             People ON Applications.ApplicantPersonID = People.PersonID";
-
-        //    SqlCommand command = new SqlCommand(query, connection);
-
-        //    try
-        //    {
-        //        connection.Open();
-
-        //        SqlDataReader reader = command.ExecuteReader();
-
-        //        if (reader.HasRows)
-
-        //        {
-        //            dt.Load(reader);
-        //        }
-
-        //        reader.Close();
-
-
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-
-        //    return dt;
-
-        //}
 
     }
 
 }
-
-

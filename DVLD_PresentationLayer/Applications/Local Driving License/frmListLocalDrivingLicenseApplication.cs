@@ -1,16 +1,7 @@
 ﻿using DVLD_BusinessLayer;
-using DVLD_PresentationLayer.People;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DVLD_PresentationLayer.Tests
 {
@@ -37,7 +28,7 @@ namespace DVLD_PresentationLayer.Tests
             cbFilterBy.SelectedIndex = 0;
 
             lblRecordsCount.Text = dgvLDL_App.RowCount.ToString();
-            if (dgvLDL_App.RowCount > 0) 
+            if (dgvLDL_App.RowCount > 0)
             {
                 dgvLDL_App.Columns[0].HeaderText = "L.D.L.AppID";
                 dgvLDL_App.Columns[0].Width = 100;
@@ -56,7 +47,7 @@ namespace DVLD_PresentationLayer.Tests
 
                 dgvLDL_App.Columns[5].HeaderText = "Passed Test";
                 dgvLDL_App.Columns[5].Width = 90;
-              
+
                 dgvLDL_App.Columns[6].HeaderText = "Status";
                 dgvLDL_App.Columns[6].Width = 90;
             }
@@ -81,7 +72,7 @@ namespace DVLD_PresentationLayer.Tests
                 txtFilterValue.Text = "";
                 txtFilterValue.Focus();
             }
-       
+
         }
 
         private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -119,7 +110,7 @@ namespace DVLD_PresentationLayer.Tests
 
         private void txtFilterValue_TextChanged(object sender, EventArgs e)
         {
-           
+
             string FilterColumn = "";
 
             switch (cbFilterBy.Text)
@@ -184,6 +175,23 @@ namespace DVLD_PresentationLayer.Tests
             frm.ShowDialog();
 
             frmListLocalDrivingLicenseApplication_Load(null, null);
+        }
+
+        private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (MessageBox.Show("Are you sure do want to Cancel Application ",
+                  "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (clsLocalDrivingLicenseApplication.CancelApplication((int)dgvLDL_App.CurrentRow.Cells[0].Value))
+                {
+                    MessageBox.Show("Application Canceled Successfully.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmListLocalDrivingLicenseApplication_Load(null, null);
+                }
+                else
+                    MessageBox.Show("Application was not Canceled because it has data linked to it.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

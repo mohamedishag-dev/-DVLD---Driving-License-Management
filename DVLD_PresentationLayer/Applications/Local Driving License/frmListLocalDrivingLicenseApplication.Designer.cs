@@ -161,7 +161,7 @@
             this.toolStripMenuItem5,
             this.showhistoryToolStripMenuItem});
             this.cmsApplication.Name = "contextMenuStrip1";
-            this.cmsApplication.Size = new System.Drawing.Size(274, 296);
+            this.cmsApplication.Size = new System.Drawing.Size(274, 318);
             // 
             // showDitelsToolStripMenuItem
             // 
@@ -195,6 +195,7 @@
             this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
             this.cancelToolStripMenuItem.Size = new System.Drawing.Size(273, 32);
             this.cancelToolStripMenuItem.Text = "Cancel Application";
+            this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 

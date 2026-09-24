@@ -61,6 +61,12 @@
     <Compile Include="Applications\Local Driving License\frmListLocalDrivingLicenseApplication.Designer.cs">
       <DependentUpon>frmListLocalDrivingLicenseApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTest.Designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global Classes\clsUtil.cs" />
     <Compile Include="Global Classes\clsValidatoin.cs" />
     <Compile Include="People\Controls\ctrlPersonWithFilter.cs">
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Local Driving License\frmListLocalDrivingLicenseApplication.resx">
       <DependentUpon>frmListLocalDrivingLicenseApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\Controls\ctrlPersonWithFilter.resx">
       <DependentUpon>ctrlPersonWithFilter.cs</DependentUpon>

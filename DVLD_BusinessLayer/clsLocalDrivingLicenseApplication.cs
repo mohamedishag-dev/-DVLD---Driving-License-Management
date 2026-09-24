@@ -10,9 +10,9 @@ namespace DVLD_BusinessLayer
 
         public int LocalDrivingLicenseApplicationID { set; get; }
         public int ApplicationID { set; get; }
-        public clsApplication ApplicationInfo;
+        public clsApplication ApplicationInfo = new clsApplication();
         public int LicenseClassID { set; get; }
-        public clsLecenseClass LecenseClassInfo;
+        public clsLecenseClass LecenseClassInfo = new clsLecenseClass();
         public clsLocalDrivingLicenseApplication()
         {
             this.LocalDrivingLicenseApplicationID = -1;
@@ -44,6 +44,17 @@ namespace DVLD_BusinessLayer
                 return null;
         }
 
+        public static clsLocalDrivingLicenseApplication Find(int ApplicantPersonID, int LicenseClassID)
+        {
+            int ApplicationID = -1, LocalDrivingLicenseApplicationID = -1;
+
+            if (clsLocalDrivingLicenseApplicationData.GetLocalDrivingLicenseApplicationInfoByApplicationIdAndLicenseClassID(ApplicantPersonID, LicenseClassID, ref ApplicationID, ref LocalDrivingLicenseApplicationID))
+
+                return new clsLocalDrivingLicenseApplication(LocalDrivingLicenseApplicationID, ApplicationID, LicenseClassID);
+            else
+                return null;
+        }
+
         public static DataTable GetAllLocalDrivingLicenseApplication()
         {
             return clsLocalDrivingLicenseApplicationData.GetAllLocalDrivingLicenseApplication();
@@ -52,6 +63,9 @@ namespace DVLD_BusinessLayer
 
         private bool _AddNewLocalDrivingLicenseApplication()
         {
+
+            if (IsApplicationExist(this.ApplicationInfo.ApplicantPersonID, this.LicenseClassID))
+                return false;
 
             if (this.ApplicationInfo.Save())
             {
@@ -95,9 +109,28 @@ namespace DVLD_BusinessLayer
             return false;
         }
 
-        public static bool IsLocalDrivingLicenseApplicationExist(int LocalDrivingLicenseApplicationID)
+        public static bool IsApplicationExist(int LocalDrivingLicenseApplicationID)
         {
             return clsLocalDrivingLicenseApplicationData.IsLocalDrivingLicenseApplicationExistByID(LocalDrivingLicenseApplicationID);
+        }
+
+        public static bool IsApplicationExist(int ApplicantPersonID, int LicenseClassID)
+        {
+            return clsLocalDrivingLicenseApplicationData.IsLocalDrivingLicenseApplicationExistForApplicationIdAndLicenseClassID(ApplicantPersonID, LicenseClassID);
+        }
+
+        public static bool CancelApplication(int LocalDrivingLicenseApplicationID)
+        {
+            clsLocalDrivingLicenseApplication LicenseApplication = Find(LocalDrivingLicenseApplicationID);
+            clsApplication application = clsApplication.Find(LicenseApplication.ApplicationID);
+            if (application != null)
+            {
+                application.Status = 2;
+                if (application.Save())
+                    return true;
+            }
+
+            return false;
         }
 
     }
