@@ -1,7 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\DVLD\\DVLD_PresentationLayer\\",
-  "Documents": [],
+  "WorkspaceRootPath": "E:\\ProgarmmingAdvises\\Profects\\DVLD\\DVLD_PresentationLayer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{57401815-9A93-4DA9-8B78-E1E13F7C9DD8}|..\\DVLD_BusinessLayer\\DVLD_BusinessLayer.csproj|e:\\progarmmingadvises\\profects\\dvld\\dvld_businesslayer\\clslocaldrivinglicenseapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4BFD6A4-BFB3-49CE-8332-9CC0F1F89C28}|..\\DVLD_DataAccessLayer\\DVLD_DataAccessLayer.csproj|e:\\progarmmingadvises\\profects\\dvld\\dvld_dataaccesslayer\\clslocaldrivinglicenseapplicationdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57401815-9A93-4DA9-8B78-E1E13F7C9DD8}|..\\DVLD_BusinessLayer\\DVLD_BusinessLayer.csproj|e:\\progarmmingadvises\\profects\\dvld\\dvld_businesslayer\\clsapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B559F05-88DD-4F3F-93DD-151B6930D9B9}|DVLD_PresentationLayer.csproj|E:\\ProgarmmingAdvises\\Profects\\DVLD\\DVLD_PresentationLayer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B559F05-88DD-4F3F-93DD-151B6930D9B9}|DVLD_PresentationLayer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +23,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,6 +40,58 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "clsLocalDrivingLicenseApplication.cs",
+              "DocumentMoniker": "E:\\ProgarmmingAdvises\\Profects\\DVLD\\DVLD_BusinessLayer\\clsLocalDrivingLicenseApplication.cs",
+              "RelativeDocumentMoniker": "..\\DVLD_BusinessLayer\\clsLocalDrivingLicenseApplication.cs",
+              "ToolTip": "E:\\ProgarmmingAdvises\\Profects\\DVLD\\DVLD_BusinessLayer\\clsLocalDrivingLicenseApplication.cs",
+              "RelativeToolTip": "..\\DVLD_BusinessLayer\\clsLocalDrivingLicenseApplication.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAowEAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-24T12:40:09.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "clsApplication.cs",
+              "DocumentMoniker": "E:\\ProgarmmingAdvises\\Profects\\DVLD\\DVLD_BusinessLayer\\clsApplication.cs",
+              "RelativeDocumentMoniker": "..\\DVLD_BusinessLayer\\clsApplication.cs",
+              "ToolTip": "E:\\ProgarmmingAdvises\\Profects\\DVLD\\DVLD_BusinessLayer\\clsApplication.cs",
+              "RelativeToolTip": "..\\DVLD_BusinessLayer\\clsApplication.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAmwBQAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-23T16:47:46.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\ProgarmmingAdvises\\Profects\\DVLD\\DVLD_PresentationLayer\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\ProgarmmingAdvises\\Profects\\DVLD\\DVLD_PresentationLayer\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-23T15:43:53.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "clsLocalDrivingLicenseApplicationData.cs",
+              "DocumentMoniker": "E:\\ProgarmmingAdvises\\Profects\\DVLD\\DVLD_DataAccessLayer\\clsLocalDrivingLicenseApplicationData.cs",
+              "RelativeDocumentMoniker": "..\\DVLD_DataAccessLayer\\clsLocalDrivingLicenseApplicationData.cs",
+              "ToolTip": "E:\\ProgarmmingAdvises\\Profects\\DVLD\\DVLD_DataAccessLayer\\clsLocalDrivingLicenseApplicationData.cs",
+              "RelativeToolTip": "..\\DVLD_DataAccessLayer\\clsLocalDrivingLicenseApplicationData.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA8wGkBAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-23T16:23:02.877Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -120,13 +120,21 @@ namespace DVLD_DataAccessLayer
             DataTable dt = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = @"SELECT  LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID, LicenseClasses.ClassName, People.NationalNo,
-                                     FullName= People.FirstName+' '+ People.SecondName+' '+ People.ThirdName+' '+ People.LastName,
-                                     Applications.ApplicationDate, Applications.ApplicationStatus
-                             FROM    LocalDrivingLicenseApplications INNER JOIN
-                                     LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID INNER JOIN
-                                     Applications ON LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID INNER JOIN
-                                     People ON Applications.ApplicantPersonID = People.PersonID";
+            string query = @"SELECT   L.LocalDrivingLicenseApplicationID, C.ClassName, P.NationalNo,
+                                      CONCAT(P.FirstName,' ', P.SecondName, ' ', P.ThirdName, ' ', P.LastName) AS FullName, App.ApplicationDate,
+	                                        (SELECT COUNT(T.TestAppointmentID) 
+	                                        FROM  TestAppointments TA JOIN Tests T ON TA.TestAppointmentID = T.TestAppointmentID
+	                                	    WHERE (T.TestResult = 1 AND TA.LocalDrivingLicenseApplicationID = L.LocalDrivingLicenseApplicationID)) AS PassedTestCount,	      
+                                            CASE
+	                                            WHEN App.ApplicationStatus = 1 THEN 'New'
+	                                            WHEN App.ApplicationStatus = 2 THEN 'Canceled'
+	                                            WHEN App.ApplicationStatus = 3 THEN 'Completed'
+	                                        END AS [Status]
+                             FROM     Applications App
+                             JOIN     People P ON App.ApplicantPersonID = P.PersonID
+                             JOIN     LocalDrivingLicenseApplications L ON 	App.ApplicationID = L.ApplicationID
+                             JOIN     LicenseClasses C ON 	C.LicenseClassID = C.LicenseClassID
+                             ORDER BY [Status] DESC";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -347,7 +355,54 @@ namespace DVLD_DataAccessLayer
             return (rowsAffected > 0);
 
         }
+        //public static DataTable GetAllLocalDrivingLicenseApplication()
+        //{
+
+        //    DataTable dt = new DataTable();
+        //    SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+        //    string query = @"SELECT  LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID, LicenseClasses.ClassName, People.NationalNo,
+        //                             FullName= People.FirstName+' '+ People.SecondName+' '+ People.ThirdName+' '+ People.LastName,
+        //                             Applications.ApplicationDate, Applications.ApplicationStatus
+        //                     FROM    LocalDrivingLicenseApplications INNER JOIN
+        //                             LicenseClasses ON LocalDrivingLicenseApplications.LicenseClassID = LicenseClasses.LicenseClassID INNER JOIN
+        //                             Applications ON LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID INNER JOIN
+        //                             People ON Applications.ApplicantPersonID = People.PersonID";
+
+        //    SqlCommand command = new SqlCommand(query, connection);
+
+        //    try
+        //    {
+        //        connection.Open();
+
+        //        SqlDataReader reader = command.ExecuteReader();
+
+        //        if (reader.HasRows)
+
+        //        {
+        //            dt.Load(reader);
+        //        }
+
+        //        reader.Close();
+
+
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
+
+        //    return dt;
+
+        //}
 
     }
 
 }
+
+

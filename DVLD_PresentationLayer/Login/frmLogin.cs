@@ -34,13 +34,11 @@ namespace DVLD_PresentationLayer
                     return;
                 }
 
-                txtUserName.Text = "";
-                txtPassword.Text = "";
-
                 clsGlobal.CurrentUser = user;
                 this.Hide();
                 frmMain frm = new frmMain(this);
                 frm.ShowDialog();
+
             }
             else
             {

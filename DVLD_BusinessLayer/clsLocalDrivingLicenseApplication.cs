@@ -1,14 +1,9 @@
 ﻿using DVLD_DataAccessLayer;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DVLD_BusinessLayer
 {
-      public class clsLocalDrivingLicenseApplication
+    public class clsLocalDrivingLicenseApplication
     {
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
@@ -22,7 +17,9 @@ namespace DVLD_BusinessLayer
         {
             this.LocalDrivingLicenseApplicationID = -1;
             this.ApplicationID = -1;
+            this.ApplicationInfo = new clsApplication();
             this.LicenseClassID = -1;
+            this.LecenseClassInfo = new clsLecenseClass();
             this.Mode = enMode.AddNew;
         }
 
@@ -50,14 +47,20 @@ namespace DVLD_BusinessLayer
         public static DataTable GetAllLocalDrivingLicenseApplication()
         {
             return clsLocalDrivingLicenseApplicationData.GetAllLocalDrivingLicenseApplication();
-        
+
         }
 
         private bool _AddNewLocalDrivingLicenseApplication()
         {
 
-            this.LocalDrivingLicenseApplicationID = clsLocalDrivingLicenseApplicationData.AddNewLocalDrivingLicenseApplication(this.ApplicationID, this.LicenseClassID);
-            return (this.LocalDrivingLicenseApplicationID != -1);
+            if (this.ApplicationInfo.Save())
+            {
+                ApplicationID = ApplicationInfo.ID;
+                this.LocalDrivingLicenseApplicationID = clsLocalDrivingLicenseApplicationData.AddNewLocalDrivingLicenseApplication(this.ApplicationID, this.LicenseClassID);
+                return (this.LocalDrivingLicenseApplicationID != -1);
+            }
+            else
+                return false;
 
         }
 

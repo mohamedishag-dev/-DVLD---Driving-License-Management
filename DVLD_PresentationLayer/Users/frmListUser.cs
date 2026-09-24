@@ -127,7 +127,7 @@ namespace DVLD_PresentationLayer.Users
             }
 
 
-            if (FilterColumn != "UserName" || FilterColumn != "FullName")
+            if (FilterColumn != "UserName" && FilterColumn != "FullName")
                 //in this case we deal with integer not string.
                 _dtAllUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterValue.Text.Trim());
             else
@@ -164,6 +164,9 @@ namespace DVLD_PresentationLayer.Users
                 txtFilterValue.Visible = (cbFilterBy.Text != "None");
                 txtFilterValue.Text = "";
                 txtFilterValue.Focus();
+
+                _dtAllUsers.DefaultView.RowFilter = "";
+                lblRecordsCount.Text = dgvUsers.Rows.Count.ToString();
 
             }
 
@@ -225,5 +228,6 @@ namespace DVLD_PresentationLayer.Users
             if (cbFilterBy.Text == "Person ID" || cbFilterBy.Text == "User ID")
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿using DVLD_PresentationLayer.Applications.Manage_Test_Types;
+﻿using DVLD_PresentationLayer;
 using DVLD_PresentationLayer.Tests;
 using DVLD_PresentationLayer.Users;
 using System;
@@ -8,18 +8,12 @@ namespace DVLD_PresentationLayer
 {
     public partial class frmMain : Form
     {
-        private frmLogin _login;
-        public frmMain(frmLogin frm)
+        private frmLogin _frmLogin;
+        public frmMain(frmLogin Login)
         {
             InitializeComponent();
-            _login = frm;
+            _frmLogin = Login;
         }
-
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            _login.Close();
-        }
-
 
         private void applicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -37,7 +31,7 @@ namespace DVLD_PresentationLayer
         private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             clsGlobal.CurrentUser = null;
-            _login.Show();
+            _frmLogin.Show();
             this.Close();
         }
 
@@ -65,12 +59,17 @@ namespace DVLD_PresentationLayer
         {
             frmListApplicationType frm = new frmListApplicationType();
             frm.ShowDialog();
-            
+
         }
 
         private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAddLocalDrivingLicenseApplication frm = new frmAddLocalDrivingLicenseApplication();
+            frm.ShowDialog();
+        }
+        private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListLocalDrivingLicenseApplication frm = new frmListLocalDrivingLicenseApplication();
             frm.ShowDialog();
         }
 
@@ -79,11 +78,6 @@ namespace DVLD_PresentationLayer
             MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
-        private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-        }
 
         private void internationalDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -122,5 +116,10 @@ namespace DVLD_PresentationLayer
 
         }
 
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (clsGlobal.CurrentUser != null)
+                _frmLogin.Close();
+        }
     }
 }

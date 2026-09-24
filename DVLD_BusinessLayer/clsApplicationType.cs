@@ -42,10 +42,8 @@ namespace DVLD_BusinessLayer
         public bool Save()
         {
 
-            if (clsApplicationTypesData.UpdateApplicationType(this.ID, this.Title, this.Fees))
-                return true;
-            else
-                return false;
+            return (clsApplicationTypesData.UpdateApplicationType(this.ID, this.Title, this.Fees));
+
         }
 
         public static DataTable GetAllApplicationTypes()

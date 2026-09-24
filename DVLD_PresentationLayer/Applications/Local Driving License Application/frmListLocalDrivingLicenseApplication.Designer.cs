@@ -244,11 +244,12 @@
             this.btnAddLocalDrivingLicenseApplication.BackgroundImage = global::DVLD_PresentationLayer.Properties.Resources.New_Application_64;
             this.btnAddLocalDrivingLicenseApplication.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAddLocalDrivingLicenseApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddLocalDrivingLicenseApplication.Location = new System.Drawing.Point(1018, 149);
+            this.btnAddLocalDrivingLicenseApplication.Location = new System.Drawing.Point(1027, 158);
             this.btnAddLocalDrivingLicenseApplication.Name = "btnAddLocalDrivingLicenseApplication";
-            this.btnAddLocalDrivingLicenseApplication.Size = new System.Drawing.Size(66, 55);
+            this.btnAddLocalDrivingLicenseApplication.Size = new System.Drawing.Size(57, 46);
             this.btnAddLocalDrivingLicenseApplication.TabIndex = 28;
             this.btnAddLocalDrivingLicenseApplication.UseVisualStyleBackColor = true;
+            this.btnAddLocalDrivingLicenseApplication.Click += new System.EventHandler(this.btnAddLocalDrivingLicenseApplication_Click);
             // 
             // cbStatus
             // 

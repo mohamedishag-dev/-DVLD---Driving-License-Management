@@ -72,5 +72,11 @@ namespace DVLD_PresentationLayer.Tests
         private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
+
+        private void btnAddLocalDrivingLicenseApplication_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+        }
     }
 }

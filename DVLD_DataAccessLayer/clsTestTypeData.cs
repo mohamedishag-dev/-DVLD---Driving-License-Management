@@ -6,7 +6,7 @@ namespace DVLD_DataAccessLayer
 {
     public class clsTestTypeData
     {
-        public static bool GetTestTypeInfoByID(int TestTypeID, ref string TestTypeTitle, ref string TestTypeDescription, ref decimal TestTypeFees)
+        public static bool GetTestTypeInfoByID(int TestTypeID, ref string TestTypeTitle, ref string TestTypeDescription, ref float TestTypeFees)
         {
 
             bool isFound = false;
@@ -31,7 +31,7 @@ namespace DVLD_DataAccessLayer
 
                     TestTypeTitle = (string)reader["TestTypeTitle"];
                     TestTypeDescription = (string)reader["TestTypeDescription"];
-                    TestTypeFees = (decimal)reader["TestTypeFees"];
+                    TestTypeFees = Convert.ToSingle(reader["TestTypeFees"]);
 
                 }
                 else
@@ -97,7 +97,7 @@ namespace DVLD_DataAccessLayer
 
         }
 
-        public static bool UpdateTestType(int TestTypeID, string TestTypeTitle, string TestTypeDescription, decimal TestTypeFees)
+        public static bool UpdateTestType(int TestTypeID, string TestTypeTitle, string TestTypeDescription, float TestTypeFees)
         {
 
             int rowsAffected = 0;

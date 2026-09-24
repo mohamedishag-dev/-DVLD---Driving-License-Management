@@ -30,8 +30,8 @@
         {
             this.tbApplications = new System.Windows.Forms.TabControl();
             this.tpPersonInfo = new System.Windows.Forms.TabPage();
+            this.ctrlPersonWithFilter1 = new DVLD_PresentationLayer.ctrlPersonWithFilter();
             this.tpApplicatinInfo = new System.Windows.Forms.TabPage();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblApplicationDate = new System.Windows.Forms.Label();
             this.lblFess = new System.Windows.Forms.Label();
             this.lblCreatedBy = new System.Windows.Forms.Label();
@@ -42,14 +42,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblDL_ApplicationID = new System.Windows.Forms.Label();
             this.labelDLApplication = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.ctrlPersonWithFilter1 = new DVLD_PresentationLayer.ctrlPersonWithFilter();
             this.tbApplications.SuspendLayout();
             this.tpPersonInfo.SuspendLayout();
             this.tpApplicatinInfo.SuspendLayout();
@@ -68,20 +69,31 @@
             this.tbApplications.Location = new System.Drawing.Point(12, 59);
             this.tbApplications.Name = "tbApplications";
             this.tbApplications.SelectedIndex = 0;
-            this.tbApplications.Size = new System.Drawing.Size(767, 365);
+            this.tbApplications.Size = new System.Drawing.Size(767, 417);
             this.tbApplications.TabIndex = 1;
             this.tbApplications.TabStop = false;
             // 
             // tpPersonInfo
             // 
+            this.tpPersonInfo.Controls.Add(this.btnNext);
             this.tpPersonInfo.Controls.Add(this.ctrlPersonWithFilter1);
             this.tpPersonInfo.Location = new System.Drawing.Point(4, 22);
             this.tpPersonInfo.Name = "tpPersonInfo";
             this.tpPersonInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPersonInfo.Size = new System.Drawing.Size(759, 339);
+            this.tpPersonInfo.Size = new System.Drawing.Size(759, 391);
             this.tpPersonInfo.TabIndex = 0;
             this.tpPersonInfo.Text = "Person Info";
             this.tpPersonInfo.UseVisualStyleBackColor = true;
+            // 
+            // ctrlPersonWithFilter1
+            // 
+            this.ctrlPersonWithFilter1.FilterEnabled = true;
+            this.ctrlPersonWithFilter1.Location = new System.Drawing.Point(3, 3);
+            this.ctrlPersonWithFilter1.Name = "ctrlPersonWithFilter1";
+            this.ctrlPersonWithFilter1.ShowAddPerson = true;
+            this.ctrlPersonWithFilter1.Size = new System.Drawing.Size(746, 325);
+            this.ctrlPersonWithFilter1.TabIndex = 0;
+            this.ctrlPersonWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonWithFilter1_OnPersonSelected);
             // 
             // tpApplicatinInfo
             // 
@@ -103,21 +115,10 @@
             this.tpApplicatinInfo.Location = new System.Drawing.Point(4, 22);
             this.tpApplicatinInfo.Name = "tpApplicatinInfo";
             this.tpApplicatinInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpApplicatinInfo.Size = new System.Drawing.Size(759, 339);
+            this.tpApplicatinInfo.Size = new System.Drawing.Size(759, 391);
             this.tpApplicatinInfo.TabIndex = 1;
             this.tpApplicatinInfo.Text = "Applicatin Info";
             this.tpApplicatinInfo.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox5.Image = global::DVLD_PresentationLayer.Properties.Resources.money_321;
-            this.pictureBox5.Location = new System.Drawing.Point(224, 184);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(31, 20);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 174;
-            this.pictureBox5.TabStop = false;
             // 
             // lblApplicationDate
             // 
@@ -219,6 +220,70 @@
             this.labelDLApplication.TabIndex = 154;
             this.labelDLApplication.Text = "D.L.Application ID:";
             // 
+            // lblTitle
+            // 
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.Red;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(791, 56);
+            this.lblTitle.TabIndex = 152;
+            this.lblTitle.Text = "New Local Driving License Application ";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = global::DVLD_PresentationLayer.Properties.Resources.Save_32;
+            this.btnSave.Location = new System.Drawing.Point(659, 482);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(106, 38);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = global::DVLD_PresentationLayer.Properties.Resources.Close_32;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(547, 482);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(106, 38);
+            this.btnClose.TabIndex = 7;
+            this.btnClose.Text = "Close";
+            this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.Image = global::DVLD_PresentationLayer.Properties.Resources.Next_32;
+            this.btnNext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNext.Location = new System.Drawing.Point(643, 334);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(106, 38);
+            this.btnNext.TabIndex = 153;
+            this.btnNext.Text = "Next";
+            this.btnNext.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox5.Image = global::DVLD_PresentationLayer.Properties.Resources.money_321;
+            this.pictureBox5.Location = new System.Drawing.Point(224, 184);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(31, 20);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 174;
+            this.pictureBox5.TabStop = false;
+            // 
             // pictureBox4
             // 
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -263,67 +328,18 @@
             this.pictureBox1.TabIndex = 162;
             this.pictureBox1.TabStop = false;
             // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = global::DVLD_PresentationLayer.Properties.Resources.Save_32;
-            this.btnSave.Location = new System.Drawing.Point(659, 430);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(106, 38);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = global::DVLD_PresentationLayer.Properties.Resources.Close_32;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(547, 430);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(106, 38);
-            this.btnClose.TabIndex = 7;
-            this.btnClose.Text = "Close";
-            this.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.Red;
-            this.lblTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(791, 56);
-            this.lblTitle.TabIndex = 152;
-            this.lblTitle.Text = "New Local Driving License Application ";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ctrlPersonWithFilter1
-            // 
-            this.ctrlPersonWithFilter1.FilterEnabled = true;
-            this.ctrlPersonWithFilter1.Location = new System.Drawing.Point(3, 3);
-            this.ctrlPersonWithFilter1.Name = "ctrlPersonWithFilter1";
-            this.ctrlPersonWithFilter1.ShowAddPerson = true;
-            this.ctrlPersonWithFilter1.Size = new System.Drawing.Size(746, 325);
-            this.ctrlPersonWithFilter1.TabIndex = 0;
-            this.ctrlPersonWithFilter1.OnPersonSelected += new System.Action<int>(this.ctrlPersonWithFilter1_OnPersonSelected);
-            // 
-            // frmAddUpdateLocalDrivingLicenseApplication
+            // frmAddLocalDrivingLicenseApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 481);
+            this.ClientSize = new System.Drawing.Size(791, 532);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tbApplications);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmAddUpdateLocalDrivingLicenseApplication";
+            this.Name = "frmAddLocalDrivingLicenseApplication";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Local Driving License Application";
@@ -365,5 +381,6 @@
         private System.Windows.Forms.Label lblApplicationDate;
         private System.Windows.Forms.Label lblFess;
         private System.Windows.Forms.Label lblCreatedBy;
+        private System.Windows.Forms.Button btnNext;
     }
 }

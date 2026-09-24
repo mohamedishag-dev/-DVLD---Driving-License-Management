@@ -57,7 +57,6 @@ namespace DVLD_PresentationLayer.Tests
         private void txtTitle_Validating(object sender, CancelEventArgs e)
         {
 
-
             if (string.IsNullOrEmpty(txtTitle.Text.Trim()))
             {
                 e.Cancel = true;
@@ -67,8 +66,6 @@ namespace DVLD_PresentationLayer.Tests
             {
                 errorProvider1.SetError(txtTitle, null);
             }
-            ;
-
 
         }
 
@@ -86,8 +83,7 @@ namespace DVLD_PresentationLayer.Tests
                 errorProvider1.SetError(txtFees, null);
 
             }
-            ;
-
+            
 
             if (!clsValidatoin.IsNumber(txtFees.Text))
             {
@@ -98,7 +94,7 @@ namespace DVLD_PresentationLayer.Tests
             {
                 errorProvider1.SetError(txtFees, null);
             }
-            ;
+            
 
         }
 

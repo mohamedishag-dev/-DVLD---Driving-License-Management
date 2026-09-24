@@ -7,7 +7,6 @@ namespace DVLD_PresentationLayer.Tests
     public partial class frmAddLocalDrivingLicenseApplication : Form
     {
         clsLocalDrivingLicenseApplication L_D_L_App = new clsLocalDrivingLicenseApplication();
-        clsApplication Application = new clsApplication();
         public frmAddLocalDrivingLicenseApplication()
         {
             InitializeComponent();
@@ -17,16 +16,16 @@ namespace DVLD_PresentationLayer.Tests
         {
             _FillLeceseClassInComoboBox();
 
-            Application.ApplicationTypeID = 1;
-            Application.PaidFees = clsApplicationType.Find(Application.ApplicationTypeID).Fees;
-            Application.CreatedByUserID = clsGlobal.CurrentUser.UserID;
-            Application.ApplicationStatus = 1;
+            L_D_L_App.ApplicationInfo.ApplicationTypeID = 1;
+            L_D_L_App.ApplicationInfo.PaidFees = clsApplicationType.Find(L_D_L_App.ApplicationInfo.ApplicationTypeID).Fees;
+            L_D_L_App.ApplicationInfo.CreatedByUserID = clsGlobal.CurrentUser.UserID;
+            L_D_L_App.ApplicationInfo.Status = 1;
 
 
             btnSave.Enabled = false;
-            lblFess.Text = ((int)Application.PaidFees).ToString();
+            lblFess.Text = ((int)L_D_L_App.ApplicationInfo.PaidFees).ToString();
             lblCreatedBy.Text = clsGlobal.CurrentUser.UserName;
-            lblApplicationDate.Text = Application.ApplicationDate.ToShortDateString();
+            lblApplicationDate.Text = L_D_L_App.ApplicationInfo.ApplicationDate.ToShortDateString();
 
         }
 
@@ -53,7 +52,7 @@ namespace DVLD_PresentationLayer.Tests
         {
             if (obj != -1)
             {
-                Application.ApplicantPersonID = ctrlPersonWithFilter1.PersonID;
+                L_D_L_App.ApplicationInfo.ApplicantPersonID = ctrlPersonWithFilter1.PersonID;
                 btnSave.Enabled = true;
 
             }
@@ -63,20 +62,23 @@ namespace DVLD_PresentationLayer.Tests
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            if (Application.Save())
-            {
-                L_D_L_App.ApplicationID = Application.ApplicationID;
-                L_D_L_App.LicenseClassID = clsLecenseClass.Find(cbLecenseClass.Text.Trim()).LecenseClassID;
+            L_D_L_App.LicenseClassID = clsLecenseClass.Find(cbLecenseClass.Text.Trim()).LecenseClassID;
 
-                if (L_D_L_App.Save())
-                {
-                    MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                    MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            if (L_D_L_App.Save())
+            {
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lblDL_ApplicationID.Text = L_D_L_App.LocalDrivingLicenseApplicationID.ToString();
             }
             else
+            {
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            tbApplications.SelectedTab = tbApplications.TabPages["tpApplicatinInfo"];
 
         }
     }

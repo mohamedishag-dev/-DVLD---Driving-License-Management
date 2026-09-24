@@ -9,23 +9,23 @@ namespace DVLD_BusinessLayer
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
 
-        public int ApplicationID { set; get; }
+        public int ID { set; get; }
         public int ApplicantPersonID { set; get; }
         public clsPerson PersonInfo;
         public int ApplicationTypeID { set; get; }
         public clsApplicationType ApplicationTypeInfo;
         public DateTime ApplicationDate { set; get; }
-        public byte ApplicationStatus { set; get; }
+        public byte Status { set; get; }
         public DateTime LastStatusDate { set; get; }
         public float PaidFees { set; get; }
         public int CreatedByUserID { set; get; }
 
         public clsApplication()
         {
-            this.ApplicationID = -1;
+            this.ID = -1;
             this.ApplicantPersonID = -1;
             this.ApplicationDate = DateTime.Now;
-            this.ApplicationStatus = 1;
+            this.Status = 1;
             this.LastStatusDate = DateTime.Now;
             this.PaidFees = 0;
             this.CreatedByUserID = -1;
@@ -36,7 +36,7 @@ namespace DVLD_BusinessLayer
         private clsApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID,
              byte ApplicationStatus, DateTime LastStatusDate, float PaidFees, int CreatedByUserID)
         {
-            this.ApplicationID = ApplicationID;
+            this.ID = ApplicationID;
             this.ApplicantPersonID = ApplicantPersonID;
             this.PersonInfo = clsPerson.Find(ApplicantPersonID);
 
@@ -44,7 +44,7 @@ namespace DVLD_BusinessLayer
             this.ApplicationTypeID = ApplicationTypeID;
             this.ApplicationTypeInfo = clsApplicationType.Find(ApplicationTypeID);
 
-            this.ApplicationStatus = ApplicationStatus;
+            this.Status = ApplicationStatus;
             this.LastStatusDate = LastStatusDate;
             this.PaidFees = PaidFees;
             this.CreatedByUserID = CreatedByUserID;
@@ -70,18 +70,18 @@ namespace DVLD_BusinessLayer
         private bool _AddNewApplication()
         {
 
-            this.ApplicationID = clsApplicationData.AddNewApplication(this.ApplicantPersonID, this.ApplicationDate, this.ApplicationTypeID,
-                this.ApplicationStatus, this.LastStatusDate, this.PaidFees, this.CreatedByUserID);
+            this.ID = clsApplicationData.AddNewApplication(this.ApplicantPersonID, this.ApplicationDate, this.ApplicationTypeID,
+                this.Status, this.LastStatusDate, this.PaidFees, this.CreatedByUserID);
 
-            return (this.ApplicationID != -1);
+            return (this.ID != -1);
 
         }
 
         private bool _UpdateApplication()
         {
 
-            return clsApplicationData.UpdateApplication(this.ApplicationID, this.ApplicantPersonID, this.ApplicationDate, this.ApplicationTypeID,
-                this.ApplicationStatus, this.LastStatusDate, this.PaidFees, this.CreatedByUserID);
+            return clsApplicationData.UpdateApplication(this.ID, this.ApplicantPersonID, this.ApplicationDate, this.ApplicationTypeID,
+                this.Status, this.LastStatusDate, this.PaidFees, this.CreatedByUserID);
 
         }
 
