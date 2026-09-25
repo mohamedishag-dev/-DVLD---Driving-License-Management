@@ -30,12 +30,12 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ctrlLocalDrivingLicenseApplication1 = new DVLD_PresentationLayer.Applications.Controls.ctrlLocalDrivingLicenseApplication();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(50, 124);
+            this.button1.Location = new System.Drawing.Point(622, 118);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(131, 68);
             this.button1.TabIndex = 0;
@@ -45,30 +45,32 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(27, 62);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(622, 92);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 20);
+            this.textBox1.Size = new System.Drawing.Size(131, 22);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "1025";
+            this.textBox1.Text = "41";
             // 
-            // textBox2
+            // ctrlLocalDrivingLicenseApplication1
             // 
-            this.textBox2.Location = new System.Drawing.Point(207, 62);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(154, 20);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "3";
+            this.ctrlLocalDrivingLicenseApplication1.Location = new System.Drawing.Point(1, 12);
+            this.ctrlLocalDrivingLicenseApplication1.Name = "ctrlLocalDrivingLicenseApplication1";
+            this.ctrlLocalDrivingLicenseApplication1.Size = new System.Drawing.Size(615, 362);
+            this.ctrlLocalDrivingLicenseApplication1.TabIndex = 2;
             // 
             // frmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.ctrlLocalDrivingLicenseApplication1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Name = "frmTest";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmTest";
+            this.Load += new System.EventHandler(this.frmTest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,6 +80,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private Applications.Controls.ctrlLocalDrivingLicenseApplication ctrlLocalDrivingLicenseApplication1;
     }
 }

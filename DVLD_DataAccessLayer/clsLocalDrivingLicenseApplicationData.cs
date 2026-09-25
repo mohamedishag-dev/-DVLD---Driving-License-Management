@@ -426,7 +426,7 @@ namespace DVLD_DataAccessLayer
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"Delete LocalDrivingLicenseApplications 
-                                WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID);";
+                                WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;";
 
             SqlCommand command = new SqlCommand(query, connection);
 

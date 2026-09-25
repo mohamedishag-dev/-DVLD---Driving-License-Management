@@ -31,7 +31,7 @@ namespace DVLD_DataAccessLayer
                     // The record was found
                     isFound = true;
 
-                    PaidFees = (float)reader["PaidFees"];
+                    PaidFees = Convert.ToSingle(reader["PaidFees"]);
                     CreatedByUserID = (int)reader["CreatedByUserID"];
                     ApplicantPersonID = (int)reader["ApplicantPersonID"];
                     ApplicationTypeID = (int)reader["ApplicationTypeID"];
@@ -64,8 +64,8 @@ namespace DVLD_DataAccessLayer
 
             return isFound;
         }
-      
-        public static bool GetApplicationInfoByApplicantPersonID(int ApplicantPersonID, ref int ApplicationID , ref DateTime ApplicationDate, ref int ApplicationTypeID,
+
+        public static bool GetApplicationInfoByApplicantPersonID(int ApplicantPersonID, ref int ApplicationID, ref DateTime ApplicationDate, ref int ApplicationTypeID,
             ref byte ApplicationStatus, ref DateTime LastStatusDate, ref float PaidFees, ref int CreatedByUserID)
         {
 
@@ -89,7 +89,7 @@ namespace DVLD_DataAccessLayer
                     // The record was found
                     isFound = true;
 
-                    PaidFees = (float)reader["PaidFees"];
+                    PaidFees = Convert.ToSingle(reader["PaidFees"]);
 
                     ApplicationID = (int)reader["ApplicationID"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
@@ -178,7 +178,7 @@ namespace DVLD_DataAccessLayer
             return ApplicationID;
         }
 
-        public static bool UpdateApplication(int ApplicationID,int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, byte ApplicationStatus,
+        public static bool UpdateApplication(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate, int ApplicationTypeID, byte ApplicationStatus,
             DateTime LastStatusDate, float PaidFees, int CreatedByUserID)
         {
 
@@ -186,13 +186,12 @@ namespace DVLD_DataAccessLayer
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"Update Applications  
-                            SET ApplicantPersonID = @ApplicantPersonID,
-                                ApplicationDate = @ApplicationDate,
-                                ApplicationTypeID = @ApplicationTypeID,
-                                ApplicationStatus = @ApplicationStatus, 
-                                LastStatusDate = @LastStatusDate,
-                                PaidFees = @PaidFees, 
-                                CreatedByUserID = @CreatedByUserID,
+                            SET ApplicantPersonID = @ApplicantPersonID
+                                ,ApplicationDate = @ApplicationDate
+                                ,ApplicationTypeID = @ApplicationTypeID
+                                ,ApplicationStatus = @ApplicationStatus 
+                                ,LastStatusDate = @LastStatusDate
+                                ,PaidFees = @PaidFees
                                 WHERE ApplicationID = @ApplicationID";
 
 
@@ -203,9 +202,8 @@ namespace DVLD_DataAccessLayer
             command.Parameters.AddWithValue("@ApplicationDate", ApplicationDate);
             command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
             command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
-            command.Parameters.AddWithValue("@PaidFees", PaidFees);
             command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
-            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+            command.Parameters.AddWithValue("@PaidFees", PaidFees);
 
 
             try
@@ -305,7 +303,7 @@ namespace DVLD_DataAccessLayer
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"Delete Applications 
-                                WHERE ApplicationID = @ApplicationID);";
+                                WHERE ApplicationID = @ApplicationID;";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -333,6 +331,7 @@ namespace DVLD_DataAccessLayer
 
         }
 
+   
     }
 
 }

@@ -64,7 +64,7 @@
             this.dgvPeople.Name = "dgvPeople";
             this.dgvPeople.ReadOnly = true;
             this.dgvPeople.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPeople.Size = new System.Drawing.Size(1036, 241);
+            this.dgvPeople.Size = new System.Drawing.Size(1036, 292);
             this.dgvPeople.TabIndex = 6;
             this.dgvPeople.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvPeople_MouseDoubleClick);
             // 
@@ -146,7 +146,7 @@
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::DVLD_PresentationLayer.Properties.Resources.Close_32;
-            this.btnClose.Location = new System.Drawing.Point(987, 446);
+            this.btnClose.Location = new System.Drawing.Point(971, 497);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(106, 38);
             this.btnClose.TabIndex = 10;
@@ -159,7 +159,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(37, 453);
+            this.label1.Location = new System.Drawing.Point(37, 504);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 20);
             this.label1.TabIndex = 12;
@@ -169,7 +169,7 @@
             // 
             this.lblRecordsCount.AutoSize = true;
             this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsCount.Location = new System.Drawing.Point(118, 455);
+            this.lblRecordsCount.Location = new System.Drawing.Point(118, 506);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(16, 18);
             this.lblRecordsCount.TabIndex = 13;
@@ -254,7 +254,7 @@
             // 
             // frmListPeople
             // 
-            this.ClientSize = new System.Drawing.Size(1117, 488);
+            this.ClientSize = new System.Drawing.Size(1117, 548);
             this.Controls.Add(this.imgPeople);
             this.Controls.Add(this.lblTital);
             this.Controls.Add(this.txtFilterValue);

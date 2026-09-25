@@ -20,6 +20,7 @@ namespace DVLD_BusinessLayer
         public float PaidFees { set; get; }
         public int CreatedByUserID { set; get; }
 
+        public clsUser CreatedByUser;
         public clsApplication()
         {
             this.ID = -1;
@@ -48,6 +49,7 @@ namespace DVLD_BusinessLayer
             this.LastStatusDate = LastStatusDate;
             this.PaidFees = PaidFees;
             this.CreatedByUserID = CreatedByUserID;
+            this.CreatedByUser = clsUser.Find(CreatedByUserID);
             this.Mode = enMode.Update;
         }
 
@@ -120,6 +122,21 @@ namespace DVLD_BusinessLayer
             return clsApplicationData.DeleteApplicationByID(ApplicationID);
         }
 
+        public static bool CancelApplication(int ApplicationID)
+        {
+            clsApplication application = Find(ApplicationID);
+
+            if (application != null)
+            {
+                application.Status = 2;
+                application.LastStatusDate = DateTime.Now;
+                if (application.Save())
+                    return true;
+            }
+
+            return false;
+        }
+    
     }
 
 }

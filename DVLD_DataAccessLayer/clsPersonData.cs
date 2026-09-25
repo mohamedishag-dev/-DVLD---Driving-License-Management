@@ -466,7 +466,7 @@ namespace DVLD_DataAccessLayer
             }
             catch (Exception ex)
             {
-                // Console.WriteLine("Error: " + ex.Message);
+
             }
             finally
             {

@@ -122,12 +122,18 @@ namespace DVLD_BusinessLayer
         public static bool CancelApplication(int LocalDrivingLicenseApplicationID)
         {
             clsLocalDrivingLicenseApplication LicenseApplication = Find(LocalDrivingLicenseApplicationID);
-            clsApplication application = clsApplication.Find(LicenseApplication.ApplicationID);
-            if (application != null)
+
+            return clsApplication.CancelApplication(LicenseApplication.ApplicationID);
+
+        }
+
+        public static bool DeleteLicenseApplication(int LocalDrivingLicenseApplicationID)
+        {
+            int ApplicationID = Find(LocalDrivingLicenseApplicationID).ApplicationID;
+
+            if (clsLocalDrivingLicenseApplicationData.DeleteLocalDrivingLicenseApplicationByID(LocalDrivingLicenseApplicationID))
             {
-                application.Status = 2;
-                if (application.Save())
-                    return true;
+                return clsApplication.DeleteApplication(ApplicationID);
             }
 
             return false;
